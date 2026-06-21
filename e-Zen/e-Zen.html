@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>e-Zen - The Digital Citizen</title>
+    <link rel="icon" type="png" href="tree.jpg">
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #fbfbfb;
+        }
+
+        /* HERO SECTION */
+        .hero{
+            min-height:100vh;
+            background:
+                linear-gradient(rgba(0,60,0,0.6),
+                rgba(0,60,0,0.7)),
+                url('keralam.jpg'); /* Substitute with actual image asset */
+            background-size:cover;
+            background-position:center;
+            color:white;
+            display:flex;
+            flex-direction:column;
+        }
+
+        nav{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            padding:25px 8%;
+        }
+
+        .logo{
+            font-size:30px;
+            font-weight:bold;
+            letter-spacing: 0.5px;
+        }
+
+        nav ul{
+            display:flex;
+            list-style:none;
+            gap:25px;
+        }
+
+        nav a{
+            color:white;
+            text-decoration:none;
+            font-weight:500;
+            transition: color 0.2s;
+        }
+        
+        nav a:hover {
+            color: #a7f3d0;
+        }
+
+        .hero-content{
+            flex:1;
+            display:flex;
+            flex-direction:column;
+            justify-content:center;
+            align-items:center;
+            text-align:center;
+            padding:40px 20px;
+        }
+
+        .hero-content h1{
+            font-size:45px;
+            margin-bottom:20px;
+            line-height: 1.2;
+        }
+
+        .hero-content p{
+            max-width:700px;
+            margin-bottom:35px;
+            font-size:18px;
+            opacity: 0.95;
+        }
+
+        .search-box{
+            display:flex;
+            width:90%;
+            max-width:600px;
+            margin-bottom:30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius:8px;
+            overflow: hidden;
+        }
+
+        .search-box input{
+            flex:1;
+            padding:18px;
+            border:none;
+            font-size:16px;
+            outline: none;
+        }
+
+        .search-box button{
+            padding:15px 30px;
+            border:none;
+            background:#0d8f47;
+            color:white;
+            font-weight: bold;
+            cursor:pointer;
+            transition: background 0.2s;
+        }
+
+        .search-box button:hover{
+            background: #0b7339;
+        }
+
+        .btn-group{
+            display:flex;
+            gap:15px;
+            flex-wrap:wrap;
+            justify-content: center;
+        }
+
+        .btn{
+            padding:14px 28px;
+            text-decoration:none;
+            border-radius:6px;
+            font-weight:bold;
+            transition: transform 0.2s, background 0.2s;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .primary{
+            background:#0d8f47;
+            color:white;
+        }
+
+        .secondary{
+            background:white;
+            color:#0d8f47;
+        }
+
+        /* SECTION STYLE */
+        section{
+            padding:80px 8%;
+        }
+
+        section h2{
+            text-align:center;
+            margin-bottom:40px;
+            color:#14532d;
+            font-size: 28px;
+            position: relative;
+        }
+
+        /* HOW IT WORKS */
+        .cards{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+            gap:25px;
+        }
+
+        .card{
+            background:#ffffff;
+            padding:30px;
+            text-align:center;
+            border-radius:12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+        }
+
+        .card h3{
+            margin-bottom:15px;
+            color: #14532d;
+        }
+
+        /* POPULAR SERVICES & CATEGORIES */
+        .service-grid{
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+            gap:20px;
+        }
+
+        .service-clickable {
+            background:#ffffff;
+            border:1px solid #e2e8f0;
+            padding:25px 20px;
+            text-align:center;
+            border-radius:10px;
+            font-weight:bold;
+            color: #1e293b;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: all 0.2s ease;
+        }
+
+        .service-clickable:hover {
+            border-color: #0d8f47;
+            color: #0d8f47;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(13,143,71,0.1);
+        }
+
+        /* CATEGORIES DROPDOWN SYSTEM */
+.category-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.category-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+}
+
+.category-toggle {
+    width: 100%;
+    padding: 20px;
+    background: #ffffff;
+    border: none;
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+    color: #14532d;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.2s;
+}
+
+.category-toggle:hover {
+    background: #f0fdf4;
+}
+
+.category-toggle .arrow {
+    font-size: 12px;
+    transition: transform 0.2s;
+    color: #0d8f47;
+}
+
+.category-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background: #f8fafc;
+}
+
+.sub-service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    padding: 20px;
+    border-top: 1px solid #edf2f7;
+}
+
+.sub-service-item {
+    background: white;
+    border: 1px solid #e2e8f0;
+    padding: 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #334155;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: block;
+}
+
+.sub-service-item:hover {
+    border-color: #0d8f47;
+    color: #0d8f47;
+    background: #f0fdf4;
+    transform: translateX(3px);
+}
+
+/* Active animation handle states */
+.category-card.active .category-content {
+    max-height: 1000px; /* Ceiling to smoothly slide reveal lists */
+    transition: max-height 0.4s ease-in;
+}
+
+.category-card.active .arrow {
+    transform: rotate(180deg);
+}
+
+        /* FOOTER */
+        footer{
+            background:#14532d;
+            color:white;
+            text-align:center;
+            padding:35px 20px;
+            font-size: 14px;
+        }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media(max-width:768px){
+            nav{
+                flex-direction:column;
+                gap:20px;
+                padding: 20px 4%;
+            }
+
+            nav ul{
+                flex-wrap:wrap;
+                justify-content:center;
+                gap: 15px;
+            }
+
+            .hero-content h1{
+                font-size:32px;
+            }
+
+            .search-box{
+                flex-direction:column;
+                background: transparent;
+                box-shadow: none;
+                width: 100%;
+            }
+
+            .search-box input{
+                border-radius:8px;
+                margin-bottom:10px;
+                padding: 15px;
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+
+            .search-box button{
+                border-radius:8px;
+                padding: 15px;
+                width: 100%;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            
+            section {
+                padding: 50px 5%;
+            }
+        }
+
+.suggestions-box{
+    max-width:600px;
+    width:90%;
+    margin:0 auto;
+    background:white;
+    border-radius:8px;
+    overflow:hidden;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.suggestion-item{
+    padding:15px;
+    cursor:pointer;
+    border-bottom:1px solid #eeeeee;
+}
+
+.suggestion-item:hover{
+    background:#f0fdf4;
+    color:#0d8f47;
+}
+
+.suggestion-item:last-child{
+    border-bottom:none;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header class="hero">
+        <nav>
+            <div class="logo">e-Zen</div>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#categories">Categories</a></li>
+                <li><a href="#safety">Safety</a></li>
+            </ul>
+        </nav>
+
+        <div class="hero-content">
+            <h1>Your Rights Your Services Your Journey</h1>
+            <p>
+                Democracy flourishes when citizens can easily access services meant for them. We provide step-by-step guidance to help you navigate Kerala government's digital portals with absolute confidence.
+            </p>
+
+    <div class="search-box">
+
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Search for Driving Licence, RTO, DL..."
+        onkeyup="showSuggestions()"
+    >
+       
+        <button onclick="searchServices()">
+        Search
+        </button>
+ 
+    </div>
+    <div id="suggestions" class="suggestions-box"></div>
+
+            <div class="btn-group">
+                <a href="#services" class="btn primary">Get Started</a>
+                <a href="#categories" class="btn secondary">Explore Categories</a>
+            </div>
+        </div>
+    </header>
+
+    <section>
+        <h2>How e-Zen Helps You</h2>
+        <div class="cards">
+            <div class="card">
+                <h3>🔍 Find the Service</h3>
+                <p>Search for licences, certificates, certificates, or pensions effortlessly.</p>
+            </div>
+            <div class="card">
+                <h3>📋 Follow Steps</h3>
+                <p>Understand complex government application processes in plain, clear language.</p>
+            </div>
+            <div class="card">
+                <h3>🔗 Official Links</h3>
+                <p>Direct routes to verified, official government portals without middle-agents.</p>
+            </div>
+            <div class="card">
+                <h3>✅ Get It Done</h3>
+                <p>Complete your registrations smoothly, just like visiting an Akshaya Centre.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Popular Services</h2>
+        <div class="service-grid">
+            <a href="transport/driving-licence.html" class="service-clickable">Driving Licence</a>
+            <a href="certificates/income-certificate.html" class="service-clickable">Income Certificate</a>
+            <a href="identity/aadhaar update.html" class="service-clickable">Aadhaar Update</a>
+            <a href="identity/pan application.html" class="service-clickable">PAN Application</a>
+            <a href="civil supplies/kseb-electricity-bill-payment.html" class="service-clickable">KSEB Electricity Bill</a>
+            <a href="welfare/social-security.html" class="service-clickable">Social Security Pension</a>
+        </div>
+    </section>
+
+    <section id="categories">
+        <h2>Services by Category</h2>
+        <p style="text-align: center; color: #666; margin-top: -30px; margin-bottom: 40px; font-size: 14px;">💡 Click any category below to view its specific e-Governance services</p>
+        
+        <div class="category-container">
+            
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('identity-list')">
+                    <span>✊ 1. Identity</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="identity-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="identity/aadhaar enrolment.html" class="sub-service-item">Aadhaar Enrolment</a>
+                        <a href="identity/aadhaar update.html" class="sub-service-item">Aadhaar Update</a>
+                        <a href="identity/pan application.html" class="sub-service-item">PAN Application</a>
+                        <a href="identity/pan-correction.html" class="sub-service-item">PAN Correction</a>
+                        <a href="identity/voter-registration.html" class="sub-service-item">Voter Registration</a>
+                        <a href="identity/voter-correction.html" class="sub-service-item">Voter Correction</a>
+                        <a href="identity/voter-transfer.html" class="sub-service-item">Voter Transfer</a>
+                        <a href="identity/passport-application.html" class="sub-service-item">Passport Application</a>
+                        <a href="identity/passport-renewal.html" class="sub-service-item">Passport Renewal</a>
+                        <a href="identity/birth-registration.html" class="sub-service-item">Birth Registration</a>
+                        <a href="identity/birth-certificate-copy.html" class="sub-service-item">Birth Certificate Copy</a>
+                        <a href="identity/death-registration.html" class="sub-service-item">Death Registration</a>
+                        <a href="identity/death-certificate-copy.html" class="sub-service-item">Death Certificate Copy</a>
+                        <a href="identity/marriage-registration.html" class="sub-service-item">Marriage Registration</a>
+                        <a href="identity/marriage-certificate-copy.html" class="sub-service-item">Marriage Certificate Copy</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('transport-list')">
+                    <span>🚗 2. Transport</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="transport-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="transport/driving-licence.html" class="sub-service-item">Learner’s Licence</a>
+                        <a href="transport/driving-licence.html" class="sub-service-item">Driving Licence</a>
+                        <a href="transport/dl-renewal.html" class="sub-service-item">DL Renewal</a>
+                        <a href="transport/duplicate-dl.html" class="sub-service-item">Duplicate DL</a>
+                        <a href="transport/address-change-in-dl.html" class="sub-service-item">Address Change in DL</a>
+                        <a href="transport/international-driving-permit.html" class="sub-service-item">International Driving Permit</a>
+                        <a href="transport/vehicle-registration.html" class="sub-service-item">Vehicle Registration</a>
+                        <a href="transport/duplicate-rc.html" class="sub-service-item">Duplicate RC</a>
+                        <a href="transport/rc-address-change.html" class="sub-service-item">RC Transfer</a>
+                        <a href="transport/rc-address-change.html" class="sub-service-item">RC Address Change</a>
+                        <a href="transport/vehicle-fitness-certificate.html" class="sub-service-item">Vehicle Fitness Certificate</a>
+                        <a href="transport/permit-application.html" class="sub-service-item">Permit Application</a>
+                        <a href="transport/permit-renewal.html" class="sub-service-item">Permit Renewal</a>
+                        <a href="transport/traffic-challan-payment.html" class="sub-service-item">Traffic Challan Payment</a>
+                        <a href="transport/vehicle-tax-payment.html" class="sub-service-item">Vehicle Tax Payment</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('welfare-list')">
+                    <span>🤝 3. Welfare</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="welfare-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="welfare/social-security.html" class="sub-service-item">Social Security Pension</a>
+                        <a href="welfare/widow-pension.html" class="sub-service-item">Widow Pension</a>
+                        <a href="welfare/old-age-pension.html" class="sub-service-item">Old Age Pension</a>
+                        <a href="welfare/disability-pension.html" class="sub-service-item">Disability Pension</a>
+                        <a href="welfare/unemployment-assist.html" class="sub-service-item">Unemployment Assistance</a>
+                        <a href="welfare/differently-abled.html" class="sub-service-item">Assistance for Differently-Abled Persons</a>
+                        <a href="welfare/housing-scheme.html" class="sub-service-item">Housing Assistance</a>
+                        <a href="welfare/karunya-health.html" class="sub-service-item">Karunya Health Assistance</a>
+                        <a href="welfare/agri-welfare.html" class="sub-service-item">Agricultural Welfare Schemes</a>
+                        <a href="welfare/fishermen-welfare.html" class="sub-service-item">Fishermen Welfare Schemes</a>
+                        <a href="welfare/labour-welfare.html" class="sub-service-item">Labour Welfare Benefits</a>
+                        <a href="welfare/women-welfare.html" class="sub-service-item">Women’s Welfare Schemes</a>
+                        <a href="welfare/child-welfare.html" class="sub-service-item">Child Welfare Schemes</a>
+                        <a href="welfare/senior-citizen.html" class="sub-service-item">Senior Citizen Services</a>
+                        <a href="welfare/family-benefit.html" class="sub-service-item">Family Benefit Assistance</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('education-list')">
+                    <span>🎓 4. Education</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="education-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="education-scholarship/pre-matric-scholarship.html" class="sub-service-item">Pre-Matric Scholarship</a>
+                        <a href="education-scholarship/post-matric-scholarship.html" class="sub-service-item">Post-Matric Scholarship</a>
+                        <a href="education-scholarship/minority-scholarship.html" class="sub-service-item">Minority Scholarship</a>
+                        <a href="education-scholarship/e-grantz-scholarship.html" class="sub-service-item">E-Grantz Scholarship</a>
+                        <a href="education-scholarship/student-registration.html" class="sub-service-item">Student Registration</a>
+                        <a href="education-scholarship/examination-registration.html" class="sub-service-item">Examination Registration</a>
+                        <a href="education-scholarship/examination-results.html" class="sub-service-item">Examination Results</a>
+                        <a href="education-scholarship/transfer-certificate.html" class="sub-service-item">Transfer Certificate</a>
+                        <a href="education-scholarship/migration-certificate.html" class="sub-service-item">Migration Certificate</a>
+                        <a href="education-scholarship/equivalency-certificate.html" class="sub-service-item">Equivalency Certificate</a>
+                        <a href="education-scholarship/educational-loan-information.html" class="sub-service-item">Educational Loan Information</a>
+                        <a href="education-scholarship/school-admission-guidance.html" class="sub-service-item">School Admission Guidance</a>
+                        <a href="education-scholarship/college-admission-guidance.html" class="sub-service-item">College Admission Guidance</a>
+                        <a href="education-scholarship/national-scholarship-portal-services.html" class="sub-service-item">National Scholarship Portal Services</a>
+                        <a href="education-scholarship/student-concession-certificates.html" class="sub-service-item">Student Concession Certificates</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('certificates-list')">
+                    <span>📜 5. Certificates</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="certificates-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="certificates/income-certificate.html" class="sub-service-item">Income Certificate</a>
+                        <a href="certificates/community-certificate.html" class="sub-service-item">Community Certificate</a>
+                        <a href="certificates/caste-certificate.html" class="sub-service-item">Caste Certificate</a>
+                        <a href="certificates/residence-certificate.html" class="sub-service-item">Residence Certificate</a>
+                        <a href="certificates/nativity-certificate.html" class="sub-service-item">Nativity Certificate</a>
+                        <a href="certificates/non-creamy.html" class="sub-service-item">Non-Creamy Layer Certificate</a>
+                        <a href="certificates/possession-certificate.html" class="sub-service-item">Possession Certificate</a>
+                        <a href="certificates/location-certificate.html" class="sub-service-item">Location Certificate</a>
+                        <a href="certificates/relationship-certificate.html" class="sub-service-item">Relationship Certificate</a>
+                        <a href="certificates/solvency-certificate.html" class="sub-service-item">Solvency Certificate</a>
+                        <a href="certificates/dependency-certificate.html" class="sub-service-item">Dependency Certificate</a>
+                        <a href="certificates/legal-heir-certificate.html" class="sub-service-item">Legal Heir Certificate</a>
+                        <a href="certificates/one-and-same-certificate.html" class="sub-service-item">One and Same Certificate</a>
+                        <a href="certificates/destitute-certificate.html" class="sub-service-item">Destitute Certificate</a>
+                        <a href="certificates/unemployment-certificate.html" class="sub-service-item">Unemployment Certificate</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <button class="category-toggle" onclick="toggleCategory('civil-list')">
+                    <span>🍚 6. Civil Supplies & Utilities</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div id="civil-list" class="category-content">
+                    <div class="sub-service-grid">
+                        <a href="civil supplies/ration-card-application.html" class="sub-service-item">Ration Card Application</a>
+                        <a href="civil supplies/ration-card-addition-deletion.html" class="sub-service-item">Ration Card Addition/Deletion</a>
+                        <a href="civil supplies/ration-card-correction.html" class="sub-service-item">Ration Card Correction</a>
+                        <a href="civil supplies/ration-card-transfer.html" class="sub-service-item">Ration Card Transfer</a>
+                        <a href="civil supplies/ration-card-renewal.html" class="sub-service-item">Ration Card Renewal</a>
+                        <a href="civil supplies/pds-entitlement-check.html" class="sub-service-item">PDS Entitlement Check</a>
+                        <a href="civil supplies/lpg-subsidy-services.html" class="sub-service-item">LPG Subsidy Services</a>
+                        <a href="civil supplies/consumer-number-search.html" class="sub-service-item">Consumer Number Search</a>
+                        <a href="civil supplies/kseb-electricity-bill-payment.html" class="sub-service-item">KSEB Electricity Bill Payment</a>
+                        <a href="civil supplies/kseb-new-connection.html" class="sub-service-item">KSEB New Connection</a>
+                        <a href="civil supplies/kseb-complaint-registration.html" class="sub-service-item">KSEB Complaint Registration</a>
+                        <a href="civil supplies/kerala-water-authority-bill-payment.html" class="sub-service-item">Kerala Water Authority Bill Payment</a>
+                        <a href="civil supplies/water-connection-application.html" class="sub-service-item">Water Connection Application</a>
+                        <a href="civil supplies/property-tax-payment.html" class="sub-service-item">Property Tax Payment</a>
+                        <a href="civil supplies/building-tax-payment.html" class="sub-service-item">Building Tax Payment</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="safety">
+        <h2>Safety Tips</h2>
+        <div class="cards">
+            <div class="card">
+                <strong>🔒 Secure Data</strong>
+                <p style="margin-top:10px;">Never share your online account passwords, banking PINs, or Aadhaar OTPs with anyone.</p>
+            </div>
+            <div class="card">
+                <strong>🌐 Check URLs</strong>
+                <p style="margin-top:10px;">Always verify that the website URL addresses end strictly with <span style="color:#0d8f47; font-weight:bold;">.gov.in</span> or <span style="color:#0d8f47; font-weight:bold;">.nic.in</span>.</p>
+            </div>
+            <div class="card">
+                <strong>❌ Say No to Agents</strong>
+                <p style="margin-top:10px;">Avoid unofficial third-party agents who charge huge margins for free public services.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>e-Zen © 2026 | This platform provides purely educational guidance and is not affiliated officially with the Government of Kerala.</p>
+    </footer>
+
+    <script src="javascript/search-data.js"></script>
+
+    <script src="javascript/search.js"></script>
+
+    <script src="javascript/categories.js"></script>
+
+</body>
+</html>

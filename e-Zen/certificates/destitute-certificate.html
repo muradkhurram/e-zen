@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destitute Certificate Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare & Security</span>
+            <h1>Destitute Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Office</span>
+                    <strong>Village Officer / Sub-Collector Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Primary Intent</span>
+                    <strong>Validates Lack of Regular Income and Family Support Structures</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Validity Profile</span>
+                    <strong>Usually 1 Year (Requires review for welfare renewals)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Income Baseline</span>
+                    <strong>Strictly below regional extreme low-income thresholds</strong>
+                </div>
+            </div>
+
+            <a href="https://edistrict.kerala.gov.in/" target="_blank" class="btn-portal">Open e-District Portal Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A <strong>Destitute Certificate</strong> is an official welfare status document issued by the revenue department certifying that an individual has no sustainable means of income, no assets, and no family members legally obligated or able to provide financial support. This certificate is required to access targeted state welfare pensions, secure extreme low-income medical assistance grants, obtain priority housing alignments under social security programs, or access zero-cost educational fee concessions for children of vulnerable individuals.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Evaluation Framework Rules</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Absolute Income Scrutiny:</strong> The assessment checks for any active or passive revenue sources. Regular remittances, land yields, or informal pension incomes are checked to ensure parameters are not exceeded.</li>
+                <li style="margin-bottom: 8px;"><strong>Family Support Check:</strong> Having adult, gainfully employed children or a financially independent spouse typically invalidates the destitute classification under state welfare rules.</li>
+                <li style="margin-bottom: 8px;"><strong>Mandatory Local Field Audit:</strong> Given the high welfare dependency link, the Village Officer or Field Assistant must physically visit the residence and interview local ward members to verify the living conditions.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Verification Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to audit your portfolio filing status:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Family Smart Ration Card Extract (BPL Category preferred)</strong>
+                        <span class="file-spec">Primary link document confirming address and registered household members.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card and Local Voter Profile</strong>
+                        <span class="file-spec">Used to verify identity and match local ward registration records.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income/Asset Declaration Affidavit</strong>
+                        <span class="file-spec">A sworn statement declaring a lack of land holdings, financial balances, or secondary assets.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Local Ward Counselor or Panchayat Recommendation Letter</strong>
+                        <span class="file-spec">Official testimony from your local community representative validating your economic standing.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>The Filing & Validation Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Framework:</strong> Active 2026 Welfare Security Baseline</span>
+                <span style="color: #3b1775;"><strong>Processing Mode:</strong> Requires physical field validation</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Filing & Declaration</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access your regional e-District console and select the Destitute Certificate application link.</li>
+                        <li>Input personal data, outline family details, and upload scans of your ration card along with local community testimonies.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Local Field Audit</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The request routes to your local Village Officer, who triggers a mandatory residential inquiry.</li>
+                        <li>The field team speaks with neighbors and local representatives to confirm the lack of secondary support systems or hidden assets.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Administrative Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon field clearance, the report moves to the sub-district office or Tahsildar engine for final sign-off.</li>
+                        <li>Download the finalized, digitally signed PDF containing an integrated tracking QR code.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Risks & Application Rejections</h2>
+            <ul class="alert-list">
+                <li><strong>Undisclosed Assets or Land Records:</strong> Finding unmapped land parcels or active vehicle registries linked to your identity card will cause immediate cancellation.</li>
+                <li><strong>Employed Adult Family Members:</strong> Discrepancies where adult children are found to be running businesses or securely employed in corporate or public sectors.</li>
+                <li><strong>Mismatched Names on Ration Cards:</strong> Spelling errors across identity documents that fail automated cross-checks against civil tracking engines.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Welfare Desks</h2>
+            <div class="chip-group">
+                <a href="dependency-certificate.html" class="chip">Dependency Certificate Desk</a>
+                <a href="relationship-certificate.html" class="chip">Relationship Certificate Desk</a>
+                <a href="social-pension.html" class="chip">Social Security Pension Hub</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Economic eligibility baselines, asset exclusions, and social safety criteria match active statutory regulations managed by the state's Social Justice Department.</p>
+
+    </div>
+
+</body>
+</html>

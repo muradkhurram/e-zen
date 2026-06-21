@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Security Pension Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Social Purple Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Social Purple with Deep Purple hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare Services</span>
+            <h1>Social Security Pension</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Implementing Agency</span>
+                    <strong>Department of Social Justice / Local Self Govt (LSGD)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>National Social Assistance Program (NSAP) / State Sevana</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Application Fee</span>
+                    <strong>₹0 (Strictly Free Public Benefit Welfare Service)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Disbursal Frequency</span>
+                    <strong>Monthly direct-to-account database transfer</strong>
+                </div>
+            </div>
+
+            <a href="https://nsap.nic.in/" target="_blank" class="btn-portal">Open National Welfare Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Social Security Pension scheme is a state-assisted financial welfare net designed to safeguard economically vulnerable populations. It distributes routine monthly financial disbursements directly to eligible senior citizens, destitute widows, and differently-abled individuals to ensure a basic baseline of structural livelihood support.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>For marginalized or low-income non-elite groups without structured retirement benefits, this program provides financial independence. Navigating the application infrastructure properly ensures uninterrupted, direct access to these essential statutory welfare funds.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility Criteria</h2>
+            <p style="margin-bottom: 10px;">Applicants must qualify under one of the primary welfare categories below:</p>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Old Age Pension:</strong> Applicants must be 60 years of age or older, classified below the designated poverty threshold index, and must not receive other institutional pensions.</li>
+                <li style="margin-bottom: 8px;"><strong>Destitute/Widow Pension:</strong> Legally widowed or divorced women who lack stable, independent income sources.</li>
+                <li style="margin-bottom: 8px;"><strong>Special Ability Pension:</strong> Individuals with a documented physical or neurological disability rating of 40% or higher, certified by an authorized medical board ledger.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track your verification paperwork updates:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card & Identity Details</strong>
+                        <span class="file-spec">Clear digital file copy matching name, gender, and date of birth details exactly.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Certified Income Certificate</strong>
+                        <span class="file-spec">Issued by your local revenue officer to verify that household income falls below the mandatory welfare eligibility cap.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Bank Passbook / DBT Ledger Details</strong>
+                        <span class="file-spec">Front page scan clearly displaying your bank name, account number, and IFSC string for Direct Benefit Transfer routing.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Welfare Specific Proof (Age/Death/Disability)</strong>
+                        <span class="file-spec">An official birth certificate, spouse death certificate, or medical board disability layout depending on your pension type.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #5b21b6;"><strong>Source:</strong> National Social Assistance Program Framework</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Registration & Portal Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open National Welfare Portal** above, or navigate to your specific State Social Security dashboard.</li>
+                        <li>Select **Apply Online for Pension** and choose your applicable category (e.g., Old Age, Widow, Disability).</li>
+                        <li>Input your Aadhaar number to run an initial verification sweep against the central identity registry.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Income Details & Document Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Fill out the data forms with your permanent address, local administrative block, and household configuration.</li>
+                        <li>Enter your revenue-certified annual income numbers and input your income certificate registration string.</li>
+                        <li>Upload clean PDF copies of your identity documents, bank passbook data page, and category-specific certificates.</li>
+                        <li>Review your entry details and click submit to generate a unique pension application tracking index.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Verification & Final Approval</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Your digital application is routed automatically to your local village or municipal welfare officer desk.</li>
+                        <li>An administrative field inquiry is conducted to verify income parameters and residence eligibility.</li>
+                        <li>Once cleared, your profile is added to the state treasury master ledger. Monthly funds will be deposited directly into your linked bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Mismatched Bank DBT Mapping:</strong> Bank accounts that are not actively seeded with Aadhaar will cause the Direct Benefit Transfer system to bounce monthly deposits.</li>
+                <li><strong>Income Limit Threshold Breaches:</strong> Applications are automatically flagged if household property holding registries or asset indices indicate a status above the poverty threshold.</li>
+                <li><strong>Overlapping Benefit Claims:</strong> Attempting to claim multiple state welfare pensions concurrently will trigger a system hold across your profile records.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>What should you do if your approved pension drops out or stops appearing in your account after a few months?</strong><br>Do not submit a new application. This freeze usually happens because you missed the annual biometric verification window. To restore your payments, visit your local citizen service center or download your state's designated mobile verification app. Complete your secure live facial or fingerprint biometric authentication. Once your active status is confirmed in the database, your pension will automatically resume and pay out any back-dated funds.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can a pension account be transferred if the beneficiary relocates to a different district?</strong><br>A: Yes. Log into your state's welfare portal, select **Address Alteration/Transfer**, and upload your new local address proof. The system will safely route your active master file to the new regional processing desk.</p>
+            <br>
+            <p><strong>Q: Is there an option to receive monthly pension payouts in cash rather than a bank transfer?</strong><br>A: Certain state frameworks provide direct physical cash delivery through designated local cooperative banks or postal workers specifically for elderly or bedridden citizens who cannot visit an ATM.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Seeding Desk</a>
+                <a href="disability-id.html" class="chip">UDID Smart Card</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Financial payout metrics, local income limits, and biometric verification timelines track directly with individual state amendments. Final approvals are handled by your regional social welfare board.</p>
+
+    </div>
+
+</body>
+</html>

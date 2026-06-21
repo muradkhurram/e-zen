@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Challan Payment Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Digital Traffic Challan Settlement</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Enforcement Hub</span>
+                    <strong>Ministry of Road Transport & Highways / State Traffic Police</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>MoRTH E-Challan Settlement System</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Statutory Fine Amount</span>
+                    <strong>Calculated dynamically based on specific Motor Vehicles Act infractions</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Settlement Window</span>
+                    <strong>60 Days from citation timestamp before routing to Virtual Courts</strong>
+                </div>
+            </div>
+
+            <a href="https://echallan.parivahan.gov.in/" target="_blank" class="btn-portal">Open MoRTH E-Challan Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Digital Traffic Challan Settlement is the electronic legal workflow used to clear official traffic enforcement citations issued by highway interceptors, automated speed cameras, or traffic officers. Logged instantly against either a driver's licence string or a vehicle registration index, this system enables direct digital payment of dynamic penal tariffs.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Unresolved traffic challans quickly freeze your vehicle profile within the national database. The Vahan platform will completely block transactions like insurance renewals, vehicle transfers, address changes, or fitness assessments until your citation history is fully settled and cleared.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Payment Period:</strong> Citations remain eligible for direct online payment for up to 60 days from the issue date. After this window, unpaid cases are automatically forwarded to regional Virtual Courts for formal judicial action.</li>
+                <li><strong>Contest Restrictions:</strong> Paying a fine online constitutes an admission of the traffic violation. If you wish to contest the citation or plead not guilty, do not pay online; instead, choose the option to route the file to a virtual or physical court hearing.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Information (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what parameters you have gathered for verification:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Challan Alphanumeric Number</strong>
+                        <span class="file-spec">The unique citation tracking sequence delivered to your registered mobile number via SMS or printed on a physical notice.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Vehicle Registration Number & Chassis/Engine Strings</strong>
+                        <span class="file-spec">Your standard plate sequence accompanied by the final 5 characters of either your engine or chassis stamp.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Driving Licence (DL) Alphanumeric Sequence</strong>
+                        <span class="file-spec">Required if the citation was issued directly to the driver's credential rather than the vehicle asset profile.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> National E-Challan Core Operations</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📸</span> <span><strong>Review Photographic Evidence:</strong> Always inspect the automated camera image captures or location data attached to your e-challan record to ensure your vehicle plate was not misread by the optical tracking systems before finalizing payment.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Citation Lookup & Authentication</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open MoRTH E-Challan Portal** above and select **Check Challan Status**.</li>
+                        <li>Input your unique **Challan Number**, **Vehicle Number**, or **DL Number** string to query the database.</li>
+                        <li>Complete the security verification and click **Get Detail** to view your active violation history rows.</li>
+                        <li>Review the detailed row metrics: infraction type, timestamp, location, and the attached photographic proof.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Payment Execution</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Locate your specific pending citation rows and click the **Pay Now** button layout item.</li>
+                        <li>Verify your linked mobile number by entering the system-generated One Time Password (OTP).</li>
+                        <li>The system will automatically redirect you to your respective state's official digital e-treasury payment gateway (such as GRAS, eGRAS, or IFMS).</li>
+                        <li>Select your preferred secure payment method (Netbanking, UPI, or Credit/Debit Card) and complete the transaction.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Receipt Validation & Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Once payment is successful, download and save the official printed payment receipt containing your unique transaction tracking numbers.</li>
+                        <li>Verify that your challan status switches from **Pending** to **Disposed** within the Parivahan database framework.</li>
+                        <li>The Vahan administrative engine will immediately clear the hold on your vehicle record, allowing you to resume normal administrative tasks.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Gateway Transaction Timeouts:</strong> Network communication drops during the e-treasury checkout loop can stall payments, leaving the challan active while funds are temporarily held by the bank.</li>
+                <li><strong>Court Relocation Status:</strong> If a citation's 60-day payment window expires, the portal will remove the online payment button and mark the status as "Sent to Court," blocking direct digital settlement.</li>
+                <li><strong>Compounding Restrictions:</strong> Certain major traffic violations cannot be settled via simple portal payments and require a mandatory physical appearance before an RTO officer or a magistrate.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>What should you do if your payment was successfully deducted from your bank account, but the e-challan status still shows as "Pending"?</strong><br>Do not attempt to repay the fine. Transaction synchronization on state treasury networks can occasionally experience brief processing lags. Log back into the portal, navigate to your history summary, and click the **Check Payment Verification** button next to the stalled row. The engine will perform a manual reconciliation with the bank ledger and instantly update your status to "Disposed."</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: My citation status is marked as "Sent to Virtual Court." How can I clear it?</strong><br>A: You can no longer pay through the standard e-challan portal. Instead, visit the official **Virtual Courts Portal (vcourts.gov.in)**, select your state, search by your vehicle number, and pay the judicial fine online to clear the case file.</p>
+            <br>
+            <p><strong>Q: Can I check or pay for traffic violations issued outside my home state?</strong><br>A: Yes. The MoRTH electronic system consolidates traffic citations nationwide across participating states, allowing you to view and settle cross-border infractions seamlessly.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="dl-renewal.html" class="chip">DL Renewal</a>
+                <a href="vehicle-rc-transfer.html" class="chip">RC Title Transfer</a>
+                <a href="vehicle-permit-renewal.html" class="chip">Permit Renewal Guide</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Traffic penalty structures, compounding terms, and fine values track directly with individual state motor vehicle amendments. Final legal settlement parameters are governed by the respective enforcement authorities.</p>
+
+    </div>
+
+</body>
+</html>

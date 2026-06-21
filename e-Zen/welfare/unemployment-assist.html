@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unemployment Assistance Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare Services</span>
+            <h1>Unemployment Assistance Scheme</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Implementing Agency</span>
+                    <strong>National Career Service (NCS) / State Employment Exchange</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Portal Route</span>
+                    <strong>NCS Portal / Regional Employment Exchange Terminal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Age Constraint</span>
+                    <strong>21 Years to 35 Years (Slight variations across specific states)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Standard Period</span>
+                    <strong>Maximum 3 Years capped duration allowance</strong>
+                </div>
+            </div>
+
+            <a href="https://www.ncs.gov.in/" target="_blank" class="btn-portal">Open National Career Service ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Unemployment Assistance Scheme (commonly known as Unemployment Allowance) provides temporary, short-term financial relief to educated, job-seeking individuals registered with national or state employment exchanges. The allowance functions as an interim support cushion while recipients actively pursue career placement opportunities or skill development programs.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility Parameters</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The applicant must be an active, unbroken registrant with their local Employment Exchange for a <strong>minimum consecutive period of 2 to 3 years</strong>.</li>
+                <li style="margin-bottom: 8px;">Minimum educational baseline: Must have successfully completed Higher Secondary (10+2) or graduation rows.</li>
+                <li style="margin-bottom: 8px;">The applicant must be completely unemployed, must not be enrolled in full-time academic studies, and total family annual income must stay below the state-specified cap.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Paperwork Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap verification targets to monitor your active paperwork collection status:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Employment Exchange Registration Card (X-10)</strong>
+                        <span class="file-spec">Must show a valid registration number string confirming an unbroken live registration period.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Educational Certificates & Marksheets</strong>
+                        <span class="file-spec">Verified copies of your qualifying degree or secondary education boards.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Self-Declaration / Non-Employment Affidavit</strong>
+                        <span class="file-spec">A legally attested layout declaring that the applicant holds no active commercial or institutional employment.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Revenue Income Certificate & Aadhaar Card</strong>
+                        <span class="file-spec">Standard household income verification sheets alongside structural identity keys.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing Steps</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Context:</strong> Verified Active Guide 2026</span>
+                <span style="color: #5b21b6;"><strong>Mandatory Action:</strong> Annual renewal logs required to preserve status</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Exchange Registration Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log onto your State Employment Portal or access the National Career Service hub above.</li>
+                        <li>Verify that your employment card registration remains active and has not lapsed past its standard renewal cycles.</li>
+                        <li>Select **Apply for Unemployment Allowance / Assistance** from the services panel.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Data Input & Affidavit Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Enter your registration tracking number string to fetch your academic metadata rows.</li>
+                        <li>Upload your non-employment self-declaration affidavit, income details, and bank passbook leaf copy.</li>
+                        <li>Submit your file layout to secure an application tracking acknowledgment code.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Desk Approval & Disbursal</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The District Employment Officer cross-checks your files against live corporate labor databases to ensure non-employment compliance.</li>
+                        <li>Upon confirmation, monthly allowance funds route directly through the DBT network into your verified bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Lapsed Card Renewals:</strong> Allowing your primary Employment Exchange registration card to expire breaks the mandatory consecutive registration period, triggering immediate disqualification.</li>
+                <li><strong>Private Employment Matches:</strong> If the processing engine cross-references your Aadhaar or PAN string against active Employee Provident Fund (EPF) records, your application drops immediately.</li>
+                <li><strong>Full-Time Academic Enrollments:</strong> Students actively pursuing regular post-graduate or higher diploma courses are ineligible for assistance.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="aadhaar-update.html" class="chip">Aadhaar Profile Desk</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+                <a href="social-security-pension.html" class="chip">Welfare Pensions Core</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Unemployment allowance thresholds, qualifying waiting timelines, and monthly support allocations are subject to state budget directives. Ultimate administrative sanction is handled by your district employment desk.</p>
+
+    </div>
+
+</body>
+</html>

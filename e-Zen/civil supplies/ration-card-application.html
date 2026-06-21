@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ration Card Application Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #0b7339;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #14532d;
+        }
+
+        .header-card h1 {
+            color: #14532d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(20,83,45,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #0b7339;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #14532d;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #14532d;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #14532d;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Civil Supplies</span>
+            <h1>Ration Card Application</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Taluk Supply Office (TSO)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Civil Supplies e-Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>Nil (Service charges apply)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15–30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://civilsupplieskerala.gov.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Ration Card is the essential household document issued by the Civil Supplies Department. It is required to purchase subsidized food grains through the Public Distribution System (PDS) and serves as a verified proof of residence and household structure for various welfare benefits.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>It is the primary instrument for food security, enabling households to access essential commodities at subsidized rates. Beyond food, it serves as a crucial legal document for identity proof, address verification for other government services, and is mandatory for claiming various state-sponsored social welfare pensions and educational grants.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card</strong>
+                        <span class="file-spec">Required for all family members for UID mapping</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Address Proof</strong>
+                        <span class="file-spec">Electricity bill, Water bill, or Property tax receipt</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income Certificate</strong>
+                        <span class="file-spec">Required for BPL/AAY eligibility verification</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 21 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Civil Supplies Dept. Circular</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Ensure Aadhaar-linked mobile:</strong> All members must have their Aadhaar updated with a mobile number to receive OTPs.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Keep scans ready:</strong> Have clear digital copies of all required documents to avoid upload failures.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Digital Enrollment</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Visit the official Civil Supplies e-portal.</li>
+                        <li>Register an account using your mobile number and Aadhaar authentication.</li>
+                        <li>Select "New Application" for a Ration Card.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Data Entry & Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Enter details of all family members exactly as they appear on their Aadhaar cards.</li>
+                        <li>Upload all required scanned documents (Address proof, Income certificate).</li>
+                        <li>Submit the application and note down your Application Reference Number.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Verification & Issuance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The application is sent to the local Taluk Supply Officer (TSO) for field inquiry.</li>
+                        <li>Once verified, your household is categorized (APL/BPL) and approved.</li>
+                        <li>Download the E-Ration Card directly from the portal once status reflects 'Approved'.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Duplicate Entries:</strong> Name already exists on an active card in another jurisdiction.</li>
+                <li><strong>Incorrect Data:</strong> Mismatched names or dates of birth compared to Aadhaar records.</li>
+                <li><strong>Invalid Proofs:</strong> Address proof is older than the mandated duration or belongs to a different ward.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Application stuck at "Pending"?</strong> If no update is received within 30 days, visit your local Taluk Supply Office with your reference number for a manual status check.</p>
+            <br>
+            <p><strong>Payment failures?</strong> If you encounter errors during fee payments, do not re-apply. Check the "View Status" menu to verify if the payment was recorded or if a refund is pending.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I apply for a new card if I moved districts?</strong><br>A: You must first apply for a 'Deletion Certificate' from your old district/card before submitting a new application.</p>
+            <br>
+            <p><strong>Q: What is the difference between APL and BPL?</strong><br>A: BPL (Below Poverty Line) households are eligible for subsidized food grains and priority welfare support, whereas APL (Above Poverty Line) cards are primarily for identification and basic subsidy access.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">Add/Delete Member</a>
+                <a href="#" class="chip">Change of Address</a>
+                <a href="#" class="chip">Conversion (APL to BPL)</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> This guide is for informational purposes based on standard Civil Supplies procedures. Always verify portal requirements before final submission.</p>
+
+    </div>
+
+</body>
+</html>

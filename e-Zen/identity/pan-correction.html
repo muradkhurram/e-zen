@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN Correction Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Reconfigured to Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity Services</span>
+            <h1>PAN Card Correction</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Income Tax Department (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Protean TIN-NSDL / UTITSL</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹110 (Physical Card Reprint) | ₹72 (e-PAN Only)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15 to 30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" class="btn-portal">Apply for Correction ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>PAN Card Correction is the official legal procedure to amend wrong entries or update changing demographic profiles in an existing Permanent Account Number database record. This interface changes data layouts such as spelling mistakes in names, parents' profiles, date of birth adjustments, or updating signatures and facial photographs while preserving your original 10-character PAN number.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>The Income Tax Department mandates that your PAN parameters match identically with your Aadhaar registration to maintain data synchronization. Mismatches across spelling parameters or birth years will block bank account linkings, stop income tax refund deposits, disrupt salary processing, and disqualify passport or loan verifications.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Existing PAN Holders:</strong> Anyone allocated a valid Permanent Account Number who has identified spelling errors, data outdates, or requires a fresh physical card reissue.</li>
+                <li><strong>Post-Marriage Profile Changes:</strong> Individuals who need to legally update their surname or communication addresses after marriage.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered based on what you intend to change:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Current PAN Allocation</strong>
+                        <span class="file-spec">A clear scan or copy of your physical PAN card or the official allocation letter.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof for Name / Date of Birth Correction</strong>
+                        <span class="file-spec">Your updated original Aadhaar card containing identical parameters, or secondary legal backups like an SSLC certificate, Passport, or Birth Certificate.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Supporting Evidence for Surname Changes after Marriage</strong>
+                        <span class="file-spec">Official Marriage Registration Certificate or a copy of the Government Gazette publication showing name modifications.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Photo & Signature Files (If changing layout features)</strong>
+                        <span class="file-spec">Two passport-sized color photos and a signature in black ink scanned under 50KB in JPEG format.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Protean Database Operations</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>⚙️</span> <span><strong>Correct Aadhaar First:</strong> The system matches data directly against the central identity registry. Ensure your Aadhaar contains the fully corrected name spelling and birth date before correcting your PAN online, otherwise the processing pipeline will drop the transaction.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Application Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Apply for Correction</strong> above to open the secure Protean registration interface.</li>
+                        <li>Change the Application Type dropdown selection to <strong>Changes or Correction in PAN Data / Reprint of PAN Card</strong>.</li>
+                        <li>Select <strong>Individual</strong> from the category listing panel. Fill in your existing 10-character PAN number precisely.</li>
+                        <li>Complete your current identity details to fetch a temporary online Token Number generated to your email address box.</li>
+                        <li>Click to continue into the correction sheet. Select **Submit scanned images through e-Sign** if you need to verify a custom photo or signature change.</li>
+                        <li><strong>CRITICAL STEP:</strong> Mark the specific checkbox located next to the field you wish to correct (e.g., check the box next to "Name" if your name needs a spelling fix). Unchecked fields will remain unchanged in the database.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Fee Payment & Image Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Input your Assessing Officer (AO) codes or let the portal auto-assign details based on your state boundaries.</li>
+                        <li>Upload your clean original color document scans, along with cropped photo and signature images (JPEG format under 50KB).</li>
+                        <li>Proceed to the payment checkout panel. Pay the statutory fee of **₹110** (if requesting a fresh physical plastic card) via UPI or Debit card.</li>
+                        <li>Execute the final authentication step by typing the OTP received on your Aadhaar-linked mobile phone line.</li>
+                        <li>Download the generated acknowledgement slip containing your 15-digit numeric transaction tracking number.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Tracking Status & Delivery Tracking</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Go to the official Protean tracking panel page, choose application type "PAN - Change Request", and enter your 15-digit acknowledgement index code.</li>
+                        <li>Once the verification desk flags approval, an electronic e-PAN document link arrives via email within a few working days.</li>
+                        <li>The newly reprinted physical smart card goes into postal courier routing via India Post Speed Post directly to your registered residence address.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unchecked Target Selection Boxes:</strong> Simply typing the corrected name fields into the form without checking the small correction marker box on the left margin. This tells the system to copy data without updates, resulting in no corrections being processed.</li>
+                <li><strong>Name Mismatches against Aadhaar Data:</strong> If the correction parameters typed into the form do not match the character spacing or spelling stored in your Aadhaar, the automated e-Sign engine will throw an execution block.</li>
+                <li><strong>Uploading Expired Documents:</strong> Providing driving licences or bills that have passed their validity windows to act as verified address records.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Did your correction slip track state "Suspended - Awaiting Clarification" via the tracking engine?</strong><br>This indicates the validation clerk has flagged a discrepancy in your uploaded documents. Do not resubmit or pay again. Check your email for an official notice letter specifying the issue. Open the portal's clarification upload panel, enter your reference parameters, and upload the requested document proof to unblock processing.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Will my original 10-character alphanumeric PAN sequence change after a correction application?</strong><br>A: No. Your Permanent Account Number remains permanently linked to your profile identity for life. Only the descriptive details printed on the face of the smart card or stored in the database change.</p>
+            <br>
+            <p><strong>Q: Can I apply for a physical card reprint if my data is correct but the plastic card is damaged?</strong><br>A: Yes. Follow the exact same procedure but do not tick any correction marker checkboxes. The system will process a simple data pull and mail an identical fresh physical card clone straight to your doorstep.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="pan-apply.html" class="chip">PAN Application</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="voter-correction.html" class="chip">Voter Correction</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All database processing mechanics, revision fee structures, and legal rules follow direct operational guidelines from the Income Tax Department. Final administrative clearance rests with the central sorting registry desk.</p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Scholarship Portal Services - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Central Assistance</span>
+            <h1>National Scholarship Portal (NSP)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Nodal Infrastructure</span>
+                    <strong>Ministry of Electronics & Information Technology (MeitY)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Disbursement Route</span>
+                    <strong>Direct Benefit Transfer (DBT) to Aadhaar-Seeded Accounts</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Verification Tiers</span>
+                    <strong>L1 (Institute Nodal) & L2 (District/State Nodal)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Authentication Anchor</span>
+                    <strong>One Nation One Student ID (APAAR ID) / OTR System</strong>
+                </div>
+            </div>
+
+            <a href="https://scholarships.gov.in/" target="_blank" class="btn-portal">Open National Scholarship Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>National Scholarship Portal (NSP)</strong> is India's centralized digital gateway designed to coordinate, process, and disburse financial awards granted by Central Ministries, State Governments, and University Grants Commissions (UGC). It handles everything from tracking application stages to matching profile validation strings, ensuring funds are deposited straight into matching bank directories with maximum transparency.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Strict Regulatory Policies</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Single Scholarship Restriction:</strong> Students are strictly barred from claiming more than one premium subvention or stipend scheme concurrently. System checks automatically terminate matching duplicate profiles.</li>
+                <li style="margin-bottom: 8px;"><strong>Aadhaar Payment Bridge (APB):</strong> Disbursements utilize direct biometric-mapped matching strings. The beneficiary's bank account must be actively seeded to their Aadhaar card, or transactions will drop.</li>
+                <li style="margin-bottom: 8px;"><strong>Academic Continuity Index:</strong> Renewal applications require verification sheets showing that the student passed the previous year's term with the minimum marks specified by the scheme guidelines.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Financial Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to verify your portal filing readiness:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Bonafide Certificate from Head of Institution</strong>
+                        <span class="file-spec">Official downloadable campus sheet stamped and signed by the principal/registrar.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Competent Revenue Authority Income Certificate</strong>
+                        <span class="file-spec">Official government sheet proving household income sits below the active scheme ceiling.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Previous Term Marksheets & Transcripts</strong>
+                        <span class="file-spec">Verified score breakdown printouts uploaded to prove academic continuation thresholds.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar-Seeded Bank Passbook Copy</strong>
+                        <span class="file-spec">Document copy displaying clear IFSC strings and active link status validation metrics.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application & Verification Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Protocol:</strong> Active One-Time Registration (OTR) Framework</span>
+                <span style="color: #3b1775;"><strong>Audit Structure:</strong> Dual-tier administrative node check loops</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Profile Initialization & OTR Generation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the central NSP framework and register your profile using face-auth biometric parameters or verified mobile data.</li>
+                        <li>Generate a permanent One-Time Registration (OTR) tracking string to view schemes that match your demographic metrics.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Submission and Document Mapping</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Fill in the scheme-specific application screens and select your precise institutional course profile mapping codes.</li>
+                        <li>Upload your scanned bonafide certificates and revenue cards, then submit the tracking row to the institutional console.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Dual-Tier Evaluation Audits</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The L1 Institute Nodal Officer inspects your original physical paperwork on campus and logs a digital clearance code.</li>
+                        <li>The application advances to the L2 District or State Ministry console for final data checks before being added to the DBT payroll ledger.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Disqualifications & Processing Delays</h2>
+            <ul class="alert-list">
+                <li><strong>"Aadhaar Not Seeded" Transaction Failures:</strong> The portal approves the financial allocation, but bank systems reject the payout because the recipient's account isn't linked to the central identity registry.</li>
+                <li><strong>Defective Institute Profiling:</strong> Delays occur because the chosen institution has not updated its active AISHE profile registry code on the central NSP server.</li>
+                <li><strong>Filing Multiple Scheme Rows:</strong> Applying for several overlapping assistance awards flags your account, pausing review lines across all submitted tracks.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="educational-loan.html" class="chip">Educational Financial Desk</a>
+                <a href="student-registration.html" class="chip">Student Registration Desk</a>
+                <a href="student-concession.html" class="chip">Concession Certificates</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Filing windows, income ceilings, and award values are controlled entirely by the sponsoring central or state ministries.</p>
+
+    </div>
+
+</body>
+</html>

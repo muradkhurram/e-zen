@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destitute Widow Pension Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare Services</span>
+            <h1>Destitute Widow Pension</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Scheme Context</span>
+                    <strong>Indira Gandhi National Widow Pension Scheme (IGNWPS)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Portal Route</span>
+                    <strong>State Social Security / NSAP Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Age Constraint</span>
+                    <strong>40 Years to 79 Years (Transitions to Old Age after 80)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Cost</span>
+                    <strong>₹0 (100% Free Government Benefit)</strong>
+                </div>
+            </div>
+
+            <a href="https://nsap.nic.in/" target="_blank" class="btn-portal">Apply via Welfare Dashboard ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Destitute Widow Pension is a targeted structural social security stipend distributed monthly to resilient, low-income or non-elite women who have lost their spouse. The scheme steps in to mitigate immediate economic displacement, preventing poverty cycles by providing baseline livelihood self-reliance.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility Parameters</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The applicant must be a legally recognized widow between 40 and 79 years of age.</li>
+                <li style="margin-bottom: 8px;">Household annual revenue metrics must fall strictly below the designated regional poverty line index.</li>
+                <li style="margin-bottom: 8px;">The applicant must not be remarried, nor receive financial payouts from alternate statutory pension programs.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Paperwork Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap verification targets to monitor your active paperwork collection status:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Spouse Death Certificate</strong>
+                        <span class="file-spec">Official structural certificate issued by the local Registrar of Births and Deaths database.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card and Identity Proof</strong>
+                        <span class="file-spec">Data profile fields must match current naming parameters flawlessly.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Revenue-Certified Income Proof</strong>
+                        <span class="file-spec">Issued by your village or regional revenue officer within the last 6 months.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Bank Passbook / DBT Routing Code</strong>
+                        <span class="file-spec">Clear copy of the front leaf showing the active IFSC string and Aadhaar seeding status.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing Steps</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Context:</strong> Verified Active Guide 2026</span>
+                <span style="color: #5b21b6;"><strong>Standard Channel:</strong> Direct Benefit Transfer Framework</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Application Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the official NSAP or State Social Security portal link listed above.</li>
+                        <li>Complete the user registration block utilizing your structural Aadhaar identity key.</li>
+                        <li>Select **Widow Pension Scheme Application** and input all active personal details.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Verifiable Document Scanning</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upload your scanned files containing the spouse's death certificate, income certificate, and passbook structure.</li>
+                        <li>Submit your file layout to generate a digital tracking ledger number.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Desk Inspection & Disbursal</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The electronic request drops down to your local field officer (Panchayat/Municipal desk) for residency routing audits.</li>
+                        <li>Upon confirmation, monthly funds launch directly through the database into your designated bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Remarriage Exclusions:</strong> If the database tracks a change in martial configuration rows, the application is dropped instantly.</li>
+                <li><strong>Adult Son Support Clause:</strong> Certain traditional state matrices flag rejections if the applicant has an adult son earning above specified economic threshold brackets.</li>
+                <li><strong>Aadhaar Demographics Shift:</strong> Slight structural spelling spelling variants between the death certificate text and the widow's current identity profile.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="old-age-pension.html" class="chip">Old Age Pension Guide</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Demographics Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Financial disbursements vary across different state budget systems. Verification layouts trace back directly to your local social welfare registry office.</p>
+
+    </div>
+
+</body>
+</html>

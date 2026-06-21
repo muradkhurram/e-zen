@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Correction Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity Services</span>
+            <h1>Voter ID Correction</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Election Commission of India (ECI)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Voters' Service Portal (NVSP)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>FREE (Digital Update & Standard Delivery)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15 to 30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://voters.eci.gov.in/" target="_blank" class="btn-portal">Open Voters' Service Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Voter ID Correction is the official regulatory service that enables an entries modification inside the existing Electoral Roll database. Handled digitally through **Form 8**, it permits registered electors to fix spelling mistakes, alter names after marriage, adjust misprinted birth dates, swap unclear photos, or update address entries when shifting homes within or across different constituencies.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>A mismatch between your Voter ID profile details and other fundamental documents like Aadhaar or your PAN card can block fast administrative workflows. Ensuring your name spelling, local address, and relative parameters are 100% correct prevents voting disqualifications on election days and passes verification hurdles for passport updates or banking applications.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Active Electors:</strong> Anyone who already holds a valid, assigned Elector's Photo Identity Card (EPIC) number.</li>
+                <li><strong>Correction Requisite:</strong> Individuals with verified demographic changes, spelling mismatches, or those needing a replacement smart card due to damage or loss.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered to scan and upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Existing Voter Profile Records</strong>
+                        <span class="file-spec">Your current 10-character alphanumeric EPIC card number (printed on the front of your card).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof for Name, Age, or Relative Correction</strong>
+                        <span class="file-spec">A clear scan of your Aadhaar Card, PAN Card, Passport, or 10th Standard/SSLC Certificate showing matching details.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof for Address Correction (If updating residence)</strong>
+                        <span class="file-spec">Water, Electricity, Gas Connection Bill, or a Bank Passbook copy displaying the correct current address.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Photo Replacement (Optional Method)</strong>
+                        <span class="file-spec">A sharp passport-size color photograph against a plain background, formatted as a JPEG file under 2MB.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Election Commission Electoral Operations Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📋</span> <span><strong>Keep Aadhaar Linked:</strong> Ensure you have your Aadhaar number handy during this update. Linking it directly verifies your identity instantly and fast-tracks the approval pipeline via your local election office desk.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Accessing Form 8 on the Voters Portal</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Open Voters' Service Portal</strong> above to load the official ECI server.</li>
+                        <li>Log in using your registered mobile details, or sign up quickly via OTP confirmation if accessing for the first time.</li>
+                        <li>Scroll down and select the module labeled <strong>Shifted to other place / Correction of entries in existing electoral roll</strong> (**Form 8**).</li>
+                        <li>Choose whether you are correcting your own card profile (**Self**) or a family member's, and enter the alphanumeric EPIC number. Click submit to pull up the existing registration records.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Marking Corrections & Document Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>A pop-up box will prompt you for your application objective. Choose: **Correction of Entries in Existing Electoral Roll**.</li>
+                        <li>The interface presents the fields of your card. Select the specific checkboxes next to the elements you want to fix (e.g., tick Name, Date of Birth, or Photograph). *Unmarked attributes will remain locked and unedited.*</li>
+                        <li>Type out the corrected information carefully. Check that the automatic phonetic translation into regional language characters is spelled properly.</li>
+                        <li>Upload your clean proof documents (such as Aadhaar or PAN) matching your requested modifications. Make sure files are under 2MB.</li>
+                        <li>Enter your current place of application, solve the text security captcha layout, and click **Preview and Submit**.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Review & Card Printing Delivery</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon final submission, the system provides a unique numeric **Reference ID tracking code**. Save this index value to verify status updates later on the dashboard tracker.</li>
+                        <li>The application goes to your home district's Electoral Registration Officer (ERO) for digital document validation.</li>
+                        <li>A local Booth Level Officer (BLO) may execute an on-ground field visit check to confirm your residency parameters.</li>
+                        <li>Once marked approved, your electronic e-EPIC record updates immediately. A freshly updated physical smart card drops into printing queues and arrives via India Post Speed Post directly to your house.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Form Fields and Upload Mismatches:</strong> Typing a new name spelling or birth year into the digital fields that doesn't completely match the parameters shown on your uploaded Aadhaar or certificate proofs.</li>
+                <li><strong>Incorrect Form Selection Selection:</strong> Filing an entirely new registration form instead of utilizing Form 8 for updates, which sets off a data duplication flag and triggers a hard rejection.</li>
+                <li><strong>Illegible Supporting Scans:</strong> Uploading highly pixelated document files where text lines or name characters are blurred or obscured.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your Voter ID correction tracked state marked as "Rejected" or stalled without update metrics?</strong><br>Do not submit a brand new correction form. Look at the remarks box on your portal tracking screen to find out why it was flagged. If a document scan failed verification, load the Form 8 interface panel again, re-enter your reference tokens, and upload a higher-resolution scan of your documents to resume evaluation.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Does my core 10-character alphanumeric EPIC card number change after executing a profile correction request?</strong><br>A: No. Your specific alphanumeric Voter ID identifier is a permanent national index assigned to you for life. All demographic changes are updated directly inside the database profile under that same original index.</p>
+            <br>
+            <p><strong>Q: Can I request a replacement physical card if my data is correct but the laminate card is cracked or lost?</strong><br>A: Yes. Launch Form 8, select the action option labeled **Issue of Replacement EPIC without correction**, and choose the reason (e.g., Mutilated/Destroyed). The system will process a simple clone print and ship an identical fresh smart card straight to your door.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="voter-registration.html" class="chip">Voter Registration</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="pan-correction.html" class="chip">PAN Card Correction</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Application reviews, backend database syncs, and doorstep printing logistics operate according to strict guidelines set by the Election Commission of India. Final data clearance stays with your Assembly Constituency registration desk.</p>
+
+    </div>
+
+</body>
+</html>

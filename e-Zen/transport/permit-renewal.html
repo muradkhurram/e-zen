@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Permit Renewal Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Commercial Vehicle Permit Renewal</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>State Transport Authority (STA) / Regional Transport Office</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Vahan Parivahan National Permit Engine</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Statutory Fee</span>
+                    <strong>Varies by state & vehicle type (e.g., Goods vs Passenger)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>7 to 15 Working Days</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan Parivahan Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Commercial Vehicle Permit Renewal is the statutory regulatory process required to extend the legal operating validity of authorization documents (such as National Permits, State Permits, or Contract Carriage Permits). This authorization allows commercial transit vehicles to transport goods or passengers across specified regional boundaries under the Motor Vehicles Act.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Operating a commercial goods or passenger transport vehicle with an expired permit structure is a severe legal infraction that leads to vehicle impoundment, hefty tribunal fines, and blacklisting on the Vahan network. A valid permit is also a strict prerequisite to keep your mandatory commercial third-party or comprehensive insurance protections active.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Application Window:</strong> Renewal applications must be submitted within 15 days prior to the expiration of the current permit layout to prevent structural lapse fines.</li>
+                <li><strong>Prerequisites:</strong> The underlying transport vehicle must hold a completely valid and unexpired Vehicle Fitness Certificate (Form 38) and have all local road taxes fully cleared.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what parameters you have structured for upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Existing Registration Certificate (RC) & Permit Book</strong>
+                        <span class="file-spec">Clear digital copies of the active vehicle RC smart card along with the current expiring primary permit booklet sheet.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Vehicle Fitness Certificate (Form 38)</strong>
+                        <span class="file-spec">Scans confirming successful inspection clearance from an authorized RTO automated testing station.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Up-to-Date Insurance Policy & PUCC</strong>
+                        <span class="file-spec">Active commercial vehicular insurance documentation and a valid emissions testing validation receipt.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Tax Clearance Certificate</strong>
+                        <span class="file-spec">Receipts showing complete settlement of state-level commercial road taxes and green taxes where applicable.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Parivahan Transport Core Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>⚠️</span> <span><strong>National Permit Matrix:</strong> For National Permits (NP), ensure your consolidated composite fee payments are up to date across all target transit transit corridors on the central Parivahan hub before initiating primary home RTO renewal steps.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Record Query and Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan Parivahan Portal** above, enter your commercial vehicle registration number string, and confirm access.</li>
+                        <li>Provide the final 5 digits of your physical chassis number structure to unlock corresponding commercial file rows.</li>
+                        <li>Navigate to the services panel list and select **Permit Services** followed by **Renewal of Permit**.</li>
+                        <li>Verify that the generated ownership parameters and fitness timelines correspond accurately with current assets.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Operational Data Entry & Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Confirm your specific operational category parameters (e.g., Goods Carriage, Stage Carriage, National Permit).</li>
+                        <li>Input your expiring permit registration tracking numbers and state regulatory codes.</li>
+                        <li>Upload your compiled document PDF bundles containing the active RC, unexpired fitness token, and valid emissions testing log sheet.</li>
+                        <li>Attach your latest road tax payment clearing logs into the auxiliary validation slots.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Checkout and Authorization Printing</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Proceed to the online checkout module and clear the calculated statutory permit renewal fees and home state composition levies.</li>
+                        <li>Download and print your unique application reference layout receipt showing successful fee mapping.</li>
+                        <li>Aadhaar-authenticated or corporate e-signed applications migrate directly to the electronic licensing dashboard for validation.</li>
+                        <li>Once verified and approved, download the newly generated digital **Form 46 (National Permit)** or localized permit authorization sheet directly from the portal.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Fitness Timeline Overlaps:</strong> If your vehicle's physical fitness verification tracking window expires mid-way through the permit processing loop, the application is automatically suspended.</li>
+                <li><strong>Unpaid Multi-State Levies:</strong> Attempting to renew a national multi-state freight layout while having active arrears or outstanding tax queries in an external transit corridor.</li>
+                <li><strong>Active Traffic Enforcement Blocks:</strong> Unresolved transport authority checkpost citations or unpaid border interceptor fines will freeze all online renewal actions.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your commercial permit facing a severe time lapse fine because renewal wasn't completed before the exact expiration milestone?</strong><br>Do not panic. While the online Vahan engine automatically assesses standard daily penalty adjustments on late filings, you can request an officially sanctioned waiver or grace period extension under specific circumstances (such as documented mechanical overhauls or medical grounds). To do this, file an explanatory petition with your district's Regional Transport Authority (RTA) board before making your final portal payment checkout.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What is the standard duration of validity for a renewed commercial National Permit?</strong><br>A: A standard renewed commercial National Permit remains legally active for a fixed operational lifetime of 5 years, provided annual composite corridor fees are consistently maintained.</p>
+            <br>
+            <p><strong>Q: Can I process an emergency temporary permit while my primary authorization renewal is under review?</strong><br>A: Yes. If you have immediate freight contracts, you can apply for a short-term Temporary Permit (TP) through the portal console. This provides legal road clearance for a localized window of 7 to 30 days while your main application undergoes final verification.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-rc-transfer.html" class="chip">RC Ownership Transfer</a>
+                <a href="traffic-challan-payment.html" class="chip">Challan Clearing Portal</a>
+                <a href="vehicle-rc-renewal.html" class="chip">Vehicle Fitness Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Commercial routing rules, tax composition metrics, and permit validation periods operate under specific state amendments and the central Motor Vehicles Act. Final operational authorization rests with your RTA desk.</p>
+
+    </div>
+
+</body>
+</html>

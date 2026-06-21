@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Commercial Permit Application Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>New Commercial Permit Application</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Approving Body</span>
+                    <strong>Regional Transport Authority (RTA) Board</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Online Interface</span>
+                    <strong>Vahan National Permit Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Statutory Fee</span>
+                    <strong>Varies by layout choice (Goods vs. Stage Carriage)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Cycle</span>
+                    <strong>15 to 30 Working Days</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan Permit Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A New Commercial Vehicle Permit is a statutory authorization framework issued under the Motor Vehicles Act. It legally empowers a registered motor vehicle to operate for commercial transit, hauling commercial freight, or carrying commercial passengers across specified regional boundaries or nationwide transport corridors.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Even if a commercial vehicle possesses a valid Registration Certificate (RC), it is strictly prohibited from operating for hire, reward, or logistics business use without a valid permit matching its transit layout. Operating without it constitutes a severe statutory infraction, resulting in high enforcement fines, vehicle impoundment at transport checkposts, and the complete cancellation of commercial insurance cover notes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Key Permit Structures</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>National Permit (NP):</strong> Granted to goods carriages to transit seamlessly across four or more states nationwide under an integrated composite fee system.</li>
+                <li style="margin-bottom: 8px;"><strong>State/Goods Carriage Permit:</strong> Restricts commercial logistics distribution strictly to paths within a specific home state boundary.</li>
+                <li style="margin-bottom: 8px;"><strong>Contract Carriage Permit:</strong> Issued to passenger vehicles (taxis, tourist buses) to ferry passengers along a dedicated route or contractual layout.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Application Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track your verification paperwork updates:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Vehicle Registration Certificate (RC)</strong>
+                        <span class="file-spec">The underlying vehicle must be pre-registered as a commercial carrier in the database.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Unexpired Fitness Certificate (Form 38)</strong>
+                        <span class="file-spec">Valid proof showing the asset has successfully cleared the automated mechanical testing track.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Insurance Policy Cover Note & PUCC</strong>
+                        <span class="file-spec">Active commercial insurance configuration alongside an unexpired emissions ticket.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Local Tax Clearance Logs</strong>
+                        <span class="file-spec">Receipt entries confirming that all state road taxes have been fully settled up to the current date.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Parivahan MoRTH System Blueprint</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Profile Initialization & Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan Permit Portal** above, type in your vehicle registration number, and select access.</li>
+                        <li>Verify your ownership parameters and choose **Apply for New Permit** from the navigation links.</li>
+                        <li>Input your vehicle chassis sequence validation strings to open the operational fields.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Operational Data Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select your target permit configuration layout (e.g., National Permit, Private Service Goods, Contract Carriage).</li>
+                        <li>Specify your intended transit routing bounds, regional operating circles, or target multi-state corridors.</li>
+                        <li>Upload your compiled document PDF bundles containing the active commercial RC, unexpired fitness token, and valid emissions testing log sheet.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Checkout Ledger Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Advance to the online e-treasury checkout layout to settle the initial application and authorization fees.</li>
+                        <li>Download and print your unique application reference layout receipt showing successful payment mapping.</li>
+                        <li>The application file routes to your local RTA board desk for formal administrative review.</li>
+                        <li>Once verified and approved, download the newly generated digital permit authorization sheet directly from the portal console.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Age Limit Restrictions:</strong> Certain state transport boards enforce maximum vehicle age limits (e.g., vehicles older than 12 or 15 years) for granting new multi-state National Permits.</li>
+                <li><strong>Active Enforcement Flags:</strong> Unpaid traffic camera challans or outstanding checkpost citations recorded against the vehicle will block the permit application process.</li>
+                <li><strong>Mismatched Insurance Parameters:</strong> Uploading a standard private vehicle insurance policy instead of a dedicated commercial vehicle liability policy cover note.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your application status showing as "Pending Board Approval" for an extended period?</strong><br>Do not submit a duplicate request. Certain categories, like State Stage Carriage or Tourist Passenger permits, require a formal periodic review by the regional transport authority committee. Check the online portal tracking screen to see if your application has been assigned a specific RTA board hearing date. If required, you can attend the local RTO board session with your physical documentation folder to secure an immediate manual sign-off.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What is the initial validity period of a newly issued National Permit?</strong><br>A: A brand-new National Permit is issued for a fixed operational timeline of 5 years, provided the composite multi-state corridor levies are paid annually.</p>
+            <br>
+            <p><strong>Q: Can I transfer a commercial permit to another person if I sell the vehicle asset?</strong><br>A: Yes. You must file a joint application layout for **Permit Transfer** along with your vehicle ownership transfer paperwork to safely reassign the operating permit tracking row to the new owner.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-permit-renewal.html" class="chip">Permit Renewal Desk</a>
+                <a href="vehicle-registration.html" class="chip">New Vehicle Registration</a>
+                <a href="vehicle-tax-payment.html" class="chip">Road Tax Settlement</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Commercial routing rules, tax composition metrics, and permit validation periods operate under specific state amendments and the central Motor Vehicles Act. Final operational authorization rests with your RTA desk.</p>
+
+    </div>
+
+</body>
+</html>

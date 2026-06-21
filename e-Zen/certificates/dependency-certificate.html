@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dependency Certificate Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Welfare & Support</span>
+            <h1>Dependency Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Office</span>
+                    <strong>Village Revenue Office / Tahsildar Desktop</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Intent</span>
+                    <strong>Proves Financial Reliance on a Living or Deceased Breadwinner</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Standard Validity</span>
+                    <strong>Generally 1 Year (Subject to current income status evaluation)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>System Hub</span>
+                    <strong>State e-District Portal / Social Security Node</strong>
+                </div>
+            </div>
+
+            <a href="https://edistrict.kerala.gov.in/" target="_blank" class="btn-portal">Open Identity e-District Console ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A <strong>Dependency Certificate</strong> is a formal legal document issued by the revenue department confirming that specific family members are financially dependent on a primary earner or deceased family member. It serves to legally document financial reliance. This certificate is required to claim compassionate appointments in public services following a breadwinner's death, receive ex-gratia compensation benefits, process institutional military/pension family benefits, or secure fee exemptions under targeted university student financial-aid models.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Audit Framework Rules</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>The Income Limit Criteria:</strong> To legally qualify as a dependent, the applicant must have no independent, sustainable income stream. Regular salary records, active pensions, or substantial business interests will disqualify an individual.</li>
+                <li style="margin-bottom: 8px;"><strong>Lineage Linkage Verification:</strong> Processing requires matching details against civil registry records (such as birth data or marital sheets) to confirm the family relationship to the primary earner.</li>
+                <li style="margin-bottom: 8px;"><strong>Mandatory Neighborhood Audit:</strong> The local village office must perform brief neighborhood interviews and check local registers to verify live-in family units and financial reliance status.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to verify your dependency file bundle:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Death Certificate (If applying due to breadwinner's demise)</strong>
+                        <span class="file-spec">Official civil status document showing the registration details of the primary earner's death.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Family Ration Card & Aadhaar Copies</strong>
+                        <span class="file-spec">Used to verify shared housing, names, and address entries within the local ward.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income Certificates for All Living Family Members</strong>
+                        <span class="file-spec">Required by the evaluating office to verify that applicants lack an independent livelihood.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>School Certificate / Identity Proof of Dependent</strong>
+                        <span class="file-spec">Displays matching parental names and confirms active student status if applicable.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Processing Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Protocol:</strong> Active 2026 Civil Registry Integration</span>
+                <span style="color: #3b1775;"><strong>Verification Model:</strong> Subject to physical field assistant review</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Digital Request Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the centralized e-District console and select the Dependency Certificate option.</li>
+                        <li>Input personal details, specify your exact relationship link to the earner, and upload your supporting document scans.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Local Revenue Field Inquiry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The request routes to the local village office, where an field check is scheduled.</li>
+                        <li>The field officer checks employment and pension registries to verify that the applicant has no secondary income sources.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Digital Certificate Distribution</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Following clearance, the sub-district Tahsildar applies an authorized electronic signature block to the certificate.</li>
+                        <li>Download the finalized PDF file containing an integrated QR tracking code directly from your profile vault.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Critical Processing Obstacles & Failures</h2>
+            <ul class="alert-list">
+                <li><strong>Undisclosed Income Channels:</strong> If hidden bank account deposits or land revenues are flagged during the local verification check, the application will face delays or holds.</li>
+                <li><strong>Mismatched Names on Civil Records:</strong> Spelling variations in names across uploaded family documents can trigger automated database errors.</li>
+                <li><strong>Exclusion from the Family Ration Card:</strong> If the dependent’s name is missing from the primary household ration card extract, processing lines face holds.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic & Civil Desks</h2>
+            <div class="chip-group">
+                <a href="relationship-certificate.html" class="chip">Relationship Certificate Desk</a>
+                <a href="non-creamy-layer.html" class="chip">Non-Creamy Layer Desk</a>
+                <a href="student-registration.html" class="chip">Student Registration Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Dependency evaluations, income tracking parameters, and processing timelines follow strict statutory frameworks managed by the state's Revenue Department.</p>
+
+    </div>
+
+</body>
+</html>

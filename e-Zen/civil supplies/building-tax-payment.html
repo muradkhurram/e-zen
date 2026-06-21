@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building Tax Payment - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #0b7339;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #14532d;
+        }
+
+        .header-card h1 {
+            color: #14532d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(20,83,45,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #0b7339;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #14532d;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #14532d;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #14532d;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Land Revenue Services</span>
+            <h1>Building Tax & Luxury Tax Payment</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Revenue Department, Government of Kerala</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Revenue e-Services Portal (ReLIS)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>Determined by the Taluk Tehsildar based on Total Plinth Area</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>Instant checkout verification (Official printout ready)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.revenue.kerala.gov.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This statutory administrative framework handles the <strong>One-Time Building Tax</strong> and annual <strong>Luxury Tax</strong> mandated under the Kerala Building Tax Act, 1975. This tax is distinct from regular property tax and is collected directly by state revenue officials based at local Village Offices.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Every newly constructed building exceeding specific plinth area limits must settle a one-time structural tax assessment. Residential structures with a plinth area exceeding 278.7 square meters (approx. 3000 sq. ft.) face an additional annual Luxury Tax. Clearing these assessments avoids formal revenue collection drops or legal blockades on your land registry certificates.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Details (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Assessment Notice / Transaction ID</strong>
+                        <span class="file-spec">The specific assessment file number reference generated by your Taluk Tehsildar office</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Land Survey Mapping Details</strong>
+                        <span class="file-spec">The District, Taluk, Village name, and Survey/Subdivision Numbers where the structure sits</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Plinth Area Certificate</strong>
+                        <span class="file-spec">Official measurement records compiled by local body sub-engineers or revenue officials</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 21 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Directorate of Land Revenue Manuals</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Assessment First:</strong> You cannot pay this tax online until your local Village Officer verifies your building measurements and the Taluk Office updates your file to show active dues.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Luxury Threshold:</strong> Track your square footage limits carefully if expanding your layout to avoid unexpected annual Luxury Tax charges.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Profiling</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Navigate to the official Kerala Revenue e-Services portal window link.</li>
+                        <li>Log into your existing tracking account or create a consumer login profile using your Aadhaar number.</li>
+                        <li>Click on the main services panel and choose "Building Tax Payment".</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Filing Assessment Reference</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select your matching property parameters (District, Taluk, and specific local Village Office).</li>
+                        <li>Enter the Assessment Order Number or the digital Transaction Reference ID provided by the revenue department.</li>
+                        <li>Click "Fetch Details" to populate fields showing the owner's name, calculated plinth square footage, and due revenue tax balances.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Checkout Processing</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Verify that the balance on your screen layer matches your official paper assessment notices.</li>
+                        <li>Click "Proceed to Pay" and select your preferred secure e-Treasury transaction channel tool.</li>
+                        <li>Complete your online authorization check-out and save your digital e-Challan receipt safely.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unposted Assessment Profiles:</strong> Attempting to query connections online before your paper files are approved at the Taluk desk.</li>
+                <li><strong>Wrong Village Selection:</strong> Choosing a geographically adjacent village office, which blocks the system from pulling your property data rows.</li>
+                <li><strong>Expired Transaction Sessions:</strong> Taking too long on payment page verification steps, which causes secure e-Treasury portals to disconnect.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Your structural file is not loading on the online system?</strong> If your house was completed recently, the paper data may still be in transit. Bring your structural blueprints and local body certificates to your local Village Office to request a data entry update.</p>
+            <br>
+            <p><strong>Challan status shows failed but money left your bank account?</strong> Do not attempt to pay a second time. Wait for internal reconciliation balances to update your portal profile automatically, which normally takes up to 4 days.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: How does the Revenue Department calculate the One-Time Building Tax?</strong><br>A: Calculations are structured around total plinth area square footage according to sliding scales detailed in the Kerala Building Tax Act schedules. Commercial layouts carry higher tax rates than residential structures.</p>
+            <br>
+            <p><strong>Q: Does my annual property tax replace this state government building tax?</strong><br>A: No. Sanchaya property tax is paid to your local Panchayat or Municipality to support civic services. This building tax goes directly to the state Treasury as a structural capital levy.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">Online Land Revenue Land Tax Payment</a>
+                <a href="#" class="chip">Apply for Thandaper Certificate</a>
+                <a href="#" class="chip">Fair Value Tracking Lookup</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> This guide is for informational purposes based on standard Civil Supplies procedures. Always verify portal requirements before final submission.</p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Registration Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Civil Registration Services</span>
+            <h1>Birth Registration (Form 1)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Local Registrar (Municipality / Panchayat)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Civil Registration System (CRS / State Portal)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>FREE (Within 21 days of birth event)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>7 to 15 Working Days</strong>
+                </div>
+            </div>
+
+            <a href="https://crsorgi.gov.in/" target="_blank" class="btn-portal">Open Civil Registration Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Birth Registration is the official continuous documentation process mandated under the Registration of Births and Deaths Act, 1969. It establishes the baseline legal record of a child's birth date, birth order, structural lineage identifiers, and regional entry location within government archives.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>A verified birth registration is the root legal asset required to generate a foundational Birth Certificate. It serves as primary proof of age and citizenship, unlocking essential downstream processing systems such as school admissions, Aadhaar card enrolment, passport applications, and hereditary rights protection.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Event Parameter:</strong> Any birth occurring within the jurisdiction of the local urban municipality, municipal corporation, or rural gram panchayat structure.</li>
+                <li><strong>Reporting Deadlines:</strong> Institutional births must be filed by designated medical staff, whereas home births are to be reported by the head of the household or immediate relatives within a 21-day timeline to avoid late penal fines.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what parameters you have structured for the registry:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Institutional Discharge Slip / Form 1 Slip</strong>
+                        <span class="file-spec">The official signed birth verification record or discharge card issued by the hospital administration.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Identity and Address Proofs of Parents</strong>
+                        <span class="file-spec">Clear self-attested photocopies of Aadhaar Cards, Voter IDs, or Passports belonging to both the mother and father.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Marriage Certificate (Optional but Recommended)</strong>
+                        <span class="file-spec">Helps directly clear structural verification checks for both parents' names in the permanent record layout.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Registrar General of India (RGI) Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>👶</span> <span><strong>Naming Choice Window:</strong> You can register a birth event without specifying the child's final legal name. The entry can simply mark the gender, and parents have a legal 12-month window to update the specific name onto the registry database for free.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Institutional Reporting vs Manual Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li><strong>For Hospital Births:</strong> The medical records desk automatically generates Form 1 data sheets and maps them directly to the local municipality registrar portal. Request the reference or registration acknowledgment slip before leaving the facility.</li>
+                        <li><strong>For Domiciliary (Home) Births:</strong> The head of the family must access the state civil registration portal or visit the local government administrative center within 21 days to log Form 1 manually.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Filling Form 1 Particulars</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Provide exact event metrics: date of birth, biological sex, location parameters, and weight metrics.</li>
+                        <li>Enter parents' full identities, educational baselines, specific occupations, and permanent residential address details.</li>
+                        <li>Attach the clear scanned hospital discharge records along with both parents' identity cards into the portal upload dock.</li>
+                        <li>Submit the layout and print the auto-generated application summary reference sheet.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Administrative Registry Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The Local Registrar inspects the uploaded file links or matches physical documents against hospital logs.</li>
+                        <li>Once data validation matches completely, the entry is permanently committed to the national/state electronic registration database.</li>
+                        <li>A unique Registry Number sequence is assigned to the record block, allowing an official copy of the Birth Certificate to be generated.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Spelling Variations Across Parents' IDs:</strong> If a parent's name spelling on the hospital discharge sheet differs from their attached Aadhaar card text, the record will be flagged for data conflict.</li>
+                <li><strong>Missing Reporting Deadlines:</strong> Filing after the 21-day window requires delayed registration routing, which necessitates executive executive executive verification parameters and magistrate permission slips.</li>
+                <li><strong>Jurisdictional Mapping Errors:</strong> Selecting the wrong municipality or rural panchayat station during a manual home-birth submission, causing delivery to the wrong local registrar desk.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Did you miss the mandatory 21-day reporting deadline for a home birth entry?</strong><br>Do not attempt to submit a standard Form 1 entry. Late reporting up to 30 days requires an executive late fee processing step. Beyond 30 days up to 1 year requires written permission from the district authority along with a formal affidavit layout. Registrations delayed by more than a year require a verification order issued by a First Class Magistrate.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can a birth event be legally registered at the parents' permanent home town if the delivery occurred in a different state hospital?</strong><br>A: No. By statutory law, a birth event must only be registered with the specific local authority holding jurisdiction over the exact geographical spot where the child was physically delivered.</p>
+            <br>
+            <p><strong>Q: Is there a deadline to update a child's name if it was initially registered blank?</strong><br>A: Yes. While the birth entry must be registered immediately, parents can update the specific name on the civil registry for up to 15 years from the registration date, though a nominal late correction fee applies after the first 12 months.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="birth-certificate-copy.html" class="chip">Get Certificate Copy</a>
+                <a href="aadhaar-enrolment.html" class="chip">Aadhaar Enrolment</a>
+                <a href="passport-application.html" class="chip">Passport Application</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Statutory timelines, late penalty fees, and documentation criteria comply with the Registration of Births and Deaths Act. Final record approval stays with your local regional registration office desk.</p>
+
+    </div>
+
+</body>
+</html>

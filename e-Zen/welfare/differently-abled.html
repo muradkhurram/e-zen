@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistance for Differently-Abled Persons Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare Services</span>
+            <h1>Assistance for Differently-Abled Persons</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Scheme Allocation</span>
+                    <strong>ADIP Scheme / National Handicapped Finance Development (NHFDC)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Central Registry</span>
+                    <strong>Unique Disability ID (UDID) Swavlamban Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Key Support Types</span>
+                    <strong>Aids & Appliances, Skill Grants, Concession Passes</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Cost</span>
+                    <strong>₹0 (Free Public Rights Integration Scheme)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.swavlambancard.gov.in/" target="_blank" class="btn-portal">Access UDID & Assistance Desk ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This institutional module covers the holistic assistance systems provided to differently-abled citizens. Beyond monthly income pensioneers, this framework manages the distribution of specialized aids and assistive appliances (under the ADIP scheme), local transport concessions, educational stipends, and dedicated entrepreneurial development grants.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Primary Aid Schemes Available</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>ADIP Scheme:</strong> Direct distribution of high-tech motorized tricycles, braille slates, sophisticated hearing aids, and prosthetic attachments based on customized fit parameters.</li>
+                <li style="margin-bottom: 8px;"><strong>Educational Scholarships:</strong> Financial maintenance support for students inside recognized higher education systems.</li>
+                <li style="margin-bottom: 8px;"><strong>Transport Concessions:</strong> Issuance of bus passes and railway photo identity concession certificates for subsidized logistics.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Paperwork Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap targets to confirm current verification document arrangements:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Verifiable UDID Card / Disability Certificate</strong>
+                        <span class="file-spec">Must state a baseline of 40% or greater disability rating certified by an RCO medical authority ledger.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card Profile</strong>
+                        <span class="file-spec">Demographic name fields must correlate cleanly with medical records.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Family Income Certificate</strong>
+                        <span class="file-spec">Required specifically for assistive equipment distribution programs (full free grants cap at particular income limits).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Passport Size Identification Photograph</strong>
+                        <span class="file-spec">Clear color portrait capturing the physical disability layout for concession card prints.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Procurement Steps</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>Framework Matrix:</strong> Active System Layout 2026</span>
+                <span style="color: #5b21b6;"><strong>Verification Authority:</strong> Department of Empowerment of PwDs</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Profiling</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the central Swavlamban interface using the main portal routing link above.</li>
+                        <li>Log in securely and choose **Apply for Assistive Devices / Benefits**.</li>
+                        <li>Enter your structural UDID tracking strings to auto-pull your clinical disability diagnosis.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Aid Selection & Uploads</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select the explicit category of assistance needed (e.g., transport pass, prosthetic alignment device, education allowance).</li>
+                        <li>Upload your localized household income certificate parameters and submit the digital file cluster.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Allocation Camps</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Applications are forwarded to the local district social officer desk.</li>
+                        <li>For physical aids, you will receive an automated SMS booking code for the upcoming regional distribution camp.</li>
+                        <li>Concession credentials generate direct digital layouts printable from your personal account hub.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Sub-Threshold Medical Slats:</strong> If the clinical assessment ledger determines the disability level scales under 40%, the application defaults to closed.</li>
+                <li><strong>Income Cap Excess:</strong> Certain high-value motorized mobility distributions flag and stall if household income values bypass specified limits.</li>
+                <li><strong>Duplicative Aid Tracking:</strong> Attempting to apply for the same physical equipment piece within a 3-year standard structural usage window.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="disability-pension.html" class="chip">Disability Pension Desk</a>
+                <a href="old-age-pension.html" class="chip">Old Age Pension</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Equipment options and camp dates depend heavily on regional budgetary grants. Final adjustments track back to the district disability authority desk.</p>
+
+    </div>
+
+</body>
+</html>

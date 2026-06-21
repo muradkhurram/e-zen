@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residence Certificate Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Revenue Services</span>
+            <h1>Residence Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Body</span>
+                    <strong>Local Revenue Authority / Village Officer</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Intent</span>
+                    <strong>Verifies Present Dwelling and Local Jurisdiction Location</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Standard Validity</span>
+                    <strong>Typically 6 Months to 1 Year from System Stamp Date</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Platform Link</span>
+                    <strong>State e-District Hub / Integrated Citizen Portal</strong>
+                </div>
+            </div>
+
+            <a href="https://edistrict.kerala.gov.in/" target="_blank" class="btn-portal">Open State e-District Portal Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A <strong>Residence Certificate</strong> is a legal revenue document that certifies a citizen's current living address within a specific local administrative boundary (such as a municipality, ward, or village). It acts as valid proof of local residence, which is required to register with regional utility companies, enroll in nearby public schools, set up voting cards, or access local municipal subsidy benefits.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Verification Principles</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>The Temporary/Current Standard:</strong> Unlike permanent nativity parameters, residence trackers map exactly where you live right now. It can be issued to individuals living in rented accommodations, provided they submit valid proof of tenancy.</li>
+                <li style="margin-bottom: 8px;"><strong>Local Field Checks:</strong> The local village office verify details using public records such as current utility bills, municipal tax sheets, or verified electoral roll registries.</li>
+                <li style="margin-bottom: 8px;"><strong>Time Limits:</strong> Because residential addresses can change frequently, these certificates carry a short validity window (usually 6 months), requiring a clean application row for updates.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to organize your residential document bundle:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Current Aadhaar or Electoral Card</strong>
+                        <span class="file-spec">Primary identity file containing your matching local address string.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Registered Rental Lease or Land Tax Receipt</strong>
+                        <span class="file-spec">Required to verify legal occupancy of your current home or apartment unit.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Recent Utility Bill (Electricity / Water Lines)</strong>
+                        <span class="file-spec">Must be issued within the last three months to confirm active residency at the location.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Processing Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Metric:</strong> Active 2026 e-District Sync</span>
+                <span style="color: #3b1775;"><strong>Turnaround Time:</strong> Standard processing finishes within 3–5 operational days</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Entry Setup</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log into the state e-District dashboard and navigate to the Residence Certificate service option.</li>
+                        <li>Input your exact present address, specify the length of your stay at the location, and upload your supporting document scans.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Village Office Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The submission routes to your local Village Officer's terminal for verification.</li>
+                        <li>The office staff checks your lease strings or utility numbers against municipal database records to confirm the entry.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Digital Document Download</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Following verification, the system applies a cryptographic QR signature block to authorize the certificate.</li>
+                        <li>Download your finalized, production-ready PDF certificate directly from your citizen account portal.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Risks & Application Rejections</h2>
+            <ul class="alert-list">
+                <li><strong>Expired Tenancy Agreements:</strong> Uploading a rental lease file that has passed its end date without attaching a valid renewal extension.</li>
+                <li><strong>Mismatched Address Text:</strong> Minor variations between the address string typed into the portal and the text displayed on your uploaded utility bills.</li>
+                <li><strong>Incorrect Boundary Selection:</strong> Selecting the wrong local ward or village administrative code, causing your application to route to the incorrect office.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic & Civil Desks</h2>
+            <div class="chip-group">
+                <a href="nativity-certificate.html" class="chip">Nativity Certificate Desk</a>
+                <a href="community-certificate.html" class="chip">Community Certificate Desk</a>
+                <a href="student-concession.html" class="chip">Student Concession Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Processing timelines, verification steps, and document validity parameters follow guidelines enforced by the state's Revenue Department framework.</p>
+
+    </div>
+
+</body>
+</html>

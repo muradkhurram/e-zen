@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Admission Guidance Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Higher Academic Mapping</span>
+            <h1>College Admission Guidance</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Centralized Module</span>
+                    <strong>Centralized Admission Process (CAP) / University Registry</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Evaluation Tracks</span>
+                    <strong>Index-Based Merit Marks or Centralized Entrance Metrics</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Tracks</span>
+                    <strong>Undergraduate (UG), Postgraduate (PG), and Professional Degrees</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Verification Anchor</span>
+                    <strong>ABC (Academic Bank of Credits) / DigiLocker Registry</strong>
+                </div>
+            </div>
+
+            <a href="https://admission.uoc.ac.in/" target="_blank" class="btn-portal">Access Centralized CAP Portal System ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>College Admission Guidance</strong> structure provides an end-to-end framework for transitioning into higher education. Operating primarily through university-specific **Centralized Admission Process (CAP)** networks, this portal standardizes registration, tracks index point cutoffs, coordinates allocation quotas, and manages enrollment setups across government, aided, and self-financing campuses.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Selection Protocols</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Index Point Formula:</strong> Merit metrics are calculated using normalized board scores alongside course-specific subject bonuses or penalties (e.g., adding elective marks for specific BA/BSc tracks).</li>
+                <li style="margin-bottom: 8px;"><strong>Quota Stratifications:</strong> Single platforms handle sorting for specialized lines, including Mandatory Reservations (SC/ST/OBC), Community Allocations, Sports/Cultural achievements, and Persons with Disabilities (PwD) pathways.</li>
+                <li style="margin-bottom: 8px;"><strong>Management Block Processes:</strong> Entries into non-CAP management or community blocks often require separate institution-level applications, but still require a valid university CAP registration code for formal tracking.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Academic Portfolio (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off folders to verify document package alignment:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Qualifying Exam Certificate & Marksheet</strong>
+                        <span class="file-spec">Verified Class 12 or terminal UG transcript sheet used for base index calculations.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Transfer (TC) and Migration Certificates</strong>
+                        <span class="file-spec">Required to verify legal separation from your previous board or institution.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Community, Income, or Non-Creamy Layer Sheets</strong>
+                        <span class="file-spec">Mandatory revenue certificates needed to secure statutory reservation or EWS spots.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Academic Bank of Credits (ABC ID)</strong>
+                        <span class="file-spec">Your unique digital credit key required under national higher education credit frameworks.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>The CAP Allocation Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Framework:</strong> Active 2026 Central CAP Engine</span>
+                <span style="color: #3b1775;"><strong>Seat Confirmation:</strong> Processing mandatory state token fees secures slots</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: CAP Profile Creation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log onto the designated university admission portal and create a master profile linked to your ABC ID.</li>
+                        <li>Enter your academic grades precisely and construct your institutional option list, ranking choices by campus and program code.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Allotment Clearances & Token Settlement</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Track selection drops via individual login dashboards across successive allotment releases.</li>
+                        <li>To maintain an active seat assignment, pay the mandatory university token fee online before the listed cutoff time.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Institutional Interview & Admittance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Report physically to the assigned college campus within the scheduled window with all original credentials and certificates.</li>
+                        <li>Complete the verification interview, finalize campus fee payments, and secure your formal admission confirmation receipt.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Critical Obstacles & Disqualifications</h2>
+            <ul class="alert-list">
+                <li><strong>Data Entry Normalization Typos:</strong> Inputting inaccurate board marks or inflated grace values during registration triggers immediate disqualification during physical document verification.</li>
+                <li><strong>Failing to Complete Token Payments:</strong> Missing the mandatory online portal payment window for an allocated seat cancels your assignment and bars you from subsequent regular rounds.</li>
+                <li><strong>Mismatched Non-Creamy Layer Validity:</strong> Presenting an expired or out-of-date income/caste certificate sheet, which immediately voids merit reservation advantages.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="school-admission.html" class="chip">School Admission Guidance</a>
+                <a href="migration-certificate.html" class="chip">Migration Certificate Desk</a>
+                <a href="equivalency-certificate.html" class="chip">Equivalency Certificate Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Cutoff parameters, indexing formulas, and allocation round schedules are controlled entirely by the governing university syndicate board.</p>
+
+    </div>
+
+</body>
+</html>

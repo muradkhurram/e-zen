@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Renewal Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity & Travel Services</span>
+            <h1>Passport Re-Issue (Renewal)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Ministry of External Affairs (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Passport Seva Project Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹1,500 (Standard) | ₹3,500 (Tatkaal Priority)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>3 - 10 Days (Varies by Police Verification mode)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.passportindia.gov.in/" target="_blank" class="btn-portal">Apply for Re-Issue ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Passport Renewal (officially termed "Re-Issue") is the process of generating a fresh passport booklet to replace an existing passport. It is required when the current passport is nearing its expiration date, has run out of blank visa pages, or has sustained physical damage.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Most foreign nations require a passport to have **at least 6 months of validity** remaining beyond your intended travel dates to grant entry or clear visa applications. Renewing your passport on time keeps your international status active and prevents sudden travel disruptions.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Timing:</strong> You can apply for a re-issue up to **1 year before** the passport's expiration date or at any point after it has expired.</li>
+                <li><strong>Exhausted Pages:</strong> Eligible at any time if your current booklet has fewer than 2 blank pages remaining.</li>
+                <li><strong>Profile Updates:</strong> Required if there is a change in core personal details, such as updating your surname post-marriage or changing your permanent home address record.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you need to bring along with your old passport booklet:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Old Passport Booklet</strong>
+                        <span class="file-spec">The original physical passport booklet along with self-attested photocopies of its first two and last two pages.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Current Address (If Address has Changed)</strong>
+                        <span class="file-spec">Your updated Aadhaar Card, an active Bank Passbook with photo, or a utility bill matching your new residence. *(No proof is needed if your address remains the same as your old passport).*</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Documentary Proof for Profile Changes (Optional)</strong>
+                        <span class="file-spec">Official Marriage Certificate (for surname changes) or a government Gazette notification for structural legal name edits.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Passport Seva Portal Operations Manual</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🔒</span> <span><strong>Check for Validity Hold:</strong> If your personal data and address remain unchanged from your old passport, your application may qualify for a "No Police Verification" track, significantly accelerating printing and delivery.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Portal Lodging & Payment</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Apply for Re-Issue</strong> above to access the secure Passport Seva system. Log in with your active account details.</li>
+                        <li>Click on <strong>Apply for Fresh Passport/Re-issue of Passport</strong>.</li>
+                        <li>Select <strong>Re-issue of Passport</strong> and specify the reason (e.g., Validity Expired/Due to Expire, Pages Exhausted, or Change in Personal Particulars).</li>
+                        <li>Fill out the form fields. Ensure your personal details exactly match your existing passport unless you are intentionally requesting a profile update.</li>
+                        <li>Submit the data form, pay the statutory fee of ₹1,500 online, and pick an appointment slot at your nearest Passport Seva Kendra (PSK).</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Passport Seva Kendra (PSK) Processing</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Go to the PSK venue at your scheduled time. Bring your old physical passport booklet, photocopies, and any required address update proofs.</li>
+                        <li>At Counter A, the operator will take your new biometric fingerprint scans and digital headshot photo for the new booklet.</li>
+                        <li>At Counter B, the verification officer checks your old passport data and matches any new profile update proofs.</li>
+                        <li>At Counter C, the granting officer cancels your old passport booklet by stamping it **"Cancelled"** and handing it back to you. They will then approve the issuance of your new booklet.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Verification Check & Delivery Track</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>If you have changed your permanent address, your file is routed to your local police station for a residency check. If your details have not changed, this verification step is often waived entirely.</li>
+                        <li>Once cleared, the high-security printing facility generates your new booklet, featuring a new unique passport number sequence.</li>
+                        <li>Your new booklet is sent directly to your residence via India Post Speed Post. *(Your old cancelled passport remains yours to keep, as it contains any active visas you may still hold).*</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unreported Active Visas:</strong> Damaging or tearing pages containing active foreign visas. Always let the Counter C official handle your booklet carefully to preserve your active visas.</li>
+                <li><strong>Address Discrepancies on Update:</strong> Requesting an address update but providing documents that do not completely match your new residential details.</li>
+                <li><strong>Failing to Disclose Lost Booklets:</strong> If your passport is lost or stolen, you cannot apply via standard re-issue workflows. You must file a formal Lost Passport application along with an official Police FIR report.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Are you unsure whether your existing foreign visas remain valid after your old passport is cancelled?</strong><br>Do not worry. The physical cancellation stamp placed on your old passport only invalidates the booklet itself for travel purposes. Any long-term tourist or work visas inside remain valid. When traveling abroad, simply carry both your old cancelled booklet and your new active passport together to clear border immigration checklines seamlessly.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Does my old passport number carry over to my newly renewed passport booklet?</strong><br>A: No. Every renewed passport receives a brand-new alphanumeric passport number sequence. Your old passport number is permanently archived as your historical cross-reference index.</p>
+            <br>
+            <p><strong>Q: Can I use the priority Tatkaal track for a re-issue if my passport was heavily damaged or washed in laundry?</strong><br>A: No. Cases involving severely damaged, charred, or lost passports require a detailed administrative review. They cannot be processed under the fast-track Tatkaal system and must follow standard application routing instead.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="passport-application.html" class="chip">Fresh Passport Application</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="voter-correction.html" class="chip">Voter ID Correction</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Application evaluations, verification tracks, and delivery logistics follow operational guidelines set by the Ministry of External Affairs. Final clearance remains with the Regional Passport Office.</p>
+
+    </div>
+
+</body>
+</html>

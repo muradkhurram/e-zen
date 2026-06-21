@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAN Application Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Reconfigured to Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity Services</span>
+            <h1>PAN Application</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Income Tax Department (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Protean TIN-NSDL / UTITSL</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹107 (Physical Card) | ₹72 (e-PAN Only)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>10 Minutes (e-PAN) | 10 to 15 Days (Physical Card)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.onlineservices.nsdl.com/paam/endUserRegisterContact.html" target="_blank" class="btn-portal">Apply via Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A Permanent Account Number (PAN) is a unique, 10-character alphanumeric identifier issued in the form of a laminated smart card by the Income Tax Department. It tracks financial workflows and prevents tax evasion by anchoring all financial transactions to a single citizen profile.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>A PAN card is mandatory for core daily financial tasks. Common citizens require it to open any bank savings account, receive taxable salaries, apply for bank loans, buy or sell vehicles, invest in mutual funds, or receive payments exceeding ₹50,000.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>All Individuals:</strong> Any citizen of India, including minors (applied through a parent or legal guardian acting as a representative assessee).</li>
+                <li><strong>No Minimum Income Requirement:</strong> You do not need to be a taxpayer to apply for a PAN card; it is widely utilized purely as a standard national identity document.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered based on your preferred application method:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Instant Paperless Option (Aadhaar-KYC)</strong>
+                        <span class="file-spec">No physical documents or scans needed! Your identity, address, and date of birth details are drawn directly from your verified Aadhaar database account.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Manual Document Scan Option (If signatures or custom photos are required)</strong>
+                        <span class="file-spec">Proof of Identity & Address: Passport, Driving Licence, Voter ID, or Elector's Photo Card.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Photo Requirements (For Scan Method Only)</strong>
+                        <span class="file-spec">Two recent color passport-size photographs against a plain white background, scanned cleanly under 50KB in JPEG format.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Income Tax Department Digital Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📱</span> <span><strong>Check Aadhaar Mobile Link:</strong> To instantly generate your PAN without couriering physical papers, make sure your Aadhaar is linked to an active mobile number that can receive security OTP codes.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Method 1: Instant Paperless e-KYC (Fastest & Easiest)</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Apply via Official Portal</strong> above to open the secure Protean Online Services screen.</li>
+                        <li>Select <strong>New PAN - Indian Citizen (Form 49A)</strong> as the Application Type, and choose <strong>Individual</strong> from the category drop-down.</li>
+                        <li>Fill in your title, last name, first name, date of birth, email ID, and mobile number. Submit to generate a temporary Token Number sent to your email.</li>
+                        <li>Click "Continue with PAN Application Form" and select the option: <strong>Submit digitally through e-KYC & e-Sign (Paperless)</strong>.</li>
+                        <li>Confirm if you require a physical laminated card delivered home (fees apply) or an electronic e-PAN only.</li>
+                        <li>Enter the last 4 digits of your Aadhaar card number and agree to let the portal use your Aadhaar photograph.</li>
+                        <li>Proceed straight to the payment screen. Pay ₹107 via UPI, Debit Card, or Netbanking.</li>
+                        <li>Authenticate via Aadhaar OTP validation. Once confirmed, your application signs digitally. A password-protected e-PAN link will drop into your email inbox within a few hours.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Method 2: Scanned Document Upload (To use a custom photo/signature)</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Follow Phase 1 above, but select the second option: <strong>Submit scanned images through e-Sign</strong>.</li>
+                        <li>Manually type out your Father's name, Mother's name, and select your specific income sourcing category block.</li>
+                        <li>Enter your local Assessing Officer (AO) code details. *(The portal provides a quick built-in lookup utility based on your state and city location limits)*.</li>
+                        <li>Upload a high-resolution color scan of your passport photograph, your physical signature signed in black ink, and your Aadhaar PDF file. Keep each file under 50KB.</li>
+                        <li>Pay the regulatory fee of ₹107 online and perform the final Aadhaar mobile OTP authentication step to finalize submission.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Signature Alignment Failures:</strong> Uploading blurry, low-contrast signature scans or signing inside the border using blue gel pens or pencil tracks. Always sign cleanly on blank white paper using dark black ink.</li>
+                <li><strong>Data Mismatches against Aadhaar:</strong> If the spelling of your name or date of birth typed into the PAN application differs by even a single character from your Aadhaar record, the structural automated processing engine will throw a hard fault and reject it.</li>
+                <li><strong>Unreadable Upload Files:</strong> Compressing document PDF files down too far, rendering identity details or photo profiles completely illegible to checking clerks.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your payment deducted but the portal crashed before displaying an acknowledgement or token slip code?</strong><br>Do not start a fresh transaction from scratch. Check your registered email inbox for the initial temporary Token Number. Return to the Protean homepage login screen, click the **Registered User** tab, enter your token index, and click refresh. The system will recover your draft profile data and sync your payment status instantly.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What is the penalty for accidentally holding more than one PAN card profile?</strong><br>A: Possessing more than one active PAN account number is illegal under Section 272B of the Income Tax Act, 1961, and can attract a strict statutory penalty of **₹10,000**. If you possess a duplicate card, surrender it immediately via the official correction forms.</p>
+            <br>
+            <p><strong>Q: What is the open password key format to unpack the downloaded e-PAN PDF guide file?</strong><br>A: The electronic file envelope is locked for privacy safety. The decryption security password key is your exact date of birth entered in the consecutive numeric layout layout: **DDMMYYYY** (e.g., if born on 05 May 1998, type 05051998).</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="pan-correction.html" class="chip">PAN Card Correction</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="voter-registration.html" class="chip">Voter Registration</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All application fee schedules, data processing mechanics, and transaction criteria follow operational directives from the Income Tax Department. Final clearance sits with the central core verification desk.</p>
+
+    </div>
+
+</body>
+</html>

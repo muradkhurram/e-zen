@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar Update Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,143,71,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Identity Services</span>
+            <h1>Aadhaar Update</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>UIDAI (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>myAadhaar Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹50 (Demographic) | ₹100 (Biometric)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>5 to 30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://myaadhaar.uidai.gov.in/" target="_blank" class="btn-portal">Go to myAadhaar Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>An Aadhaar Update is the formal administrative protocol required to revise, correct, or update an existing cardholder's recorded information. This falls into two categories: Demographic data (Name, Address, Date of Birth, Gender, Mobile Number, Email) and Biometric data (Fingerprints, Iris scan, Facial photograph).</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>An updated card is essential to ensure your linked mobile number receives critical banking and government verification OTPs. Keeping your residential address current is mandatory for local certificate approvals (like Income or Nativity), while mandatory biometric updates keep structural security tracking operational as minors grow up.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Existing Cardholders:</strong> Must already hold a valid unique 12-digit identification reference.</li>
+                <li><strong>Mandatory Biometric Updates:</strong> Compulsory for child cardholders upon reaching the age of 5 and again at the age of 15.</li>
+                <li><strong>Document Freshness:</strong> UIDAI recommends updating identification documents at least once every 10 years to maintain database integrity.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered based on what you need to change:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>For Address Change (Online or Center)</strong>
+                        <span class="file-spec">Valid original Proof of Address (POA): Ration Card, Voter ID, driving licence, bank passbook, latest water/electricity bill, or a registered rent agreement.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>For Name or Date of Birth Correction</strong>
+                        <span class="file-spec">Valid original Proof of Identity (POI): Passport, PAN Card, or SSLC/Birth Certificate. (Note: Name changes have a strict lifetime limit of 2 attempts).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>For Mobile, Email, or Biometric Changes</strong>
+                        <span class="file-spec">No structural documents required! These require physical verification and can only be updated on-site at an authorized center.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Online Scan Format</strong>
+                        <span class="file-spec">If uploading from home: Clear color scans of original documents in JPEG, PNG, or PDF formats under 2MB. Photocopies are not accepted.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> UIDAI Portal Operations</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🔒</span> <span><strong>Mobile Link Check:</strong> You can only complete an address update online from home if your current mobile number is active and linked to receive OTPs. For all other changes, you must visit a physical center.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Method 1: Updating Residential Address Online from Home</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Go to myAadhaar Portal</strong> above and select the <strong>Login</strong> button.</li>
+                        <li>Enter your 12-digit card number, solve the security captcha code, and click <strong>Send OTP</strong>.</li>
+                        <li>Input the security OTP sent to your registered mobile phone to access your personalized service dashboard dashboard.</li>
+                        <li>Select the <strong>Address Update</strong> module and click on <strong>Update Aadhaar Online</strong>.</li>
+                        <li>Review your current residential details on-screen, then type in your corrected landmark, PIN code, and district information. The text will translate into local regional script languages automatically.</li>
+                        <li>Select your matching Proof of Address (POA) document from the official dropdown listing grid and upload your clear color scan file.</li>
+                        <li>Complete the secure portal payment of ₹50 using UPI, Debit Card, or Netbanking. Download your 14-digit Service Request Number (SRN) receipt slip.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Method 2: Correcting Name, DOB, Biometrics, or Mobile Number at a Center</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Locate your nearest authorized Akshaya Center, permanent Aadhaar Seva Kendra, or local bank desk tracking portal.</li>
+                        <li>Carry your original POI/POA physical documents along with your current card profile reference.</li>
+                        <li>The certified desk operator will access the system client app, record your corrections, or scan your new mobile sim line.</li>
+                        <li><strong>For Biometrics:</strong> The operator will instruct you to position your hands on the scanner for fingerprints, look directly into the camera lens for a fresh photo, and look into the dual iris tracker scanner.</li>
+                        <li>Pay the fixed government fee (₹50 for textual edits, ₹100 if biometric re-scans are processed) directly at the counter.</li>
+                        <li>Collect your printed physical acknowledgement receipt slip showing your unique Update Request Number (URN).</li>
+                    </ol>
+
+                    <div style="margin-top: 20px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
+                        <strong style="color: #1e293b; display: block; margin-bottom: 10px; font-size: 15px;">At the Center (What to Carry)</strong>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">🗂️ Original physical Proof of Identity (for Name/DOB changes)</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">🏠 Original physical Proof of Address (for location modifications)</li>
+                            <li style="margin-bottom: 0; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">💵 Cash for statutory processing center charges (₹50 / ₹100)</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Tracking Status & Fetching Results</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Visit the myAadhaar homepage tracking tools section without logging in.</li>
+                        <li>Input your 14-digit URN or SRN index code along with the corresponding timestamps printed on your receipt slip.</li>
+                        <li>Once the verification processing completes successfully, download your updated electronic card as a secure PDF file using standard mobile OTP verification.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Uploading Photocopies or Scanned Xeroxes:</strong> Online updates will automatically fail if you upload a scan of a photocopy. The central sorting mechanism flags it as unverified data data. Only scan the original color document.</li>
+                <li><strong>Exceeding Lifetime Limit Boundaries:</strong> Name changes are capped at 2 attempts, while Gender and Date of Birth edits are strictly limited to a single correction. Trying to bypass this online results in an immediate administrative drop.</li>
+                <li><strong>Mismatched Guardian Fields:</strong> Attempting to change a child's address without ensuring their regional relationship parent/guardian data links match identically.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Your updated address status shows successfully completed, but the printed text fields still show old descriptions when downloaded?</strong><br>This is a common regional cache syncing delay. Do not process an identical application request. Wait 72 hours for the central UIDAI regional print server vaults to completely build your new profile, clear your web browser data data history, and re-download your updated electronic file.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I change my linked mobile number online from my laptop?</strong><br>A: No. Mobile number addition or replacement requires secure physical biometric verification and can only be performed by a certified operator on an official secure endpoint terminal at an authorized center.</p>
+            <br>
+            <p><strong>Q: What happens if a teenager misses their mandatory age-15 biometric update?</strong><br>A: Their biometric security profiles become progressively out-of-sync with age, which can eventually cause authentication errors during crucial verification processes like bank linkings or college scholarship applications. It is best to complete this update as soon as possible.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="aadhaar-enrolment.html" class="chip">Aadhaar Enrolment</a>
+                <a href="pan-correction.html" class="chip">PAN Correction</a>
+                <a href="voter-correction.html" class="chip">Voter Correction</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All processing fee tiers, correction limitation rules, and tracking system criteria conform directly to UIDAI guidelines. Final administrative verification rests entirely with the central core processing registry.</p>
+
+    </div>
+
+</body>
+</html>

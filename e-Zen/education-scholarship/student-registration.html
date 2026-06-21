@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unified Student Registration Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity & Onboarding</span>
+            <h1>Unified Student Registration</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Base Framework</span>
+                    <strong>National Scholarship Portal (NSP) / State Student Registry</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Identity Key</span>
+                    <strong>Aadhaar-Linked Mobile String / APAAR ID</strong>
+                </div>
+                <div class="meta-item">
+                    <span>System Lifetime</span>
+                    <strong>Permanent Student Profile Ledger</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Authentication Method</span>
+                    <strong>Mobile OTP Verification & UIDAI Biometric Sync</strong>
+                </div>
+            </div>
+
+            <a href="https://scholarships.gov.in/" target="_blank" class="btn-portal">Access Portal Registration Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>Student Registration</strong> module is the foundational onboarding gate for all academic support systems, state concessions, and scholarship tracks. Completing this permanent profile creation issues your unique structural student tracking ID (such as the APAAR ID or NSP login key), linking your academic background with government data systems to unlock automated benefits.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Mandatory Prerequisite Rules</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Aadhaar Data Harmony:</strong> The spelling of your name, gender code, and birth date <strong>must match exactly</strong> across your Aadhaar card and high school leaving marksheets.</li>
+                <li style="margin-bottom: 8px;"><strong>Active Mobile Link:</strong> Your registered mobile phone number must be linked with your Aadhaar biometric profile to receive security OTP codes.</li>
+                <li style="margin-bottom: 8px;"><strong>Single Profile Limitation:</strong> Creating multiple registration profiles using different mobile phone numbers or secondary identities will trigger an automated system ban.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Identity Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap targets to confirm document readiness states:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card / E-Aadhaar PDF Print</strong>
+                        <span class="file-spec">The primary identification anchor used for real-time biographical validation.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Matriculation (Class 10) Pass Certificate</strong>
+                        <span class="file-spec">Used to verify school records, board roll numbers, and official birth year registries.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Private Mobile Connection</strong>
+                        <span class="file-spec">Must remain active throughout your entire academic journey to receive processing notifications and renewal flags.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid E-Mail Profile</strong>
+                        <span class="file-spec">Used to receive secure platform credentials, password recovery paths, and system confirmations.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Registration Workflow</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Metric:</strong> 2026 Core Registry Protocol</span>
+                <span style="color: #3b1775;"><strong>Security Validation:</strong> Direct UIDAI Gateway Sync</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Identity Handshake</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Open the portal registration dashboard and select the "New Registration" option.</li>
+                        <li>Input your primary Aadhaar identification number and complete the mobile verification process using the security OTP code sent to your phone.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Password and Profile Configuration</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon confirmation of your biographical data from the database, the system generates your permanent Application ID.</li>
+                        <li>Create a secure custom password and configure your recovery email channels.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Base Academic Connection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log in using your newly generated credentials and complete the basic academic profile section.</li>
+                        <li>This profile acts as your master record, allowing you to easily apply for individual programs like Pre-Matric, Post-Matric, or E-Grantz schemes.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Critical Obstacles & Validation Faults</h2>
+            <ul class="alert-list">
+                <li><strong>Biographical Discrepancies:</strong> Minor typos or data mismatches (e.g., "Arun K." vs. "Arun Kumar") between school registries and Aadhaar profiles will cause an automated system rejection.</li>
+                <li><strong>Aadhaar Mobile Unlinking:</strong> Being unable to complete registration due to your mobile number changing without updating your official biometric record.</li>
+                <li><strong>Locked Identity Status:</strong> The registration fails because your Aadhaar profile biometric locking feature is active, preventing the portal from running validation queries.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Next Action Steps</h2>
+            <div class="chip-group">
+                <a href="pre-matric-scholarship.html" class="chip">Apply Pre-Matric</a>
+                <a href="post-matric-scholarship.html" class="chip">Apply Post-Matric</a>
+                <a href="e-grantz-scholarship.html" class="chip">Apply E-Grantz Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Permanent ID generation structures, data retention parameters, and system behaviors follow national identity frameworks and state data rules.</p>
+
+    </div>
+
+</body>
+</html>

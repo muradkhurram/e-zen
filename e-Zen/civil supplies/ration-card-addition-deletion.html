@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ration Card Member Addition/Deletion - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #0b7339;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #14532d;
+        }
+
+        .header-card h1 {
+            color: #14532d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(20,83,45,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #0b7339;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #14532d;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #14532d;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #14532d;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Civil Supplies</span>
+            <h1>Ration Card Member Addition/Deletion</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Taluk Supply Office (TSO)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Civil Supplies e-Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>Nil (Service charges apply)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>7–15 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://civilsupplieskerala.gov.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This service allows citizens to modify an existing household Ration Card by either adding a new member (due to birth or marriage) or removing an existing member (due to death, marriage, or relocation). This keeps the family structure officially synchronized with the Public Distribution System (PDS).</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Accurate household data is essential for managing your statutory commodity quotas, as food grain allocations are distributed per individual unit. It is legally required to avoid biometric duplication errors, remove deceased members, and secure specific Deletion Certificates needed for newly married individuals to register under their new family card.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card</strong>
+                        <span class="file-spec">Required for the individual being added or deleted (UID mapping)</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Birth Certificate or Marriage Certificate</strong>
+                        <span class="file-spec">Mandatory for addition (Birth proof for newborns; Marriage proof for newlyweds)</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Official Deletion Certificate</strong>
+                        <span class="file-spec">Mandatory for addition if the individual was previously registered on another family card</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Death Certificate</strong>
+                        <span class="file-spec">Mandatory for member deletion requests arising due to demise</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 21 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Civil Supplies Dept. Circular</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Verify Original Card:</strong> Ensure your existing family Ration Card is active and not currently suspended or locked.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Check Aadhaar Links:</strong> The individual being processed must have a valid Aadhaar number with up-to-date demographic text.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Authentication</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log in to the official Civil Supplies e-portal using the cardholder credentials.</li>
+                        <li>Authenticate using the registered citizen mobile number and your Aadhaar-linked OTP profile.</li>
+                        <li>Select the respective operational dashboard: "Member Addition" or "Member Deletion".</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Information Update & Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>For Additions: Enter demographic details exactly as in Aadhaar, and input the legal relation to the Head of Family (HOF).</li>
+                        <li>For Deletions: Select the specific family member from the grid and state the reason (Death, Separation, or Marriage).</li>
+                        <li>Upload clean, legible copies of the relevant certificates (Birth, Death, Marriage, or Deletion) in PDF format.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Processing & Card Upgraded</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The workflow routes directly to your local Taluk Supply Officer (TSO) for desk evaluation.</li>
+                        <li>Upon approval, the system re-calculates your household's active unit weight and subsidy volumes.</li>
+                        <li>Download the refreshed digital E-Ration Card featuring the modified registry directly from the portal.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Dual Registration Faults:</strong> Attempting to add an individual who has not been legally deleted from their prior family Ration Card.</li>
+                <li><strong>Spelling Divergence:</strong> Name strings or structural data inputs differing from the verified data on the Aadhaar database.</li>
+                <li><strong>Unsigned Certifications:</strong> Uploading informal letters or incomplete hospital slips instead of legally valid certificates issued by local authorities.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Member missing from system dropdowns?</strong> If an existing member does not appear for processing, verify if their Aadhaar seed status is marked active under the main "View Card Status" dashboard.</p>
+            <br>
+            <p><strong>Certificate validation failures?</strong> Ensure scanned certificate uploads are under the maximum size ceilings specified by the portal and are completely clear, with all official stamps and signatures visible.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I add a newborn baby without an Aadhaar Card?</strong><br>A: For infants below 5 years, some structural exceptions allow initial addition via Birth Certificate, but an updated Aadhaar number must be seeded within the mandated period.</p>
+            <br>
+            <p><strong>Q: What is a Deletion Certificate and where do I get it?</strong><br>A: It is an official document proving a member has been removed from a card. It is automatically generated online when a member deletion request is successfully approved by the TSO.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">New Ration Card Application</a>
+                <a href="#" class="chip">Change of Address</a>
+                <a href="#" class="chip">Conversion (APL to BPL)</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> This guide is for informational purposes based on standard Civil Supplies procedures. Always verify portal requirements before final submission.</p>
+
+    </div>
+
+</body>
+</html>

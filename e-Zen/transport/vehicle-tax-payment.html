@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Tax Payment Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Vehicle MV Road Tax Payment</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Taxing Authority</span>
+                    <strong>State Transport Department / Local RTO Ledger</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Vahan Parivahan Taxation Gateway</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Levy Structure</span>
+                    <strong>Calculated dynamically by state engine (Based on vehicle cost, weight, or age)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Settlement Status</span>
+                    <strong>Instant ledger update with electronic receipt token</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan Taxation Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Vehicle Motor Vehicle (MV) Road Tax Payment is the mandatory statutory contribution paid by vehicle owners to state governments for the maintenance and development of public road infrastructure. Private non-commercial vehicles typically settle this via a one-time multi-year "Lifetime Tax", whereas commercial carriage transport profiles operate on structured quarterly, semi-annual, or annual taxation schedules.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Allowing your vehicle tax status to slide into arrears results in significant monthly compounding penalty additions. Furthermore, the Vahan database will restrict your vehicle from completing vital legal procedures—including fitness renewals, ownership title transfers, changing registration addresses, or resolving pending insurance protections—if an active tax debt balance exists.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Private Vehicles:</strong> Typically settled initially for a 15-year period upon delivery, requiring renewal increments alongside vehicle fitness reassessments after year 15.</li>
+                <li><strong>Commercial Transports:</strong> Tax payments must be cleared before the conclusion of the preceding tax validity window to completely avoid late processing assessment penalties.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Parameters (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the checklist targets to track what string elements you have prepared:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Vehicle Registration Index Plate Alphanumeric</strong>
+                        <span class="file-spec">Your precise vehicle license identifier plate sequence string.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Full Chassis Number (Last 5 Characters)</strong>
+                        <span class="file-spec">The final 5 characters stamped on your vehicle chassis structural body frame, needed to unlock database authorization fields.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Registration Certificate (RC) & Fitness Records</strong>
+                        <span class="file-spec">Required to verify engine sizing, fuel classification types, unladen weights, or seating metrics for exact tariff generation.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Ministry of Road Transport & Highways (MoRTH)</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📋</span> <span><strong>Clear Green Taxes If Applicable:</strong> Transport profiles exceeding designated operational years must settle auxiliary "Green Tax" environmental surcharges before the primary portal calculation engine will open up the standard road tax payment screens.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Profile Authentication</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan Taxation Portal** above, type in your vehicle registration number, and select proceed.</li>
+                        <li>From the top primary services navigation menu, choose **Pay Your Tax**.</li>
+                        <li>Provide the final 5 characters of your physical chassis identification string.</li>
+                        <li>Click **Generate OTP** to send a one-time validation token to the registered mobile number on record, then input the token to unlock access.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Tax Mode Selection & Computation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Review your recorded vehicular asset configurations, ensuring the tax calculation base matches your engine capacity or unladen weights.</li>
+                        <li>Under the tax computation panel drop-down, select your targeted processing timeline preference (e.g., Quarterly, Yearly, Lifetime).</li>
+                        <li>The Vahan automated computation matrix will parse your selections against state transport laws, rendering your principal due amount along with any late lapse penalty fees.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Checkout Ledger Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Confirm the summary totals and advance to the electronic state treasury checkout gate layout.</li>
+                        <li>Settle the dynamic dues via secure Netbanking, UPI networks, or Credit/Debit payment layouts.</li>
+                        <li>Do not exit or hit reload until the transaction handshake registers. Once successful, download the official system-generated payment receipt containing the central treasury tracking strings.</li>
+                        <li>The Vahan central database will instantly clear your transport record, reflecting updated tax coverage dates immediately.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Mismatched Base Class Metrics:</strong> Discrepancies between physical modifications made to a vehicle (like changing its freight storage box configurations or seating rows) and its original database classifications.</li>
+                <li><strong>State Transition Blocks:</strong> Attempting to clear standard local home tax forms online while your vehicle profile remains flagged for an incomplete inter-state migration check.</li>
+                <li><strong>Banking Synchronization Droppings:</strong> Sessions terminating midway through electronic government treasury gateway handshakes, locking accounts temporarily while the system is reconciling funds.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>What should you do if your payment was successfully deducted from your bank account, but the Vahan platform threw an error and didn't generate a receipt?</strong><br>Do not attempt to resubmit payment. To reconcile a stalled transaction, navigate back to the Vahan homepage, open the **Status** menu, and click **Check Transaction Status** or **Reverify Failed Transactions**. Input your transaction id sequence or registration number plate string. The platform will run an automated verification sweep against the state bank treasury, process the stuck record, and generate your printable digital receipt token.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Am I eligible for a road tax refund if I scrap my vehicle before its 15-year lifetime tax expires?</strong><br>A: Yes. If you legally dismantle your vehicle and cancel its registration card, you can submit an application to your local RTO for a prorated refund of your remaining lifetime road tax balance.</p>
+            <br>
+            <p><strong>Q: How can I pay road tax for an out-of-state vehicle entering a new state temporarily?</strong><br>A: For short-term transit across states, commercial carriers can use the **Checkpost Tax** option on the Parivahan portal. This lets you calculate and settle temporary border taxes online before entering the state line.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-rc-renewal.html" class="chip">Fitness Renewal Desk</a>
+                <a href="traffic-challan-payment.html" class="chip">Challan Payment Portal</a>
+                <a href="vehicle-rc-address-change.html" class="chip">RC Location Changes</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> State-level transport amendments, localized green taxes, and vehicle weight metrics cause road tax structures to vary widely across boundaries. Final tax clearance ledger rules are governed by your regional RTO desk.</p>
+
+    </div>
+
+</body>
+</html>

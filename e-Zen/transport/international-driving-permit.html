@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>International Driving Permit Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>International Driving Permit (IDP)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Regional Transport Office (Licensing Authority)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Sarathi Parivahan Ministry Gateway</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Statutory Fee</span>
+                    <strong>₹1000 fixed legal application tariff</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Permit Validity</span>
+                    <strong>1 Year from issue date or until DL expiry (whichever is earlier)</strong>
+                </div>
+            </div>
+
+            <a href="https://sarathi.parivahan.gov.in/" target="_blank" class="btn-portal">Open Sarathi Parivahan Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>An International Driving Permit (IDP) is an official legal translation document issued under the United Nations Convention regulations. It certifies that the holder possesses a valid domestic driving licence, allowing them to operate personal motor vehicles in foreign contracting countries without completing additional localized driving tests.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Most sovereign nations do not recognize stand-alone foreign domestic driving licences due to linguistic and structural formatting differences. An IDP breaks down your authorization credentials into multiple standardized international languages, which is required by foreign law enforcement agencies and international vehicle rental firms before authorizing road access.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Licence Status:</strong> The applicant must hold a valid Indian domestic driving licence that is active and free of any current legal suspensions, holds, or enforcement restrictions.</li>
+                <li><strong>Jurisdiction Alignment:</strong> The current residential address on your submitted identity documents must align with the licensing jurisdiction of your target processing RTO, unless utilizing fully digitized database validation profiles.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what parameters you have structured for upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Indian Passport & International Visa</strong>
+                        <span class="file-spec">Clear digital file copies of your passport data pages along with a valid visa or travel authorization for your destination country.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Confirmed Flight Tickets</strong>
+                        <span class="file-spec">A copy of your confirmed outward journey flight itinerary to establish travel timelines.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 1A Medical Certificate</strong>
+                        <span class="file-spec">Mandatory for all IDP requests regardless of age. Must be signed and certified by a registered government medical practitioner.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Domestic Driving Licence Card</strong>
+                        <span class="file-spec">High-contrast front and back scans of your current physical Indian smart card licence.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Ministry of Road Transport & Highways (MoRTH)</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🌍</span> <span><strong>No Country Restrictions:</strong> Recent MoRTH integration modifications have removed the requirement to select specific destination countries on the portal. A single IDP document is now issued with standardized cross-border multi-country compliance.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Verification & Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Open Sarathi Parivahan Portal</strong> above, select your State of origin, and navigate to **Apply for International Driving Permit (IDP)**.</li>
+                        <li>Enter your exact Driving Licence alphanumeric sequence string and your date of birth. Click **Get DL Details**.</li>
+                        <li>Verify your recorded legal identity fields, photograph asset, and vehicular class permissions.</li>
+                        <li>Confirm the transaction request criteria and proceed to the core registration layout interface panels.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Travel Details & Document Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Input your passport passport serial number tracking string, expiration dates, and planned departure calendar milestone metrics.</li>
+                        <li>Upload your compiled PDF assets containing your passport bio-pages, active visa files, and flight itinerary structures.</li>
+                        <li>Upload the official **Form 1A Medical Certificate** scanned layout, ensuring the physician's registration number seal is clearly visible.</li>
+                        <li>Upload a high-contrast passport photograph and a crisp digital image of your signature matching the required dimensions.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Checkout Fee Validation & Collection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Complete the ₹1000 application fee transaction via the integrated secure treasury gateway console.</li>
+                        <li>Download and save your printed digital payment confirmation slip and your completed Form 4A application summary.</li>
+                        <li>Aadhaar-authenticated applications are routed directly for digital verification. Traditional applications may require a quick drop-off of physical documents at your local RTO window.</li>
+                        <li>Once verified, your printed International Driving Permit booklet can be collected from the RTO counter or will be delivered to your address via post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unsigned Medical Forms:</strong> Uploading a Form 1A document that lacks the official physical stamp, signature, or medical council registration string of the certified physician.</li>
+                <li><strong>Expired Domestic Credentials:</strong> Attempting to generate an international permit while your domestic driving licence has less than a year of validity remaining or has already expired.</li>
+                <li><strong>Visa Status Discrepancies:</strong> Providing temporary tourism file codes or travel layouts that conflict with the primary identity fields listed on your passport.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>What should you do if your domestic driving licence contains an old address from another state, but you need to secure an IDP from your current city RTO before flying out?</strong><br>Do not submit a stand-alone IDP request, as it may be flagged for a jurisdictional address mismatch. Instead, you can run a combined transaction on the Parivahan portal. Select both **Change of Address** and **Issue of IDP** simultaneously. This updates your permanent files in the central system while routing your international permit request to your local RTO for immediate processing.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can an International Driving Permit booklet be renewed online from a foreign country if it expires while traveling?</strong><br>A: Yes. Recent MoRTH regulations permit citizens residing abroad to apply for an IDP renewal through the official Parivahan portal. Applications are verified digitally, and the RTO routes the permit to the relevant Indian Embassy abroad for collection.</p>
+            <br>
+            <p><strong>Q: Is an IDP legally valid for operating motor vehicles within India?</strong><br>A: No. An IDP is strictly an international travel translation document. For domestic road access within India, you must always carry and use your standard Indian domestic driving licence card.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="driving-licence.html" class="chip">New Driving Licence</a>
+                <a href="dl-renewal.html" class="chip">Licence Renewal</a>
+                <a href="dl-address-change.html" class="chip">Address Change</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> International driving allowances follow the provisions of the 1949 Geneva Convention. Drivers must follow the specific traffic laws and vehicle insurance mandates of their destination country.</p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Child Welfare Schemes Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Child Development & Safety Matrix</span>
+            <h1>Child Welfare Schemes</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Umbrella Framework</span>
+                    <strong>Mission Vatsalya (Protection) / Mission Poshan 2.0 (Nutrition)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Institutional Node</span>
+                    <strong>Anganwadi Network / Juvenile Justice Boards / CWC</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Key Operations</span>
+                    <strong>Sponsorship Grants, Immunization Sync, Supplementary Diet</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Emergency Helpline</span>
+                    <strong>Child Helpline Dashboard (Integrated 112 / 1098 Terminal)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.missionvatsalya.wcd.gov.in/" target="_blank" class="btn-portal">Open Mission Vatsalya Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Child Welfare framework coordinates national and regional development parameters across two core pillars: **Mission Poshan 2.0** (driving programmatic healthcare, early childhood education, and nutritional mappings for ages 0–6) and **Mission Vatsalya** (overseeing statutory protection layers, child care institutions, and direct monthly family sponsorship allocations for vulnerable or orphaned children).</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Welfare Tracks</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Integrated Child Development Services (ICDS):</strong> Foundational immunizations, periodic growth mapping, and early childhood education managed via local Anganwadis.</li>
+                <li style="margin-bottom: 8px;"><strong>Vatsalya Family Sponsorship Support:</strong> Monthly direct financial grants allocated to distressed or non-institutional family units to prevent child institutionalization and secure educational continuity.</li>
+                <li style="margin-bottom: 8px;"><strong>Juvenile Care and Protection Layouts:</strong> Emergency institutional restoration systems supervised by Child Welfare Committees (CWC) for children requiring immediate care and rehabilitation.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Verification Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap checklist trackers to monitor active paperwork readiness statuses:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Child Birth Registration Certificate</strong>
+                        <span class="file-spec">Official local municipal or panchayat ledger layout establishing legal age indices.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Profile / Child Baal Aadhaar Card</strong>
+                        <span class="file-spec">Biometric registry file linked directly to the parent or legal guardian's structural profile.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Anganwadi Tracker Record / Health Card</strong>
+                        <span class="file-spec">Proving current registration layout entries within the local Poshan Tracker application database.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income/Vulnerability Certificate (For Vatsalya Grants)</strong>
+                        <span class="file-spec">Revenue sheet confirming eligibility parameters for direct monthly institutional sponsorship funds.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Access & Integration Steps</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>Framework Matrix:</strong> Active 2026 Emergency Layout</span>
+                <span style="color: #5b21b6;"><strong>Child Crisis Desk:</strong> Direct routing via unified 112 emergency networks</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Local Network Onboarding</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Visit your neighborhood Anganwadi center to log the child’s growth parameters into the digital Poshan Tracker profile rows.</li>
+                        <li>For direct financial protection grants (Mission Vatsalya), applications are routed to the District Child Protection Unit (DCPU).</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Evaluation & Committee Screening</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The DCPU field inspector executes a localized home-study or background check to assess real vulnerability indicators.</li>
+                        <li>The completed profile maps straight to the Child Welfare Committee or dedicated district monitoring board.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Financial Clearance & Disbursal</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon official approval, monthly school maintenance or family preservation allowances clear directly to a joint bank account managed by the child's guardian.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Procedural Issues</h2>
+            <ul class="alert-list">
+                <li><strong>Poshan Data Gaps:</strong> Failing to periodically maintain updated growth or vaccination fields in the national Poshan tracker grid can stall supplementary nutrition claims.</li>
+                <li><strong>Fragmented Legal Guardianship Papers:</strong> Attempting to claim distress sponsorship grants without clear, legally certified custody or orphan registration files verified by a court or CWC.</li>
+                <li><strong>Dual-Sourcing Stipends:</strong> Applying for protection funding layers while already drawing structured financial education stipends from separate state labor or welfare boards.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Specialized Desks</h2>
+            <div class="chip-group">
+                <a href="womens-welfare.html" class="chip">Women's Welfare Schemes</a>
+                <a href="differently-abled-assistance.html" class="chip">Differently-Abled Assistance</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Direct monthly financial allowances, educational supply distributions, and nutritional kit variations track back to state-specific budget allotments and DCPU parameters.</p>
+
+    </div>
+
+</body>
+</html>

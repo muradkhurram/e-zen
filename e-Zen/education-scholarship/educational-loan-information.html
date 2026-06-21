@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educational Loan Financial Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #047857; /* Financial Green Palette */
+        }
+
+        .category-badge {
+            color: #047857;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #047857;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #f0fdf4;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #bbf7d0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #4b5563;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #065f46;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #047857;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(4,120,87,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #065f46;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #047857;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #047857;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #065f46;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #047857;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Financial Support Engine</span>
+            <h1>Educational Loan Support (PM-Vidyalaxmi)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Centralized Interface</span>
+                    <strong>Vidya Lakshmi Portal / Common Application</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Collateral Policy</span>
+                    <strong>No Collateral or Guarantor for Eligible Tier Loans</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Subvention Cover</span>
+                    <strong>Full or Partial Moratorium Subsidy via Income Caps</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Disbursement Route</span>
+                    <strong>Direct System Transfer to Institutional Accounts</strong>
+                </div>
+            </div>
+
+            <a href="https://www.vidyalakshmi.co.in/" target="_blank" class="btn-portal">Open Central Vidya Lakshmi Portal Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>PM-Vidyalaxmi</strong> and unified financial portal framework acts as India's centralized single-window dashboard for higher education financing. Through the standardized **Common Education Loan Application Form (CELAF)**, students can browse, compare, and apply directly to up to three banks simultaneously. This eliminates the need to submit separate physical documentation across multiple bank branches.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>National Credit Scheme Benchmarks</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Collateral Exemption:</strong> Loans under authorized public scheme tracks do not require asset collateral or external guarantors for student profiles matching top-tier QHEI listings.</li>
+                <li style="margin-bottom: 8px;"><strong>Interest Subsidy Tiers:</strong> Families with annual incomes up to ₹4.50 Lakh qualify for 100% interest subvention during the moratorium period. Families earning up to ₹8 Lakh receive a 3% targeted interest concession.</li>
+                <li style="margin-bottom: 8px;"><strong>Direct Institution Sync:</strong> To prevent fund leakage, approved loan allocations are paid out in stages directly to the university's finance registry based on formal demand letters.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Financial Dossier (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to complete your loan application file:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Official Admission Offer Letter</strong>
+                        <span class="file-spec">Must confirm your merit rank or seat allotment via standard entrance evaluations.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Institutional Fee Structure Schedule</strong>
+                        <span class="file-spec">An official, itemized list of tuition, hostel, and lab costs issued by your university.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income Certificate from State Authority</strong>
+                        <span class="file-spec">Required to determine your eligibility for interest subsidies and subvention tiers.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>KYC Ledger (Aadhaar & PAN Cards)</strong>
+                        <span class="file-spec">Mandatory identification documents for both the student applicant and the parent co-borrower.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Digital Application & Tracking Pipeline</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #047857; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #065f46;"><strong>Rate Cap Model:</strong> Lender EBLR + 0.5% Maximum Index</span>
+                <span style="color: #065f46;"><strong>Processing Method:</strong> Digital Straight-Through Processing (STP) Enabled</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Registration and Form Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Create an account on the central Vidya Lakshmi portal using verification codes sent to your mobile phone.</li>
+                        <li>Open the CELAF form and enter your personal, academic, and co-applicant financial profiles accurately.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Shortlisting Banks and Submitting Files</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Search and compare loan programs based on your required amount, interest rates, and loan terms.</li>
+                        <li>Select up to three preferred banking institutions and submit your digitized application form and documents simultaneously.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Digital Tracking and Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Track application updates via your portal dashboard using your unique Student ID string.</li>
+                        <li>Respond to bank requests for information on the portal, or visit the branch if you prefer offline validation.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Risks & Processing Delays</h2>
+            <ul class="alert-list">
+                <li><strong>Management Quota Exclusions:</strong> Academic seats secured through informal management channels instead of official merit lists are ineligible for standard scheme subventions.</li>
+                <li><strong>Co-Applicant Credit Discrepancies:</strong> Application holds due to poor credit histories or outstanding debts linked to your parent co-borrower's PAN profile.</li>
+                <li><strong>Inconsistent Expense Documentation:</strong> Mismatches between your requested loan amount and the itemized institutional fee schedule.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="equivalency-certificate.html" class="chip">Equivalency Certificate Desk</a>
+                <a href="transfer-certificate.html" class="chip">Transfer Certificate Desk</a>
+                <a href="student-registration.html" class="chip">Unified Student Registry</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Final loan approvals, individual credit evaluations, and specific interest adjustments are managed entirely by the respective lending institution's credit policy board.</p>
+
+    </div>
+
+</body>
+</html>

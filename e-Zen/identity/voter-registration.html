@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Registration Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity Services</span>
+            <h1>Voter Registration</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Election Commission of India (ECI)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Voters' Service Portal (NVSP)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>FREE (Fresh Registration)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>20 to 30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://voters.eci.gov.in/" target="_blank" class="btn-portal">Open Voters' Service Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Voter Registration is the formal process by which an eligible Indian citizen registers their legal residency parameters to be listed on the official electoral roll database. This results in the issuance of an Elector's Photo Identity Card (EPIC), commonly known as a Voter ID card, granting the constitutional right to cast votes in local, state, and national elections.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Beyond exercising your democratic voting rights, a Voter ID card is a powerful government-certified document verifying both identity and residential address. It is frequently requested during passport document verifications, court processes, property transactions, and SIM card purchases.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Age Criteria:</strong> Must be an Indian citizen who has completed 18 years of age on any of the qualifying registration cutoff dates set by the Election Commission.</li>
+                <li><strong>Residency:</strong> Must be an ordinary resident within the specific polling area of the Assembly Constituency where registration is requested.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered to scan and upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Passport Size Photograph</strong>
+                        <span class="file-spec">Recent passport-size color photograph against a light background (JPG/JPEG format under 2MB).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Age (Choose One)</strong>
+                        <span class="file-spec">Aadhaar Card, PAN Card, Birth Certificate, Driving Licence, or SSLC/10th Standard Certificate showing date of birth.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Ordinary Residence (Choose One)</strong>
+                        <span class="file-spec">Water, Electricity, or Gas Connection Bill, Passport, Bank Passbook, or a signed Registered Rent/Lease Agreement matching the target address.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Election Commission of India Digital Portal</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📍</span> <span><strong>Know Your Booth Details:</strong> Find out the name and number of your local polling booth or the Voter ID details of a family member living with you to make matching your assembly constituency number much faster.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Portal Registration & Profile Creation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Open Voters' Service Portal</strong> above to go to the official ECI portal.</li>
+                        <li>Click the <strong>Sign-Up</strong> button in the top corner. Enter your mobile number and email ID to complete registration via OTP.</li>
+                        <li>Log in using your verified mobile credentials and secure password setup.</li>
+                        <li>Locate and click on the card labeled **New Registration for General Electors**, which launches the electronic **Form 6**.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Filling Form 6 Fields</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select your state, district, and Assembly Constituency boundaries from the step-by-step dropdown menus.</li>
+                        <li>Type your full name and relative options accurately. *(The portal instantly converts your text into your regional language. Use the on-screen keyboard tool to fix any regional translation mistakes).*</li>
+                        <li>Input your complete date of birth and choose your document type verification from the list panel.</li>
+                        <li>Provide your current residential house number, street name, locality, post office, and PIN code.</li>
+                        <li>Upload your scanned passport photograph along with clear, legible copies of your chosen Age and Address proof documents.</li>
+                        <li>Fill out the legal Declaration section specifying how long you have lived at the target address. Submit your form.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Verification & EPIC Dispatch</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>On submission, the system generates a unique **Reference ID code** sent to your mobile phone via text. Use this code anytime to monitor progress on the portal's tracking panel.</li>
+                        <li>The system routes your digital profile packet down to your local Electoral Registration Officer (ERO).</li>
+                        <li>A Booth Level Officer (BLO) will visit your physical house address to verify your uploaded proofs against your original physical documents.</li>
+                        <li>Once approved, a unique EPIC number is generated. You can download an official digital **e-EPIC copy** instantly, while the physical smart card is printed and sent to your doorstep via India Post Speed Post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Blurry Selfies or Photo Scans:</strong> Uploading cropped snapshots or low-quality camera images rather than clean passport photographs can cause immediate data review rejections.</li>
+                <li><strong>Address Mismatch Errors:</strong> If the address you typed into Form 6 does not match your supporting document proof line-by-line, the application will fail field verification.</li>
+                <li><strong>Incomplete Family References:</strong> Failing to fill out the reference profile details for family members already registered at the same house can cause verifiers to flag the entry for extra checks.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is the regional language translation tool misspelling your name in Malayalam?</strong><br>Do not submit a form containing spelling errors in the local language section. Click the small keyboard icon next to the input field to open the on-screen phonetic layout tool. This allows you to manually correct characters and ensure your name prints perfectly on your final physical card.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I register my voter profile at two different addresses if I own multiple properties?</strong><br>A: No. Registering to vote at more than one place is a legal offense under the Representation of the People Act, 1950. You must only register at your primary place of residence.</p>
+            <br>
+            <p><strong>Q: How can I download my e-EPIC card file if my mobile number isn't linked to my registration?</strong><br>A: Log into the NVSP portal and submit a Form 8 application for an e-Roll update to link your active mobile phone line. Once verified, you can download your electronic PDF card securely via OTP validation.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="pan-apply.html" class="chip">PAN Application</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="voter-correction.html" class="chip">Voter Correction</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Application reviews, field verification queues, and card printing schedules follow operational timelines set by the Election Commission of India. Final card clearance is managed by your local Assembly Constituency registration office.</p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Concession Certificates Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transit Subventions</span>
+            <h1>Student Concession Certificates</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Transport Providers</span>
+                    <strong>Indian Railways (IR) / KSRTC State Transit / Local Transports</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Concession Range</span>
+                    <strong>50% to 75% standard fare reductions</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Verification Node</span>
+                    <strong>Institution Office Desk / Registrar Validation Smart Seal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Coverage Scope</span>
+                    <strong>Commuter Routes & Educational Travels</strong>
+                </div>
+            </div>
+
+            <a href="https://www.irctc.co.in/" target="_blank" class="btn-portal">Open Transit Booking Console ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>Student Concession Certificate</strong> desk issues the official, verified eligibility forms required to claim subsidized travel fares on public transit networks, including state transport buses and Indian Railways. These credentials verify your active enrollment status, mapping home-to-campus routes to lower the cost of daily commuting and academic travel.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Transport Framework Rules</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Route Restrictions:</strong> Concession profiles are locked strictly to the path between your verified residential address and the school or college campus. Deviating from this route will invalidate the document.</li>
+                <li style="margin-bottom: 8px;"><strong>Age Threshold Constraints:</strong> Fare discounts apply to students up to a specific age limit (generally up to 25 years for general tracks, with extensions allowed for research scholars).</li>
+                <li style="margin-bottom: 8px;"><strong>Season Ticket Cycle Limits:</strong> Bus and rail passes are issued in fixed monthly or quarterly blocks, and require updated institution status checks before you can purchase a renewal.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Enrollment Ledger (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to verify your concession packet layout:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Institutional Identity Card</strong>
+                        <span class="file-spec">Must display an active academic year stamp and a clear registration roll number.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Official Address Proof (Aadhaar / Nativity Sheet)</strong>
+                        <span class="file-spec">Used to confirm your base station coordinate and verify the transit path.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Standard Rail/KSRTC Form Printout</strong>
+                        <span class="file-spec">The network-specific application document that requires a signature from your campus principal.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Issuance Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Status:</strong> Active 2026 Transit Subvention Alignment</span>
+                <span style="color: #3b1775;"><strong>Usage Rule:</strong> Misuse or sharing profiles carries severe legal fines</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Route Selection and Form Setup</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Collect the required official concession form from your campus administrative desk or print the document from the transit provider's portal.</li>
+                        <li>Enter your travel details clearly, matching your home location with the institution's geographic node.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Administrative Authentication</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Submit the filled form and your student ID to the institutional verification window.</li>
+                        <li>The office staff verifies your attendance records and adds the principal's signature and the official school stamp to the document.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Ticket Counter Processing</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Present the stamped certificate at the transit provider's ticket window or booking terminal.</li>
+                        <li>Pay the reduced fare to secure your student season pass or discounted travel tickets.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejections & Compliance Pitfalls</h2>
+            <ul class="alert-list">
+                <li><strong>Mismatched Address Records:</strong> Applications are rejected when the home address on the concession form does not match the permanent location in the school's master directory.</li>
+                <li><strong>Using Expired Identification:</strong> Attempting to use a previous semester's ID card, which flags your account during route security checks.</li>
+                <li><strong>Unsanctioned Travel Dates:</strong> Attempting to use a standard commuter pass during long vacation periods or non-academic calendar stretches.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="student-registration.html" class="chip">Student Registration Desk</a>
+                <a href="nsp-scholarship.html" class="chip">NSP Scholarship Hub</a>
+                <a href="transfer-certificate.html" class="chip">Transfer Certificate Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Discount percentages, age extensions, and route validation rules are determined by individual transit operators and national transport ministries.</p>
+
+    </div>
+
+</body>
+</html>

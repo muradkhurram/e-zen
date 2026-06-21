@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Address Change in Driving Licence Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Address Change in Driving Licence</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Jurisdictional RTO (Target Location Area)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Sarathi Parivahan Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹200 application fee (+ ₹200 smart card layout fee)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15 to 20 Working Days</strong>
+                </div>
+            </div>
+
+            <a href="https://sarathi.parivahan.gov.in/" target="_blank" class="btn-portal">Open Sarathi Parivahan Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>An Address Change in a Driving Licence is the official process used to update your residential address in the national transport database. This ensures your vehicle record remains legally compliant under Section 49 of the Motor Vehicles Act when relocating either within a state or across state borders.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>By law, licence holders must notify the transport department of any residential address changes within 30 days. Keeping this information updated ensures that any official legal notices, traffic citations, or new physical smart cards are delivered to the correct address, and prevents insurance claims from being delayed due to address discrepancies.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Timing:</strong> The applicant must have already established physical residence at the new address and hold valid government-issued proof for that specific location.</li>
+                <li><strong>System Clearance:</strong> The driving licence card must be clean and free of active legal suspensions, judicial blocks, or unpaid traffic fines.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what parameters you have structured for upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Original Physical Driving Licence Card</strong>
+                        <span class="file-spec">Your existing smart card or booklet licence, which will be updated in the system.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid New Address Proof Document</strong>
+                        <span class="file-spec">An updated Aadhaar Card, Passport, Voter ID, or recent utility bill that clearly displays your new address.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>No Objection Certificate (NOC) (If Moving Across States)</strong>
+                        <span class="file-spec">Required only for inter-state transfers. An official clearance certificate issued by your previous parent RTO.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Parivahan MoRTH System Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>💡</span> <span><strong>Combine with Renewal:</strong> If your driving licence is due to expire within the year, you can save on fees by selecting both the **Change of Address** and **Renewal of DL** options on the portal to process them together.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Record Matching and Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Open Sarathi Parivahan Portal</strong> above, select your new State of residence, and choose **Services on DL**.</li>
+                        <li>Enter your exact Driving Licence alphanumeric string and date of birth. Click **Get DL Details**.</li>
+                        <li>Verify your recorded name, picture image, and vehicle class categories on the screen.</li>
+                        <li>Select the specific transaction checkbox labeled **Change of Address** and confirm.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Address Field Data Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select whether the change applies to your **Permanent Address**, **Present Address**, or **Both**.</li>
+                        <li>Carefully type in your new location metrics: State, District, Sub-District, Block, and PIN code string.</li>
+                        <li>Upload digital scans of your original licence card along with your updated address proof document.</li>
+                        <li>If transferring from another state, upload the electronic copy of your RTO No Objection Certificate (NOC).</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Fee Settlement and Approval</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Complete the application fee payment via the integrated secure treasury gateway console.</li>
+                        <li>Download and save the printed payment receipt containing your unique application transaction number.</li>
+                        <li>Aadhaar-linked contactless filings are routed directly to the new RTO dashboard for digital approval. Traditional filings may require dropping off physical documents at the RTO window.</li>
+                        <li>Once approved, the updated smart card is printed and mailed directly to your new home address.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Address Proof Mismatches:</strong> Uploading address proof documents where the name spelling or location details do not match the information entered on the application form.</li>
+                <li><strong>Missing Inter-State NOC:</strong> Attempting to transfer a licence from another state without obtaining and uploading a valid No Objection Certificate from the original issuing RTO.</li>
+                <li><strong>Unresolved Traffic Violations:</strong> Active traffic fines or pending court challans linked to your licence will block any address update requests.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Are you relocating across state borders and unable to find an online option to generate an NOC from your old RTO?</strong><br>Do not panic. You can apply for your NOC directly through the Parivahan portal. Before starting your address change application, select **Application for NOC** on the homepage. Enter your licence details, pay the nominal NOC fee, and select your new target RTO. Once the digital NOC is cleared and logged in the system, you can proceed with your address change application seamlessly.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Am I required to take a fresh driving test when moving my licence to a new state?</strong><br>A: No. Changing your address is a purely administrative update. Your existing driving privileges are transferred directly without requiring any practical driving tests.</p>
+            <br>
+            <p><strong>Q: Can I use a signed rent agreement as official proof of address for an RTO change?</strong><br>A: Yes, but it must be a legally registered rent agreement. Standard unnotarized or handwritten tenancy sheets are generally rejected by RTO verification systems.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="dl-duplicate.html" class="chip">Duplicate Licence</a>
+                <a href="dl-renewal.html" class="chip">Licence Renewal</a>
+                <a href="vehicle-rc.html" class="chip">Vehicle RC Address Change</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Address transfer criteria, valid proof categories, and processing fees follow rules set by state transport departments and the Motor Vehicles Act. Final approval remains with your local RTO desk.</p>
+
+    </div>
+
+</body>
+</html>

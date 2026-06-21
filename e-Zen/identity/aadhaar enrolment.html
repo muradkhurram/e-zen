@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aadhaar Enrolment Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,143,71,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Identity Services</span>
+            <h1>Aadhaar Enrolment</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>UIDAI (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>myAadhaar Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>FREE (Fresh Enrolment)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>Up to 90 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://appointments.uidai.gov.in/bookappointment.aspx" target="_blank" class="btn-portal">Book Appointment Online ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Aadhaar Enrolment is the official process to obtain a 12-digit unique random identification number issued by the Unique Identification Authority of India (UIDAI) based on an individual's biometric and demographic data details.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>It acts as a universally accepted proof of identity and residence across India. It is mandatory for linking bank accounts, filing income tax returns, accessing government welfare pensions, buying subsidized food via ration cards, and applying for student scholarships or state certificates.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Age Group:</strong> Open to all Indian residents including infants (Bal Aadhaar for children under 5 years).</li>
+                <li><strong>Resident Status:</strong> Any individual who has resided in India for a period or periods amounting to 182 days or more in the 12 months immediately preceding the date of application.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered to bring to the center:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Identity (POI)</strong>
+                        <span class="file-spec">Bring Original: Passport, Voter ID, PAN Card, Driving Licence, or SSLC Book.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Address (POA)</strong>
+                        <span class="file-spec">Bring Original: Ration Card, Electricity Bill, Water Bill, or Bank Passbook containing photo.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Relationship (POR) — For Children Only</strong>
+                        <span class="file-spec">Mandatory for minors: Birth Certificate along with parent's Aadhaar card.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Physical Document Policy</strong>
+                        <span class="file-spec">Photocopies are not accepted for biometric verification. Only original valid documents are scanned on-site.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> UIDAI Enrolment Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📍</span> <span><strong>Locate an Authorized Center:</strong> Locate your nearest Akshaya Center, permanent Aadhaar Seva Kendra, or authorized bank branch office before booking.</span>
+                    </li>
+                    <li style="margin-bottom: 0; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📝</span> <span><strong>Check Name Spellings:</strong> Verify that the spelling of your name matches identically across your POI and POA documents to prevent immediate processing cancellation.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Appointment Booking (Optional but Recommended)</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Book Appointment Online</strong> above to open the official UIDAI appointment scheduling platform.</li>
+                        <li>Select your city/location from the dropdown list and click <strong>Proceed to Book Appointment</strong>.</li>
+                        <li>Enter your mobile number and solve the security captcha code. Enter the verification OTP received.</li>
+                        <li>Choose the **New Aadhaar** option tab. Fill out your residential state, district, and preferred center location details.</li>
+                        <li>Input your personal details exactly as they appear on your physical documents.</li>
+                        <li>Select an available date and time slot block from the calendar grid screen.</li>
+                        <li>Print out the generated **Enrolment Slip Receipt** containing your appointment QR code details.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Visiting the Enrolment Center</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Arrive at the selected center 15 minutes prior to your time block or visit an Akshaya center directly.</li>
+                        <li>The operator will enter your data into the official secure UIDAI desktop client interface application.</li>
+                        <li><strong>Biometric Collection:</strong> The verification machine will capture high-resolution photos of your face, scan all ten fingerprints, and take an iris scan using specialized lens sensors.</li>
+                        <li>Review your demographic metrics displayed on the operator's secondary customer-facing safety screen before data compression submission.</li>
+                        <li>Collect your printed **Acknowledgement Slip** containing your 14-digit Enrolment ID (EID) reference numbers.</li>
+                    </ol>
+
+                    <div style="margin-top: 20px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
+                        <strong style="color: #1e293b; display: block; margin-bottom: 10px; font-size: 15px;">🏁 B. At the Center (What to Carry)</strong>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">📄 Printed Enrolment Form / Appointment Slip</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">🗂️ Original physical Proof of Identity (POI) document</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">🏠 Original physical Proof of Address (POA) document</li>
+                            <li style="margin-bottom: 0; font-size: 14px; color: #4a5568; display: flex; gap: 8px;">👶 Original Birth Certificate (if registering an infant under 5)</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Dispatch & Tracking Status</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Your data packet goes through centralized demographic cross-matching filtration to check against existing database accounts.</li>
+                        <li>You can track progress on myAadhaar by entering the 14-digit EID and timestamp printed on your receipt slip.</li>
+                        <li>Once the confirmation tracking updates to "Generated", you can immediately download an electronic **e-Aadhaar PDF copy** using phone OTP verification.</li>
+                        <li>The official physical printed letter will be delivered via India Post Speed Post routing straight to your home address limits.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Biometric Quality Failures:</strong> Poor print scans for manual laborers or elderly citizens can trigger automated core data processing drops. Request standard manual exception marking indicators on-screen if scans continue failing.</li>
+                <li><strong>Data Duplication Flags:</strong> Attempting a fresh enrolment if you were already registered years ago will result in a hard database rejection rejection. If your card was lost, look up your original reference details instead of starting over.</li>
+                <li><strong>Name & Document Variance:</strong> Slight spelling mismatches across structural boundary guidelines between your Identity documents and Address documents.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Lost your original Acknowledgement Slip or forgot your Enrolment ID reference numbers?</strong><br>Do not register for a new card. Go to the myAadhaar webpage and select the **Retrieve EID/UID** tools module. By providing your exact registered name spelling and phone number, the secure system core will text your original 14-digit identification index values back to your handset terminal directly.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Are private operators or agents legally authorized to charge for a new fresh enrolment card card?</strong><br>A: No. Initial fresh card generation registration is entirely **FREE** across India. Only subsequent custom biometric or address metadata updates incur standardized regulatory portal service fees.</p>
+            <br>
+            <p><strong>Q: Does a newborn baby require specialized fingerprint capture steps?</strong><br>A: No. Children under 5 years old (Bal Aadhaar) do not have stable fingerprint or iris patterns. Only their facial photograph is captured, and the profile remains linked directly to a parent's identification index until they complete mandatory update steps at age 5.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="pan-apply.html" class="chip">PAN Application</a>
+                <a href="voter-registration.html" class="chip">Voter Registration</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong> Disclaimer:</strong> All registration rules, verification tracking codes, and document requirements adhere to structural UIDAI regulations. Final administrative approval belongs exclusively to the central security processing grid portal desk.</p>
+
+    </div>
+
+</body>
+</html>

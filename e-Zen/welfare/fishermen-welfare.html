@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fishermen Welfare Schemes Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Coastal & Allied Sector Support</span>
+            <h1>Fishermen Welfare Schemes</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Administrative Authority</span>
+                    <strong>Directorate of Fisheries / Matsyaboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Programs</span>
+                    <strong>PMMSY / Lean Season Relief / Allied Insurance</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Key Assistance Types</span>
+                    <strong>Subsidy on Gear, Trawling Ban Saving, Housing Grants</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Verification Node</span>
+                    <strong>Fisheries Village Extension Officer (FVEO)</strong>
+                </div>
+            </div>
+
+            <a href="https://pmmsy.dof.gov.in/" target="_blank" class="btn-portal">Open PMMSY National Dashboard ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Fishermen Welfare module unifies critical central frameworks like the <strong>Pradhan Mantri Matsya Sampada Yojana (PMMSY)</strong> with regional State Fishermen Welfare Fund Boards (Matsyaboard). It delivers essential livelihood security, safety-at-sea monitoring tools, subsidized boat mechanization components, and liquid savings relief during seasonal trawling ban intervals.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Primary Benefits & Allowances</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Livelihood & Nutritional Support:</strong> Direct funding match distributed during active fishing ban/lean months. Registered beneficiaries contribute a small monthly sum, matched by central and state shares, to provide a lump sum safety cushion.</li>
+                <li style="margin-bottom: 8px;"><strong>Fleet Mechanization Subsidies:</strong> 40% to 60% direct cost subventions for procurement of outboard motors, specialized deep-sea fishing nets, and safety tracking transponders.</li>
+                <li style="margin-bottom: 8px;"><strong>Group Accident Insurance Scheme:</strong> Complete premium-free risk coverage providing financial compensation up to ₹5 Lakhs for death or permanent disability incurred during active sea routing operations.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap target checkmarks to verify active documentation filing layouts:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Matsyaboard Registration / Fishermen Biometric ID Card</strong>
+                        <span class="file-spec">Official active biometric smart card issued by the regional Department of Fisheries database.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Vessel Registration Data (If Applicable)</strong>
+                        <span class="file-spec">Valid license log showing ReALCraft database numbers confirming vessel tracking certification records.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Profile & Seeded Passbook Leaf</strong>
+                        <span class="file-spec">Required to authenticate and complete automatic seasonal DBT distribution cycles cleanly.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Traditional Fisherman Certificate</strong>
+                        <span class="file-spec">Issued by your village officer or local fisheries unit inspector confirming reliance on allied traditional methods.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Onboarding & Disbursement Steps</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Timeline:</strong> 2026 Operational Directives</span>
+                <span style="color: #5b21b6;"><strong>Audit Path:</strong> Verification records managed by District Fisheries Desk</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Fishermen Board Registry Check</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log into your State Fisheries management portal or visit your regional Fisheries Village Extension Office.</li>
+                        <li>Verify that your unique biometric identification row or Matsyaboard contribution account remains active and continuous.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Lean Relief / Subsidy Claim Logging</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select the targeted welfare service branch (e.g., Lean Season Savings Relief or Navigation Equipment Grant).</li>
+                        <li>Upload highly legible scans of your biometric ID sheet, vessel license registry numbers, and active bank details.</li>
+                        <li>Secure your file submission to generate an application acknowledgment string.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Inspector Review & Payout</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The Local Fisheries Inspector checks files against physical coastal ward logs to prevent dual-claim setups.</li>
+                        <li>Approved allocations drop directly through the centralized direct benefit network lines into your verified bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Procedural Blocks & Failures</h2>
+            <ul class="alert-list">
+                <li><strong>Contribution Discontinuity:</strong> Forfeiting or missing the required matching monthly savings contributions breaks the validation string for lean season relief.</li>
+                <li><strong>Unlicensed Boat Deployments:</strong> Submitting equipment subsidy claims linked to vessels that lack a valid, active license on the ReALCraft registry.</li>
+                <li><strong>Mismatched Identity Metadata:</strong> Slight spelling or naming variations across your traditional fisherman status certificate, biometric ID card, and core Aadhaar fields.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Platforms</h2>
+            <div class="chip-group">
+                <a href="labour-welfare.html" class="chip">Labour Welfare Benefits</a>
+                <a href="agricultural-welfare.html" class="chip">Agricultural Welfare</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Seasonal assistance limits, safety kit components, and infrastructure grants vary across physical coastal sectors. Final authorizations track back to the regional social directorate of fisheries.</p>
+
+    </div>
+
+</body>
+</html>

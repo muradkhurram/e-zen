@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for Duplicate RC Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Duplicate Registration Certificate (RC)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Original Registering RTO Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Portal Access</span>
+                    <strong>Vahan Parivahan Services Hub</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Standard Processing Fee</span>
+                    <strong>₹150 (Two-Wheelers) | ₹300 (Light Motor Vehicles)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Turnaround Window</span>
+                    <strong>15 to 20 Business Days via Registered Post</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan RC Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A Duplicate Registration Certificate (RC) is an official re-issuance of a vehicle's legal identity document. It is issued by the Regional Transport Office (RTO) when the original physical RC smart card or booklet has been permanently lost, stolen, destroyed, or completely mutilated beyond recognition.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Driving or parking a vehicle on public property without a valid, verifiable Registration Certificate is a serious violation under the Motor Vehicles Act. A duplicate card is legally required to complete any future vehicle interactions, such as transferring ownership title records, securing or updating vehicle insurance policies, or passing a fitness track renewal inspection.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Valid Grounds for Application</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Lost/Stolen:</strong> Requires a formal Police Report string logged with local law enforcement.</li>
+                <li style="margin-bottom: 8px;"><strong>Mutilated/Torn:</strong> The physical remains of the original card must be surrendered to the RTO desk.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Paperwork Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the targets below to track your document preparation steps:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 26 (Duplicate RC Application)</strong>
+                        <span class="file-spec">The primary legal application sheet, pre-filled online and signed by the owner.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Police Lost Report / Missing Article Certificate</strong>
+                        <span class="file-spec">An official police report containing the vehicle's specific registration plate number string.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Insurance Cover Note & PUCC</strong>
+                        <span class="file-spec">Active vehicle liability insurance policy and unexpired emissions verification ticket.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Chassis Pencil Impression Sheet</strong>
+                        <span class="file-spec">A clean paper strip tracing the distinct structural alphanumeric chassis sequence from the vehicle frame.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Bank NOC (If Under Hypothecation)</strong>
+                        <span class="file-spec">A No Objection Certificate from your financier bank if the vehicle has an active loan status block.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Ministry of Road Transport & Highways (MoRTH)</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Portal Entry & Fee Checkout</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan RC Portal** above, choose your state jurisdiction, and input your vehicle registration code string.</li>
+                        <li>Select **Apply for Duplicate RC** from the service menu links.</li>
+                        <li>Provide the final 5 characters of your physical chassis identification string to verify your profile identity.</li>
+                        <li>Fill in the reason for application (Lost or Mutilated), input the Police Report reference number, and complete the standard fee checkout process. Download your system-generated Form 26 receipt sheet.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Paperwork Submission at the RTO</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Collect your signed **Form 26**, the police report copy, active insurance records, and your fresh physical chassis pencil rub sheet.</li>
+                        <li>Visit your original registering RTO branch office desk to submit the physical document folder. <em>(Note: Some modern states offer a completely paperless, Aadhaar-verified upload process that skips the in-person RTO visit entirely.)</em></li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Database Verification & Delivery</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The transport officer reviews your physical and digital documents against the master vehicle registry rows.</li>
+                        <li>Once approved, the RTO database logs an updated tracking status and initiates production of a new smart card.</li>
+                        <li>The fresh Duplicate Registration Certificate smart card is printed and securely delivered to your registered home address via speed post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Missing Bank Loan Approvals:</strong> Attempting to bypass a financier's signature or failing to provide a bank NOC when the vehicle profile has an active loan hypothecation block.</li>
+                <li><strong>Mismatched Police Report Details:</strong> Errors or typos in the vehicle registration number or chassis character sequences within the police lost document text field.</li>
+                <li><strong>Outstanding Vehicle Citations:</strong> Unpaid camera speed violations or active traffic challans pending against your license plate identifier in the database.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>What should you do if your original physical RC card is badly damaged or mutilated, but you do not have a police report?</strong><br>A police report is only required if the card is completely lost or stolen. If you still have the damaged smart card, select **Mutilated** as your primary reason on the Vahan portal interface. You can skip the police reporting step entirely, but you must surrender the physical pieces of your old card at the RTO desk when submitting your Form 26 application folder.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Will the duplicate card contain a different vehicle registration number?</strong><br>A: No. The duplicate RC is an exact administrative replica of your original certificate. It retains your original registration number string, asset parameters, and validity expiration timeline boundaries.</p>
+            <br>
+            <p><strong>Q: Can I apply for a duplicate RC at an RTO in a different state if I am currently traveling?</strong><br>A: No. A duplicate RC application must be filed within the jurisdiction of the specific RTO where the vehicle is currently registered in the database.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-rc-transfer.html" class="chip">RC Ownership Transfer</a>
+                <a href="vehicle-rc-address-change.html" class="chip">Change of Address</a>
+                <a href="traffic-challan-payment.html" class="chip">Challan Clearing Portal</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Processing fees, hypothecation parameters, and paperless filing features depend directly on individual state transport board configurations. Final approval is governed by your local RTO desk.</p>
+
+    </div>
+
+</body>
+</html>

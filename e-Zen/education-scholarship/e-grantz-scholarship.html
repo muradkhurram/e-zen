@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Grantz Scholarship Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Education & Scholarships</span>
+            <h1>E-Grantz Portal Desk</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Nodal Authority</span>
+                    <strong>Backward Classes Development / SC-ST Welfare Dept.</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Group</span>
+                    <strong>SC, ST, OBC, OEC, and Socially Backward Communities</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Funding Scope</span>
+                    <strong>Lump-sum Grants, Stipends, and Complete Fee Reversals</strong>
+                </div>
+                <div class="meta-item">
+                    <span>System Track</span>
+                    <strong>Direct State Welfare DBT Ledger Sync</strong>
+                </div>
+            </div>
+
+            <a href="https://egrantz.kerala.gov.in/" target="_blank" class="btn-portal">Open State E-Grantz Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>E-Grantz Scholarship</strong> architecture is an integrated centralized system that provides post-matric educational assistance to students from marginalized communities. Operating through real-time verification modules, it ensures direct bank disbursal of tuition fees, non-refundable examination costs, boarding allowances, and pocket stipends for degree, diploma, and technical courses.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Program Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>SC / ST / OEC Categories:</strong> Eligible for complete concession benefits and monthly stipends with <strong>no annual income cap constraints</strong>.</li>
+                <li style="margin-bottom: 8px;"><strong>OBC & General-EWS Categories:</strong> Eligible for specified fee concessions subject to strict state income thresholds (generally under <strong>本地 parameter rows e.g., ₹1 Lakh</strong> for regular degree sets).</li>
+                <li style="margin-bottom: 8px;"><strong>Admission Route:</strong> Must have secured entry via approved merit lists or general government allocation streams (seats inside self-financing college management blocks are strictly evaluated).</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Validation Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap target checkmarks to verify folder configuration parameters:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Verified Caste & Domicile Document</strong>
+                        <span class="file-spec">Digital revenue certificate validating social category and community row.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Current Income Sheet</strong>
+                        <span class="file-spec">Required for OBC/EWS streams to establish income limits. Must be valid for the ongoing financial period.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Allotment Memo & College Fee Balance Slip</strong>
+                        <span class="file-spec">Document confirming institution admission date, allocation row, and verified fee criteria.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Link Verification String</strong>
+                        <span class="file-spec">NPCI mapping confirmation for the candidate's core savings account.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application & Processing Flow</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Status:</strong> Active 2026 Academic Session Sync</span>
+                <span style="color: #3b1775;"><strong>Verification Channel:</strong> Institute INO ➔ Directorate Desk Clear</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: One-Time Profile Sync</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Complete your unified registration using your Aadhaar credentials (see Student Registration page).</li>
+                        <li>Log in to the E-Grantz module and map your current institution code along with your exact course admission track.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: College Office Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The campus clerk or Institute Nodal Officer (INO) checks your allotment logs against your digital uploads.</li>
+                        <li>The college signs off on attendance records and pushes the fee structure upward to the welfare board.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Sanction and Fee Release</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The District Welfare Directorate cross-checks the institutional flags and issues a formal sanction number.</li>
+                        <li>Tuition elements route to the college bank account, while personal monthly stipends route to the student’s ledger.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Triggers & Blind Spots</h2>
+            <ul class="alert-list">
+                <li><strong>NPCI Seeding Dropouts:</strong> The transaction fails at the state ledger stage because the student's bank account is not properly mapped on the Aadhaar mapper hub.</li>
+                <li><strong>Course Re-Admission Missteps:</strong> Changing courses midway or moving to a different college without filing an official transfer update on the E-Grantz portal, halting subsequent releases.</li>
+                <li><strong>Incorrect Fee Category Input:</strong> Selecting a "Free Seat" label instead of a "Payment/Merit" descriptor, creating an itemization mismatch inside the college validation queue.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Specialized Desks</h2>
+            <div class="chip-group">
+                <a href="student-registration.html" class="chip">Student Registration Desk</a>
+                <a href="post-matric-scholarship.html" class="chip">Post-Matric Scholarship</a>
+                <a href="higher-education-incentives.html" class="chip">Higher Ed Incentives</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Concession rates, allowance categories, and approval windows match active guidelines enforced by the state welfare directorates.</p>
+
+    </div>
+
+</body>
+</html>

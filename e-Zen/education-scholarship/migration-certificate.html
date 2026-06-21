@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Migration Certificate Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Board & University Migration</span>
+            <h1>Migration Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Body</span>
+                    <strong>Affiliated University Registry / State Education Board</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Functional Intent</span>
+                    <strong>Enables Jurisdictional Transfer to External Boards</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Critical Dependent</span>
+                    <strong>Previously Issued Institutional Transfer Certificate (TC)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Platform Interface</span>
+                    <strong>University Digital Certificate Portal / Fast-Track Portal</strong>
+                </div>
+            </div>
+
+            <a href="https://www.keralauniversity.ac.in/" target="_blank" class="btn-portal">Open Central University Certificate Desk ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A <strong>Migration Certificate</strong> is an official security document issued directly by a central university board or secondary education authority. It formally releases a student's academic profile from that specific institution's jurisdiction, allowing them to enroll in a different university or state board without tracking conflicts. This document is essential for any student transitioning across distinct regional education systems.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core System Framework Constraints</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Registration Interlocking Rule:</strong> Once a migration certificate is issued, your active registration number with the originating university is permanently closed. You cannot sit for subsequent examinations under that board unless you complete a formal re-registration process.</li>
+                <li style="margin-bottom: 8px;"><strong>TC Linkage:</strong> You must secure your school or college-level Transfer Certificate (TC) before applying for a Migration Certificate, as the TC serial number acts as a mandatory tracking key on the portal.</li>
+                <li style="margin-bottom: 8px;"><strong>Fast-Track Provision:</strong> Most university portals include an express application tier that skips standard processing queues to deliver certificates within 24 to 48 hours for urgent enrollment deadlines.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Select target checkmarks to verify folder files before submitting:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Attested Copy of Institutional Transfer Certificate (TC)</strong>
+                        <span class="file-spec">Clear digital upload showing the stamp of your previous institution.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Final Terminal Semester Marksheet / Degree Certificate</strong>
+                        <span class="file-spec">Proves academic clearance and formal completion of your course work.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>University Registration Card</strong>
+                        <span class="file-spec">The original card displaying your permanent institutional roll string.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Digital Fee Challan Payment Print</strong>
+                        <span class="file-spec">Receipt showing payment of standard or fast-track migration processing fees.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application & Delivery Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Timeline:</strong> Active 2026 Central Board Sync</span>
+                <span style="color: #3b1775;"><strong>Delivery System:</strong> Speed Post Tracking / Secure Digital Download Vault</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Verification of University Profile</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log onto your central university certificate sub-domain and create an application tracking row.</li>
+                        <li>Input your permanent register number and upload scanned copies of your TC and final marksheet strings.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Fee Clearing and Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select your preferred delivery tier (Standard Processing vs. Urgent/Fast-Track) and complete the secure payment checkout.</li>
+                        <li>The university application engine runs automated checks to confirm all terminal exam records are clear.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Dispatch & Tracking Logs</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Once approved, the registry generates your certificate. Digital copies are pushed straight to your profile vault, while physical certificates are sent via registered Speed Post.</li>
+                        <li>Copy the generated postal tracking number from your dashboard to monitor shipping progress.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Procedural Obstacles & Failures</h2>
+            <ul class="alert-list">
+                <li><strong>Premature Application Filing:</strong> Applying before semester results are fully published, which can lead to processing errors or system holds.</li>
+                <li><strong>Registration ID Typos:</strong> Inputting a flawed registration code string that prevents the system from matching your file with the master student directory.</li>
+                <li><strong>Incomplete Address Fields:</strong> Providing an invalid or incomplete mailing address, causing physical certificates to be returned to the university registry.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="transfer-certificate.html" class="chip">Transfer Certificate Desk</a>
+                <a href="examination-results.html" class="chip">Examination Results Hub</a>
+                <a href="student-registration.html" class="chip">Student Registration Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Migration processing frameworks, registration cancellation boundaries, and dispatch calendars correspond strictly to guidelines issued by the university syndicate board.</p>
+
+    </div>
+
+</body>
+</html>

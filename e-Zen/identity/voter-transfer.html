@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voter Transfer Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity Services</span>
+            <h1>Voter ID Transfer</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Election Commission of India (ECI)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Voters' Service Portal (NVSP)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>FREE (Constituency Shifting)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15 to 30 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://voters.eci.gov.in/" target="_blank" class="btn-portal">Open Voters' Service Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Voter ID Transfer is the structural administrative procedure to move your registered electoral voting entry from your old residential location to your new home address. Handled digitally using **Form 8**, this workflow updates your voting location to your new polling station booth while seamlessly maintaining your original 10-character EPIC card identity profile sequence.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>By constitutional law, you can only hold a voter listing at your current actual place of residence. Transferring your voter profile is required when shifting houses permanently—whether moving to another street down the block or moving across states—ensuring you are legally registered to vote in your new neighborhood's local and state elections.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Existing Registered Voters:</strong> You must already possess a valid Voter ID (EPIC) card profile registered somewhere within India.</li>
+                <li><strong>Change of Residence:</strong> You must have physically relocated your home address base, either within the same assembly constituency boundary or to an entirely different constituency.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered to scan and upload:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Existing Card Metrics</strong>
+                        <span class="file-spec">Your 10-character alphanumeric EPIC card number (found directly on the face of your current card).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of New Residence (Choose One)</strong>
+                        <span class="file-spec">Water, Electricity, or Gas Connection Bill, Passport, Bank Passbook, or a registered Rent/Lease Agreement matching the new address.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Photograph (If needed)</strong>
+                        <span class="file-spec">A crisp passport-size color photograph against a plain white background (JPEG format under 2MB) if your current card photo is outdated.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Election Commission of India Electoral Operations Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🔒</span> <span><strong>Do Not Apply for a New Card:</strong> Never fill out a fresh Form 6 for a transfer. This creates illegal double-registration flags. Always submit Form 8 to safely migrate your existing record.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Access & Objective Selection</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Open Voters' Service Portal</strong> above to open the official ECI portal.</li>
+                        <li>Log in using your verified mobile number and password, or quickly complete the OTP registration step if visiting for the first time.</li>
+                        <li>Click on the card options labeled <strong>Shifted to other place / Correction of entries in existing electoral roll</strong> (**Form 8**).</li>
+                        <li>Select **Self**, enter your alphanumeric EPIC card number, and submit to verify your current live profile record.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Filling Out Form 8 Shifting Modules</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>A popup selection window will display. Choose the application reason: **Shifting of Residence**.</li>
+                        <li>Select your relocation classification: **Within Assembly Constituency** (if moving nearby) or **Outside Assembly Constituency** (if shifting to a different district or state boundary).</li>
+                        <li>Type in your new residential parameters: house number, street name, locality, post office, and PIN code.</li>
+                        <li>Upload a high-resolution, legible scan or photo of your new residence address proof document. Keep file sizes under 2MB.</li>
+                        <li>Complete the simple text security captcha validation grid and click **Preview and Submit**.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Automated Cancellation & New Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Save the unique **Reference ID string code** that appears on your confirmation window to track the status of your application.</li>
+                        <li>The system automatically alerts your old constituency desk to flag your entry for removal once the transfer is finalized.</li>
+                        <li>A local Booth Level Officer (BLO) tied to your *new* neighborhood will perform a quick field visit to confirm your residency proof.</li>
+                        <li>Once the review updates to approved, your old voter listing is purged, your profile updates, and a fresh physical smart card is mailed straight to your new doorstep via Speed Post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>No Family Linkages Provided:</strong> When moving to a family member's household, failing to input the active Voter ID numbers of the family members already registered at that specific address can stall verification checks.</li>
+                <li><strong>Uploading Unregistered Agreements:</strong> Uploading basic handwritten room receipts or unnotarized rental agreements that fail to meet legal verification standards as residential proofs.</li>
+                <li><strong>Incomplete Boundary Parameters:</strong> Typing local street identifiers into the incorrect block boxes, which routes your application packet to the wrong assembly constituency office.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Are you unable to track your transfer application because your original transaction token receipt code was lost?</strong><br>Do not submit a duplicate transfer request. Go to the NVSP homepage, open the **Search in Electoral Roll** utility tool, and type in your standard EPIC card index. The system will pull up your real-time entry status and show you whether your record is still processing or has successfully migrated to your new polling booth location.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Will my original Voter ID identification card number change after a transfer process is finalized?</strong><br>A: No. Your core 10-character alphanumeric EPIC number is tied to you for life. Only your internal database mapping (such as your constituency name, assembly number, and polling booth station location) changes.</p>
+            <br>
+            <p><strong>Q: Can I complete a voter transfer if I am relocating to another state for a temporary college program?</strong><br>A: You can choose to transfer your registration if you consider your college address your ordinary place of residence. If you choose to do so, you must upload your official hostel allocation document or a student residency certificate as your primary proof of address.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="voter-registration.html" class="chip">Voter Registration</a>
+                <a href="voter-correction.html" class="chip">Voter ID Correction</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All processing queues, booth allocations, and document acceptance guidelines operate in strict accordance with current Election Commission of India rules. Final approval belongs exclusively to your new local constituency registration office desk.</p>
+
+    </div>
+
+</body>
+</html>

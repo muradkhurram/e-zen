@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KSEB New Connection - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #0b7339;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #14532d;
+        }
+
+        .header-card h1 {
+            color: #14532d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(20,83,45,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #0b7339;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #14532d;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #14532d;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #14532d;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Utility Services</span>
+            <h1>KSEB New Connection</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Kerala State Electricity Board (KSEB)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>KSEB Web Self Service Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>Varies by load & category (Estimates provided online)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>5–15 Days (Post-feasibility check)</strong>
+                </div>
+            </div>
+
+            <a href="https://wss.kseb.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This service allows property owners, tenants, or commercial entities to apply for a fresh, legal electricity supply connection directly from the state power grid. The platform manages the entire workflow from initial documentation to site verification and final digital payment setup.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Whether commissioning a newly built domestic house, opening a retail commercial store, or setting up a temporary construction site, getting standard metered power requires administrative clearance. Registering online sets up transparent processing, tracks queue placement, and ensures compliance with Kerala State Electricity Regulatory Commission codes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Ownership / Occupancy</strong>
+                        <span class="file-spec">Latest Land Tax Receipt, Possession Certificate, or registered Lease Deed</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Identity Proof</strong>
+                        <span class="file-spec">Aadhaar Card, Voters ID, Passport, or PAN Card of the applicant</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Building Completion Certificate / Number Certificate</strong>
+                        <span class="file-spec">Issued by the local Municipality, Corporation, or Grama Panchayat</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 21 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> KSEB Supply Code Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Determine Load Requirements:</strong> Compute your total internal appliance wattage to decide whether you need a Single Phase or Three Phase setup.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Wiring Scheme:</strong> Ensure a certified electrical contractor has successfully completed the internal wiring and issued a test certificate.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Profile Creation & Application Input</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the main KSEB Web Self Service interface page.</li>
+                        <li>Click "New Connection Application" and create a portal identity linked to your mobile phone.</li>
+                        <li>Select the target geographical Section Office and choose your Tariff Code (e.g., LT-1A for domestic residences).</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Technical Mapping & Uploads</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Input specific data including connected load in Watts, building numbers, and adjacent consumer numbers for grid referencing.</li>
+                        <li>Upload digital scans of ownership documents, identification certificates, and internal layout maps in PDF form.</li>
+                        <li>Submit the layout draft and pay the minimal initial document registration fee via the secure payment portal.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Inspection & Meter Installation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>An assistant engineer from your local section conducts a site feasibility check to evaluate line or post distances.</li>
+                        <li>Pay the formal security deposit and service connection charges generated after inspection approval.</li>
+                        <li>The service line is drawn and the physical metered connection is activated by the technical crew.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Arrears on Property Plot:</strong> Connection blocks occurring if the target land plot has unpaid bills left over from a previous tenant or building structure.</li>
+                <li><strong>Encroachment Zone Conflicts:</strong> Rejections if the construction falls under disputed property lines or stays too close to existing high-voltage grid corridors.</li>
+                <li><strong>Incomplete Wiring Certifications:</strong> Failure to provide a valid safety certification test report signed by a licensed electrical wireman.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Distance to nearest distribution post exceeds 30 meters?</strong> If the line draw exceeds normal lengths, the system automatically adds standard post extension or structure charges to your estimate breakdown sheet.</p>
+            <br>
+            <p><strong>Application status stuck on "Feasibility Pending"?</strong> This typically means the regional inspection team faces local logistics backlog. Use your portal application token ID to trigger an update ping to the sub-engineer.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I apply for a power meter connection without a building number?</strong><br>A: Yes. You can get a temporary or special provisional card code line connection by submitting an authorized ownership declaration alongside local body land documents.</p>
+            <br>
+            <p><strong>Q: What is the normal timeline for meter installations after settling final charges?</strong><br>A: Once all fees and compliance parameters clear, crews normally mount and wire physical meters within five working days under standard grid conditions.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">Consumer Number Search</a>
+                <a href="#" class="chip">Connected Load Mutation</a>
+                <a href="#" class="chip">Ownership Transfer Name Change</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> This guide is for informational purposes based on standard Civil Supplies procedures. Always verify portal requirements before final submission.</p>
+
+    </div>
+
+</body>
+</html>

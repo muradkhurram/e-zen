@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Certificate Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #115e59;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0f766e;
+        }
+
+        .header-card h1 {
+            color: #0f766e;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0f766e;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,143,71,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0f766e;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0f766e;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0f766e;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Revenue Services</span>
+            <h1>Income Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Revenue Department (Kerala)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>e-District Kerala</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹15 (Direct) | ₹30 (Akshaya Center)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>3 to 7 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://edistrict.kerala.gov.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2> What is this?</h2>
+            <p>An Income Certificate is an official statement issued by the Revenue Department that certifies the combined annual income of a citizen's entire family from all known legal sources.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>It is mandatory for obtaining fee concessions in educational institutions, securing state or central scholarships (like E-Grantz), securing social welfare pensions, and validating eligibility for medical aid or housing schemes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Resident Status:</strong> Must be a permanent resident of Kerala.</li>
+                <li><strong>Family Scope:</strong> Income calculations include the applicant, parents, dependent siblings, or spouse living in the same household unit.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card</strong>
+                        <span class="file-spec">Mandatory identification reference.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Ration Card</strong>
+                        <span class="file-spec">Used to verify family member list and household category.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income Proof</strong>
+                        <span class="file-spec">Salary Certificate (for salaried employees) OR Income IT return statement OR a self-declaration statement for daily wage earners.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Land/Property Tax Receipt</strong>
+                        <span class="file-spec">Required to ensure agricultural earnings match official holdings.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Scanned Document Constraints</strong>
+                        <span class="file-spec">PDF format only, file size must be strictly under 100KB per document.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Kerala IT Mission Portal Directions</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Scan documents to PDF:</strong> Do not upload photos; documents must be scanned as clear PDFs under 100KB.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Check your Village:</strong> Ensure you select the exact local Revenue Village where your residential property sits.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Account Registration</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Go to Official Portal</strong> above to open e-District Kerala.</li>
+                        <li>Click on <strong>Portal User Registration</strong> if you do not have an account.</li>
+                        <li>Provide your Name, Aadhaar number, Date of Birth, and choose a unique User ID and Password.</li>
+                        <li>Verify your account using the OTP sent to your Aadhaar-registered mobile phone. Log into the workspace.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Form Submission & Payment</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>On your user dashboard, click on <strong>Apply for a Certificate</strong>.</li>
+                        <li>Select <strong>Revenue Department</strong> from the drop-down list and choose <strong>Income Certificate</strong>.</li>
+                        <li>Fill in the Applicant Profile. Select your District, Taluk, and specific Revenue Village accurately.</li>
+                        <li>Select the purpose of your certificate (e.g., Educational, General Purpose).</li>
+                        <li>Input your family details and claim your total annual income amount.</li>
+                        <li>Upload your scanned PDFs (Ration Card, Salary Certificate, Aadhaar) under the attachment prompts.</li>
+                        <li>Click **Submit** to view the integrated e-treasury screen. Pay the fee of ₹15 using UPI, Netbanking, or Debit card. Download your transaction slip.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Downloading Your Approved Certificate</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The application routes directly to your local Village Officer (VO) for verification.</li>
+                        <li>Once verified and digitally signed by the VO, you will receive an SMS confirmation.</li>
+                        <li>Log back into the e-District portal, go to **Transaction History**, and click **Download Certificate**.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Incorrect Village Selection:</strong> Choosing a neighboring village or municipal limit instead of your exact Revenue Village layout causes field verification to fail.</li>
+                <li><strong>Omission of Salary Details:</strong> Government or organized sector employees claiming "agriculture/coolie" income without attaching an official Form 16 or Salary Slip will be flagged and rejected.</li>
+                <li><strong>Legibility/Format Issues:</strong> Uploading image files (JPG) converted crudely or blurry PDFs over 100KB which cannot be read by the verification desk.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Payment status shows "Pending" or funds left bank account without confirmation?</strong><br>Do not submit a second payment immediately. Log out of e-District, wait approximately 45 minutes, log back into your user dashboard, access **Payment History**, and click **Refresh Status** to manually sync the e-Treasury server ledger.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What is the validity period of an Income Certificate in Kerala?</strong><br>A: An Income Certificate issued via the e-District platform is officially valid for **one year** from its date of issuance.</p>
+            <br>
+            <p><strong>Q: Can married individuals use their parent's income?</strong><br>A: For general eligibility or employment, a married person's family unit consists of their spouse and dependent children rather than their parents.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="community-cert.html" class="chip">Community Certificate</a>
+                <a href="caste-cert.html" class="chip">Caste Certificate</a>
+                <a href="non-creamy.html" class="chip">Non-Creamy Layer Certificate</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All fee rules, processing timelines, and document structural configurations are matched with current Kerala Revenue Department mandates. Final authority sits exclusively with the verifying desk.</p>
+
+    </div>
+
+</body>
+</html>

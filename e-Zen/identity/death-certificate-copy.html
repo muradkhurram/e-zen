@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Death Certificate Copy Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Civil Registration Services</span>
+            <h1>Death Certificate Copy Extraction</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Local Municipal Corporation / Sevana Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>State e-District / Local Government Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹20 to ₹50 statutory government copy fee</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>Instant Download (Digitally Signed PDF)</strong>
+                </div>
+            </div>
+
+            <a href="https://lsgkerala.gov.in/en/sevana" target="_blank" class="btn-portal">Search Local Government Registry ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A Death Certificate Copy extraction is the digital query and download framework used to retrieve a certified, legally compliant duplication of an existing death entry from the state's centralized database. Modern extractions issue a securely encoded PDF copy embedded with a live verification QR tracking grid.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Original paper certificates are prone to physical wear or may be submitted permanently to government desks during asset liquidations. Extracting an official digitally signed duplicate copy provides a ready legal asset whenever needed for closing financial accounts, resolving property titles, or managing survivor benefit allocations.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Registered Profiles:</strong> The passing event must have been formally registered by the local authority and committed to the electronic database infrastructure.</li>
+                <li><strong>Authorized Callers:</strong> Immediate family members, legal heirs, executors, or authorized legal representatives holding valid identifiers.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what search reference tokens you have prepared:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Deceased's Key Search Metrics</strong>
+                        <span class="file-spec">The exact date of the demise, complete legal name spelling, and the institutional hospital or location name.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Parents' / Spouse Profile Names</strong>
+                        <span class="file-spec">Full names of the parents or spouse as logged during the initial registration entry phase.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Applicant ID & Relationship Proof (For Counter Requests)</strong>
+                        <span class="file-spec">Your Aadhaar card or legal heir certificate copy if requesting physical extraction at a government counter.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> State IT Mission Civil Portal Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🔍</span> <span><strong>Utilize Broad Query Fields:</strong> If you don't know the exact historical registration number, state portals offer advanced filtering. You can locate an entry using only the exact date of death, gender, and hospital ward location filters.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Digital Database Query Mapping</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Search Local Government Registry</strong> above to launch the secure state data server.</li>
+                        <li>Select the target regional parameters: District, Institution Type (e.g., Corporation), and Local Unit Name.</li>
+                        <li>Input the exact date coordinates of death and select the deceased's biological sex. Click **Search Record**.</li>
+                        <li>Scan the generated data table results. Match and verify the unique Registration Number along with the structural parentage strings.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Fee Gateway Checkout</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click the **Apply for Certificate Copy** link placed adjacent to your verified data block row.</li>
+                        <li>Enter the applicant's current mobile contact number and select the administrative purpose for the copy extraction request.</li>
+                        <li>Proceed to the online treasury gateway module and complete the statutory transaction (typically ₹20-₹50) via UPI or digital banking.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Secure PDF File Generation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon payment validation, the system automatically pulls the record block and builds your certified file.</li>
+                        <li>Download the high-resolution, certified PDF document directly to your device storage.</li>
+                        <li>The copy features a cryptographically secure digital signature and tracking barcode, rendering it legally equivalent to a traditional physical certificate across all public and private offices.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Legacy Record Index Missing:</strong> Historical events registered before 1970–2000 may not be fully digitized. Online queries for these older entries will return an error, requiring a manual lookup through the physical registry office logbooks.</li>
+                <li><strong>Hospital Boundary Misplacement:</strong> Mapping the search parameters to a town municipality center when the medical facility geographically sat across the road boundary within a rural panchayat zone.</li>
+                <li><strong>Name Search Truncations:</strong> Querying using long familial strings when the initial death entry was logged under an abbreviated variant or strict initials.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your online database search failing to return any matching entries for a registered institutional demise?</strong><br>Do not panic. Slight spelling variations in the deceased's name are common in digital entry archives. Try expanding your search by leaving the name filters entirely blank. Input *only* the exact date of death, gender, and the specific hospital location. This will display all passings logged at that facility on that calendar day, allowing you to easily pinpoint your target entry.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Does a digitally downloaded copy require an ink signature or a physical office stamp to be accepted for bank account closures?</strong><br>A: No. Under the Information Technology Act, 2000, digitally signed documents containing a verifiable QR code are fully legally binding and valid across all public and private financial institutions without manual stamps.</p>
+            <br>
+            <p><strong>Q: How can I pull a certificate duplicate copy if the historical logbook records remain offline?</strong><br>A: You must physically visit the local governance center where the passing was originally registered. Submit a manual application sheet, specify the exact historical date coordinates, pay the archival lookup fee, and the staff will generate a fresh certified duplicate paper copy directly from the logbooks.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="death-registration.html" class="chip">New Death Registration</a>
+                <a href="birth-certificate-copy.html" class="chip">Birth Certificate Copy</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Electronic database synchronization pipelines are maintained by state IT civil registration departments. Final document record availability is subject to local body infrastructure constraints.</p>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Fitness Certificate & RC Renewal Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Vehicle Fitness & RC Renewal</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Testing Authority</span>
+                    <strong>Regional Transport Office (RTO) / Testing Station</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Vahan Parivahan Core Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹600 - ₹1000 private (Commercial structures vary by weight)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Extension Terms</span>
+                    <strong>Private RC: 5 Years | Commercial Fitness: 1 to 2 Years</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan Validation Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Vehicle Fitness Certification and Registration Certificate (RC) Renewal are dual statutory safety measures mandated under the Motor Vehicles Act. Private personal vehicles must process an RC renewal milestone exactly at their **15th operational year**, while commercial carriage transit platforms undergo recurring **Fitness tests (Form 38)** throughout their active lifetimes to guarantee road worthiness environmental parameters.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Operating a motorized vehicle on public roads with an expired fitness status or lapsed registration index triggers steep police enforcement fines or immediate vehicle impoundment. Legally, any third-party or comprehensive motor insurance policy drops validity entirely if a claim is submitted while the primary vehicle fitness documentation is lapsed.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Private Vehicles:</strong> Eligible for application exactly 60 days prior to the completion of the initial 15-year registration term. Approved updates extend validity in 5-year blocks.</li>
+                <li><strong>Commercial Transport:</strong> Required annually for vehicles exceeding 8 years of age, or every 2 years for newer commercial assets.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Vehicle Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the targets to verify what physical parameters you have prepared for the inspection bay:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Original Physical Registration Certificate (RC)</strong>
+                        <span class="file-spec">Your current physical smart card or paper registry booklet documentation.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 25 (Private Renewal) / Form 22A (Fitness)</strong>
+                        <span class="file-spec">The primary statutory notice sheets, automatically generated and pre-filled during online filing.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid Pollution Under Control Certificate (PUCC)</strong>
+                        <span class="file-spec">Unexpired green emissions verification ticket from an authorized testing kiosk.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Insurance Policy Cover note</strong>
+                        <span class="file-spec">Scans matching the current timeline framework to confirm structural liability coverage.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Physical Chassis Pencil Impression Strip</strong>
+                        <span class="file-spec">A manual paper rub tracing the precise structural chassis alphanumeric sequence plate from the vehicle frame.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Ministry of Road Transport & Highways (MoRTH)</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Portal Filing and Fee Mapping</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan Validation Engine** above, select your location state registry, and type in your vehicle registration plate number string.</li>
+                        <li>From the digital services dashboard, choose **Renewal of Registration** (for private cars/bikes) or **Application for Fitness Certificate** (for commercial vehicles).</li>
+                        <li>Input the final 5 digits of your vehicle chassis number structure to unlock corresponding ledger rows.</li>
+                        <li>Settle the dynamic processing fees and any calculated late lapse penalty tariffs via the integrated secure e-treasury checkout. Print your dynamic application summary page and payment receipt.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Scheduling & Mechanical Preparation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Book an inspection slot window at your preferred localized automated RTO testing track.</li>
+                        <li><strong>Critical Mechanical Checklist:</strong> Ensure your high-security registration plates (HSRP) are mounted, all electrical indicator wiring functions properly, tires show legal tread spacing, body panels are clean of rust, and brake mechanics drop deceleration metrics instantly.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: RTO Track Inspection & Smart Card Dispatch</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Drive your vehicle asset directly into the RTO inspection bay at your chosen time slot. Present your compiled documentation folder alongside your physical chassis pencil rub paper strip.</li>
+                        <li>The motor vehicle inspector tests your engine output numbers, lighting alignment configurations, and mechanical steering fields.</li>
+                        <li>Once the inspector records a "Pass" log onto the digital Vahan network dashboard, your master record block updates with a fresh 5-year extension boundary.</li>
+                        <li>Your newly generated physical Registration Certificate smart card finishes production and is dispatched to your permanent residence via registered post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unpaid Traffic Challans:</strong> Active, unresolved traffic speed fines or enforcement citations flagged against your plate code string will lock the Vahan platform, completely freezing fitness applications until settled.</li>
+                <li><strong>Non-Standard License Plates:</strong> Presenting a vehicle with custom, stylized, or handwritten registration plates. Vehicles must have official High-Security Registration Plates (HSRP) mounted to pass inspection.</li>
+                <li><strong>Structural Rust or Modifications:</strong> Deep body rust patches, custom non-authorized exhaust pipes, or unnoted color alterations that vary from your original registration records.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Did your vehicle fail the practical physical fitness test on the RTO track due to a mechanical issue?</strong><br>Do not start a new application from scratch. Portal regulations grant you a **14-day re-test window** to fix any noted mechanical failures. Take the vehicle to a workshop, resolve the mechanical issues (such as fixing brake lines or indicators), and log back into Vahan to book a re-inspection slot under your existing transaction file string. Re-testing within this window allows you to complete verification without losing your primary application fees.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What is the statutory age limit after which a private vehicle can no longer extend its RC renewal?</strong><br>A: There is no strict historical age ceiling in the central Motor Vehicles Act, provided the vehicle passes structural fitness inspections and emission benchmarks. However, green taxes increase with each consecutive 5-year block, and specific regional zones may enforce environmental scrap timelines (e.g., National Capital Region vehicle bans).</p>
+            <br>
+            <p><strong>Q: Can I complete a fitness certificate renewal at an RTO outside my vehicle's original registration district?</strong><br>A: Yes, you can process the physical inspection at any authorized testing station within your state. However, if moving long-term across state borders, you must first complete an official Change of Address transaction using an RTO No Objection Certificate (NOC).</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-tax-payment.html" class="chip">Pay Road Taxes</a>
+                <a href="traffic-challan-payment.html" class="chip">Challan Clearing Desk</a>
+                <a href="vehicle-rc-address-change.html" class="chip">RC Address Change</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Fitness assessment metrics, localized green tax structures, and inspection scheduling setups are subject to state transport authority amendments. Final vehicle approval rests with your regional RTO testing desk.</p>
+
+    </div>
+
+</body>
+</html>

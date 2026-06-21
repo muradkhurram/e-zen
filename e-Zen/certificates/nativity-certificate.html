@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nativity Certificate Desk - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+                }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Domicile Entitlements</span>
+            <h1>Nativity Certificate</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Tahsildar / Competent Revenue Office Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Intent</span>
+                    <strong>Proves Permanent Regional Origin or Domicile Ties</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Validity Profile</span>
+                    <strong>Permanent / Non-Expiring (Unless details are modified)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Verification Base</span>
+                    <strong>Birth Records and Multi-Year School History Sheets</strong>
+                </div>
+            </div>
+
+            <a href="https://edistrict.kerala.gov.in/" target="_blank" class="btn-portal">Open State e-District Portal Engine ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A <strong>Nativity Certificate</strong> (also referred to as a Domicile Certificate in several jurisdictions) is a permanent legal document proving that an individual belongs to a specific state by birth or long-term ancestry. It is required to claim domicile quotas in state college admissions (such as single-window **CAP** lines), qualify for regional government jobs, or access state-sponsored higher education scholarships.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Legal Guidelines</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>The Domicile Benchmark:</strong> Qualification requires either proving you were born in the state or showing continuous residency for a specific minimum period (typically 5 to 10 years, depending on state policy).</li>
+                <li style="margin-bottom: 8px;"><strong>Permanent Document Status:</strong> Unlike a temporary residence certificate, a nativity certificate remains valid indefinitely, as your place of birth or origin does not change.</li>
+                <li style="margin-bottom: 8px;"><strong>Education Continuity Checks:</strong> If your birth certificate was registered outside the state, you must submit consecutive school study certificates to prove you completed your education within the state borders.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Origin Documentation (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Check off items to verify your nativity file preparation state:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Official Birth Certificate</strong>
+                        <span class="file-spec">Primary legal document confirming the date, location, and registry details of your birth.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>School Admission Register Extract or SSLC Book</strong>
+                        <span class="file-spec">Must confirm your place of birth or verify multiple years of study within the state.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Parent's Nativity Proof or Land Deed Copy</strong>
+                        <span class="file-spec">Required for complex verification tracks to establish family ancestral roots.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application & Verification Process</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Protocol:</strong> Active 2026 Central Domicile Tracking</span>
+                <span style="color: #3b1775;"><strong>Output Format:</strong> Secure PDF with Verification String</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Profile Initialization & Document Upload</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access your central e-District portal and select the Nativity Certificate application link.</li>
+                        <li>Provide your birth coordinates, enter your educational history timelines, and upload your supporting document scans.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Administrative Review & Record Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The application routes to your local sub-district revenue office or Tahsildar console for evaluation.</li>
+                        <li>The reviewing officer checks your school registry timelines or birth certificates against the state's historical identity database.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Secure Certification Issuance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Once cleared, the Tahsildar adds an authorized electronic signature block to generate the official document.</li>
+                        <li>Download the validated nativity certificate file from your profile dashboard for immediate academic or professional use.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Critical Obstacles & Disqualifications</h2>
+            <ul class="alert-list">
+                <li><strong>Out-of-State Birth Registry Complications:</strong> Being born outside the state requires submitting additional educational records to prove you meet the minimum continuous residency threshold.</li>
+                <li><strong>Illegible Institutional School Stamps:</strong> Scanned study certificates that lack clear institutional registration numbers or official signatures can be flagged for review.</li>
+                <li><strong>Conflicting Address Data:</strong> Significant address differences between your active identity cards and your family's ancestral land titles.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Academic Desks</h2>
+            <div class="chip-group">
+                <a href="residence-certificate.html" class="chip">Residence Certificate Desk</a>
+                <a href="college-admission.html" class="chip">College Admission Guidance</a>
+                <a href="community-certificate.html" class="chip">Community Certificate Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Domicile guidelines, continuous residency year calculations, and processing priorities comply with active state-specific Right to Service (RTS) legislation.</p>
+
+    </div>
+
+</body>
+</html>

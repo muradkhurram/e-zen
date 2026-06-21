@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minority Scholarship Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Education & Scholarships</span>
+            <h1>Minority Scholarship Desk</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Nodal Ministry</span>
+                    <strong>Ministry of Minority Affairs (MoMA)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Entities</span>
+                    <strong>Muslims, Christians, Sikhs, Buddhists, Parsis, & Jains</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Tracks</span>
+                    <strong>Pre-Matric, Post-Matric, & Merit-cum-Means Professional Systems</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Data Platform</span>
+                    <strong>National Scholarship Portal (NSP) Core Registry</strong>
+                </div>
+            </div>
+
+            <a href="https://scholarships.gov.in/" target="_blank" class="btn-portal">Open Minority Scholarship Registry ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>Minority Scholarship</strong> system consolidates targeted financial support pipelines allocated exclusively to notified minority communities. Ranging from baseline school grants to advanced **Merit-cum-Means (MCM)** funding layouts for technical and professional programs (such as Engineering, Medicine, and Management), these schemes aim to expand equity in high-tier professional employment indexes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Strict Program Framework Constraints</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>The Academic Cutoff Rule:</strong> Applicants must have secured at least <strong>50% marks</strong> in their final previous board or school term assessment.</li>
+                <li style="margin-bottom: 8px;"><strong>Household Income Boundary:</strong> Varies by tracking type: Under <strong>₹1 Lakh</strong> for Pre-Matric, under <strong>₹2 Lakhs</strong> for Post-Matric, and strictly capped at <strong>₹2.5 Lakhs</strong> for specialized Merit-cum-Means tracks.</li>
+                <li style="margin-bottom: 8px;"><strong>Gender-Based Allocation:</strong> 30% of entire program budget resources are structurally ringfenced for minority female applicants.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap target checkmarks to monitor dynamic paperwork collection states:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Self-Certified Community Declaration</strong>
+                        <span class="file-spec">Signed declaration layout confirming minority identity status (Official state certificate required for certain regions).</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Institutional Admission Verification</strong>
+                        <span class="file-spec">Current term fee logs alongside a valid institutional bonafide print.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Authorized Income Sheet</strong>
+                        <span class="file-spec">Revenue department certificate confirming compliance with the required income cap.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Profile Sync Documentation</strong>
+                        <span class="file-spec">Biometric parameters must line up exactly with matching institute admissions data text strings.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Portal Integration Flow</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Timeline:</strong> 2026 active ministry cycle</span>
+                <span style="color: #3b1775;"><strong>Verification Protocol:</strong> Bio-authentication checks for institutional nodes</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Selecting the MoMA Stream</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log onto the central NSP interface and complete the baseline user profile authentication.</li>
+                        <li>Navigate to the Ministry of Minority Affairs dropdown grid and select the specific tier (Pre-Matric / Post-Matric / MCM) matching your status.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Institutional Verification Check</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The application moves to your school or college portal interface.</li>
+                        <li>The Nodal Officer uses registered bio-authentication devices to sign off on your academic status and marksheet data.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: State Merit List Generation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Because these schemes operate under strict state-level caps, the ministry runs a comparative evaluation to generate a final merit list.</li>
+                        <li>Selected files clear automatically to the PFMS ledger layer for direct account distribution.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Procedural Blocks & Failures</h2>
+            <ul class="alert-list">
+                <li><strong>The 50% Hard Barrier:</strong> Rejections occur if previous final exam marks fall even slightly below the 50% threshold (not applicable for Class 1 admission entries).</li>
+                <li><strong>Community Selection Drift:</strong> Discrepancies between the community declared on your portal profile and the documentation provided to the campus check desk.</li>
+                <li><strong>Exceeding State Allocation Caps:</strong> Meeting all baseline conditions but missing the final selection list because your score fell below the competitive cutoff for your state's demographic slot.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Specialized Desks</h2>
+            <div class="chip-group">
+                <a href="pre-matric-scholarship.html" class="chip">Pre-Matric Desk</a>
+                <a href="post-matric-scholarship.html" class="chip">Post-Matric Desk</a>
+                <a href="higher-education-incentives.html" class="chip">Higher Ed Incentives</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Specific scholarship award metrics, merit listing weights, and timeline horizons match matching parameters updated directly by the Ministry of Minority Affairs.</p>
+
+    </div>
+
+</body>
+</html>

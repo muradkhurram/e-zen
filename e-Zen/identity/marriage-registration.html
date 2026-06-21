@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marriage Registration Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Civil Registration Services</span>
+            <h1>Marriage Registration</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Registration Acts</span>
+                    <strong>Compulsory Marriage Act / Special Marriage Act</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Filing Jurisdiction</span>
+                    <strong>Local Body Office (Where Ceremony or Residence Occurred)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹100 - ₹200 (Standard statutory filing tariffs)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>7 - 15 Days (Local Act) | 30 Days Notice (Special Act)</strong>
+                </div>
+            </div>
+
+            <a href="https://crsorgi.gov.in/" target="_blank" class="btn-portal">Access Civil Registration Gateway ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Marriage Registration is the official process that records a marital union within government archives. Regulated by state-specific Compulsory Registration of Marriages rules or central legal structures like the Hindu Marriage Act, 1955 and Special Marriage Act, 1954, it translates a social or religious ceremony into an legally recognized status.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>A formal marriage registration provides joint legal security for both spouses. It acts as primary structural proof for downstream administrative workflows, including marital status updates on passports, spouse visa applications for international relocation, joint banking, insurance inheritance clauses, and family court protection processes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Age Minimums:</strong> The groom must have completed a minimum of 21 years of age, and the bride must have completed 18 years of age at the time of the wedding.</li>
+                <li><strong>Jurisdictional Link:</strong> The application must be filed with the local registrar holding authority over the specific geographical area where the marriage ceremony took place, or where either spouse has resided for at least six continuous months.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the check boxes to track what materials you have finalized for your appointment:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Age and Identity Proofs of Both Spouses</strong>
+                        <span class="file-spec">Clear photocopies of Aadhaar Cards, Passports, or Matriculation Certificates to verify exact birth timelines and identity strings.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Ceremony Validation Proof (For Customary Marriages)</strong>
+                        <span class="file-spec">A certificate issued by the religious authority, place of worship, or community hall where the wedding was solemnized, along with a formal wedding invitation card.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Joint Photographs and Witness Identifiers</strong>
+                        <span class="file-spec">Three recent passport-sized joint photographs, a wide-angle photo of the ceremony, and ID credentials for three distinct witnesses who attended.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Department of Local Self-Government Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📋</span> <span><strong>Verify Name Strings Before Filing:</strong> Ensure that the spellings of both spouses' names and their parents' names match exactly across all submitted documents. Minor textual differences can cause data holds during live verification.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Form Lodging & Uploads</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access your regional state government or local municipal self-government portal and select the **Marriage Registration** module.</li>
+                        <li>Fill out the data sheet fields, specifying the exact date of marriage, location details, witness details, and parentage fields.</li>
+                        <li>Upload digital scans of your age proofs, identity sheets, joint wedding photographs, and religious solemnization certificates.</li>
+                        <li>Submit the online form layout, complete the statutory processing fee payment via the integrated portal gateway, and print the generated application acknowledgment slip with its scheduled slot time.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Live Registrar Verification Day</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Both spouses must physically attend the designated local body registration desk or Sub-Registrar Office together at their scheduled time slot.</li>
+                        <li>Bring all original checklist documents, printed copy layouts of the online submission, and your self-attested photocopies.</li>
+                        <li>Your three witnesses must also attend the desk in person, carrying their original government identity cards to authenticate their signatures on the registry ledger.</li>
+                        <li>The Registrar reviews the physical assets against the online portal logs and verifies that the age parameters and residency requirements are fully compliant.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Database Commit & Certificate Issuance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Once the Registrar signs off on the entry, the marital record is committed to the official state civil archives database.</li>
+                        <li>A unique Marriage Registration Number is generated and assigned to the couple's folder index.</li>
+                        <li>The system compiles an official digitally signed Marriage Certificate copy, which is made available for immediate secure download or handed over physically at the local office counter.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Mismatches in Witness Identity Sheets:</strong> Bringing witnesses whose physical presence or original identity credentials do not match the pre-logged details submitted in the online portal.</li>
+                <li><strong>Exceeding State Timelines Without Late Approvals:</strong> Many states mandate registration within 45 to 90 days of the ceremony. Filing outside this window requires additional delay fines and executive approval from senior local authorities.</li>
+                <li><strong>Unverifiable Solemnization Documents:</strong> Submitting wedding venue receipts or local certificates that lack official seals, clear serial tracking tags, or authorized signatures.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Are you unable to secure an official certificate from a religious institution because of an inter-faith or entirely secular wedding ceremony?</strong><br>Do not attempt to follow the standard religious registration pathway. Instead, you must register under the **Special Marriage Act, 1954**. This track does not require a religious solemnization slip. Instead, you file an online intention notice, which remains active on the office notice board for 30 days. If no legal objections are raised during this period, the marriage is directly solemnized and logged by the Sub-Registrar.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Is it legally mandatory for a bride to update her surname to her husband's family name before filing a registration application?</strong><br>A: No. A bride can legally retain her original pre-marriage maiden name on the registry profile. The certificate will document her identity according to her submitted age credentials without requiring any name changes.</p>
+            <br>
+            <p><strong>Q: Can NRI citizens register their marriage through standard local registration portals?</strong><br>A: Yes. If the marriage ceremony takes place within India, an NRI can register locally by providing their valid passport copies alongside standard local residential address proofs for verification.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="marriage-certificate-copy.html" class="chip">Get Certificate Copy</a>
+                <a href="passport-application.html" class="chip">Passport Update Desk</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Surname Update</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Registration criteria, processing schedules, and witness rules conform to state-specific marriage registration laws and central acts. Final certificate clearance remains with the local body Registrar.</p>
+
+    </div>
+
+</body>
+</html>

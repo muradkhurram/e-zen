@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Family Benefit Scheme (NFBS) Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Security Nets</span>
+            <h1>Family Benefit Assistance (NFBS)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>National Umbrella</span>
+                    <strong>National Social Assistance Programme (NSAP)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Assistance Package</span>
+                    <strong>Lump-sum cash compensation grant of ₹20,000</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Group</span>
+                    <strong>BPL Households enduring loss of primary breadwinner</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Disbursal Channel</span>
+                    <strong>Direct Benefit Transfer (DBT) via electronic state ledger</strong>
+                </div>
+            </div>
+
+            <a href="https://nsap.nic.in/" target="_blank" class="btn-portal">Open National NSAP Dashboard ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>National Family Benefit Scheme (NFBS)</strong> operates as a critical component of the National Social Assistance Programme. It provides a timely financial cushion to distressed, economically weaker families below the poverty line following the death of their primary breadwinner. The scheme delivers a one-time lump-sum rehabilitation grant to mitigate sudden income shocks.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Strict Eligibility Criteria</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The deceased person must have been the designated <strong>primary breadwinner</strong> whose earnings structurally sustained the household unit.</li>
+                <li style="margin-bottom: 8px;">The death must have occurred while the primary earner was between <strong>18 and 59 years of age</strong>.</li>
+                <li style="margin-bottom: 8px;">The applicant family must be registered below the poverty line (BPL) within municipal or panchayat database tracking grids.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Proof Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap targets to track current agrarian filing paperwork preparation states:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Official Death Certificate</strong>
+                        <span class="file-spec">Issued by a municipal, panchayat, or medical officer registry establishing the precise death timeline.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Age Proof of the Deceased</strong>
+                        <span class="file-spec">Aadhaar card, school file, or institutional certificate verifying that the death fell within the 18–59 age bracket.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Valid BPL Ration Card / SECC Data Reference</strong>
+                        <span class="file-spec">Proving household economic status within verified lower socio-economic lines.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Relationship Certificate / Family Composition Log</strong>
+                        <span class="file-spec">Issued by the village revenue officer confirming the applicant's status as surviving family head.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application & Claim Processing Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Timeline:</strong> 2026 Core Registration Module</span>
+                <span style="color: #5b21b6;"><strong>Claim Limitation:</strong> Must be filed typically within 6-12 months of demise</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Claim Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>File the application through the national NSAP portal or submit a physical dossier to the local Block Development Officer (BDO) or Municipality desk.</li>
+                        <li>Attach the verified death registry strings, BPL index numbers, and Aadhaar links of the surviving head.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Local Revenue Verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The application routes to the Village Extension Officer or Revenue Inspector for field verification.</li>
+                        <li>The official verifies that the deceased was indeed the primary earner and confirms the family's economic status.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Sanction and Direct Transfer</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The District Social Welfare Officer reviews the verification reports and logs the approval flag.</li>
+                        <li>The ₹20,000 lump-sum grant is cleared via the Public Financial Management System (PFMS) directly into the applicant's Aadhaar-seeded bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Procedural Blocks & Failures</h2>
+            <ul class="alert-list">
+                <li><strong>Age Window Exclusions:</strong> Demise occurring outside the mandatory age parameters (e.g., if the deceased was 60 or above, the claim is rejected and must route via regular old-age/widow pension paths instead).</li>
+                <li><strong>Filing Beyond Grace Periods:</strong> Submitting claims after the state-defined deadline following the primary breadwinner's death.</li>
+                <li><strong>APL Status Identifiers:</strong> Family records shifting into non-priority or APL brackets within the computerized civil supplies database.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Platforms</h2>
+            <div class="chip-group">
+                <a href="senior-citizen-services.html" class="chip">Senior Citizen Services</a>
+                <a href="widow-pension.html" class="chip">Widow Pension Desk</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Sanction timelines and exact processing windows vary across individual state implementation metrics. Final clearances remain subject to the district social security sanctioning authority.</p>
+
+    </div>
+
+</body>
+</html>

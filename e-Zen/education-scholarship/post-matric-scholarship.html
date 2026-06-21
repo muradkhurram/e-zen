@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post-Matric Scholarship Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #4c1d95;
+        }
+
+        .category-badge {
+            color: #4c1d95;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #4c1d95;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #4c1d95;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(76,29,149,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #3b1775;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #4c1d95;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #4c1d95;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #3b1775;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #4c1d95;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Education & Scholarships</span>
+            <h1>Post-Matric Scholarship Desk</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Central Interface</span>
+                    <strong>National Scholarship Portal (NSP) / State Portals</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Cohort</span>
+                    <strong>Students in Class 11, 12, UG, PG, and Ph.D. Levels</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Eligible Categories</span>
+                    <strong>SC, ST, OBC, EBC, and General-EWS Communities</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Disbursal Method</span>
+                    <strong>Direct Benefit Transfer (DBT) via Aadhaar Bridge</strong>
+                </div>
+            </div>
+
+            <a href="https://scholarships.gov.in/" target="_blank" class="btn-portal">Open National Scholarship Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The <strong>Post-Matric Scholarship</strong> is a core social safety framework designed to cover institutional costs, tuition premiums, and maintenance fees for students continuing higher education past the matriculation (Class 10) milestone. Administered under specific central ministries and executed via state welfare registries, this funding removes financial friction points for higher vocational, technical, or degree programs.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Baseline Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The applicant must be officially enrolled in a recognized ITI, Poly-technic, College, or University layout.</li>
+                <li style="margin-bottom: 8px;"><strong>Academic Continuous Row:</strong> Clear academic passage from the preceding course term without structural disruptions or unexcused gaps.</li>
+                <li style="margin-bottom: 8px;"><strong>Household Income Caps:</strong> Total gross parental earnings generally must remain below <strong>₹2.5 Lakhs</strong> per annum (caps vary depending on specific SC/ST/OBC structural sub-schemes).</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap target checkmarks to monitor dynamic paperwork collection states:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Bonafide Student Certificate & Fee Structure Receipt</strong>
+                        <span class="file-spec">Itemized cost matrix certified by the active College Dean or Registrar.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Previous Qualifying Marksheet</strong>
+                        <span class="file-spec">Official terminal results ledger proving structural course promotion.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Revenue Income & Caste/Community Certificates</strong>
+                        <span class="file-spec">Recent digital prints confirming household financial borders and category rows.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar-Seeded Personal Savings Account Passbook</strong>
+                        <span class="file-spec">Must be an independent personal account cleared to process high-value DBT transfers.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Lifecycle Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #4c1d95; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #3b1775;"><strong>System Status:</strong> Active 2026 Higher Education Sync</span>
+                <span style="color: #3b1775;"><strong>Verification Tier:</strong> Institutional INO ➔ District Desk Match</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Digital Profile Compilation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access the official NSP interface or state higher education desk and input demographic credentials.</li>
+                        <li>Map your exact degree curriculum code, course duration metric, and complete institutional details.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: College Desk Scrutiny</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The campus Institute Nodal Officer (INO) checks your uploaded fee slips against physical enrollment sheets.</li>
+                        <li>The institution electronically forwards the validated profile row to the district state department.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Final Budget Approval & Release</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The District Welfare Officer checks the file parameters against state budget allocations.</li>
+                        <li>Tuition reimbursement components and monthly maintenance stipends drop directly via PFMS loops.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Critical Processing Obstacles & Pitfalls</h2>
+            <ul class="alert-list">
+                <li><strong>Management Quota Limitations:</strong> Students admitted through discrete management or non-merit fee quotas are frequently excluded from standard post-matric subsidy lines.</li>
+                <li><strong>Minor Bank Account Closures:</strong> Using old minor accounts that have strict transactional ceilings, causing payment failure errors when receiving large reimbursement amounts.</li>
+                <li><strong>Course Selection Drift:</strong> Inputting a different specialization on the portal than what is printed on the formal bonafide certificate, halting validation matching rules.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Specialized Desks</h2>
+            <div class="chip-group">
+                <a href="pre-matric-scholarship.html" class="chip">Pre-Matric Scholarship Desk</a>
+                <a href="minority-scholarship.html" class="chip">Minority Scholarship Desk</a>
+                <a href="labour-welfare.html" class="chip">Labour Board Stipends</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Fee reimbursement ceilings, attendance validation matrices, and registration calendars correspond directly to specific state mandates and executive ministry rules.</p>
+
+    </div>
+
+</body>
+</html>

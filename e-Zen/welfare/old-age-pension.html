@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Old Age Pension Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Social Welfare Services</span>
+            <h1>National Old Age Pension</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Scheme Frame</span>
+                    <strong>Indira Gandhi National Old Age Pension Scheme (IGNOAPS)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Portal Service</span>
+                    <strong>Central NSAP Network Hub / Local LSGD Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Baseline Age</span>
+                    <strong>60 Years of Age or Higher</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Tariff Cost</span>
+                    <strong>₹0 (Free Public Rights Onboarding Plan)</strong>
+                </div>
+            </div>
+
+            <a href="https://nsap.nic.in/" target="_blank" class="btn-portal">Open Central NSAP Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The National Old Age Pension scheme functions as a core state-guaranteed retirement security mechanism. It is tailored specifically to preserve the dignified survival of elderly non-elite citizens who survive without formal corporate or organizational post-retirement income channels.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility Metrics</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The applicant must hit or exceed the formal **60 years** threshold.</li>
+                <li style="margin-bottom: 8px;">The candidate must hold valid classification indices mapping below the designated regional poverty criteria rows.</li>
+                <li style="margin-bottom: 8px;">Must not retain matching registration structures inside alternative commercial or statutory pension models.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Evidence Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap target boxes to confirm document placement accuracy:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Age Validation Document</strong>
+                        <span class="file-spec">Birth Certificate, school leaving record, or an official age validation layout from a certified medical board ledger.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card Core Profile</strong>
+                        <span class="file-spec">Biometric metrics verification identity link must track completely clean.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>BPL Index Token Number / Income Sheet</strong>
+                        <span class="file-spec">Local database tracking codes confirming poverty threshold eligibility boundaries.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Bank Passbook Leaf Copy</strong>
+                        <span class="file-spec">Required to route monthly electronic benefit deposits properly.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Application Workflow</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>Database Term:</strong> Operational Update 2026</span>
+                <span style="color: #5b21b6;"><strong>Verification Authority:</strong> Social Welfare Directorate</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Identity Mapping</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Navigate to your state's social assistance portal or use the central NSAP button links above.</li>
+                        <li>Log in using secure Aadhaar OTP profile authentications.</li>
+                        <li>Select **IGNOAPS / Old Age Pension Form** out of the structural service catalog list.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Registry Submission</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Fill out all required data arrays detailing address history and household income levels.</li>
+                        <li>Upload highly legible scans of your age verification records and BPL tracking certificates.</li>
+                        <li>Submit your entries to secure a printout of your application tracking reference index.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Field Sign-off</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>A localized welfare supervisor reviews your application and conducts a brief residency check.</li>
+                        <li>Upon confirmation, monthly funds launch directly through the database into your designated bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Age Index Discrepancies:</strong> If your uploaded documents show an age entry under 60 years in the database, the file auto-rejects.</li>
+                <li><strong>Government Employment Histories:</strong> Applicants who have a background with any formal state pension program are disqualified.</li>
+                <li><strong>Unseeded Bank Accounts:</strong> Bank accounts that are not actively seeded with Aadhaar will cause the Direct Benefit Transfer system to bounce monthly deposits.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="widow-pension.html" class="chip">Widow Pension Guide</a>
+                <a href="disability-id.html" class="chip">UDID Smart Card</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Financial payout metrics, local income limits, and biometric verification timelines track directly with individual state amendments. Final approvals are handled by your regional social welfare board.</p>
+
+    </div>
+
+</body>
+</html>

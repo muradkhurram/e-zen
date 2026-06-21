@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Application Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Identity & Travel Services</span>
+            <h1>Fresh Passport Application</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Ministry of External Affairs (Govt. of India)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Passport Seva Project Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹1,500 (Normal) | ₹3,500 (Tatkaal Execution)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>7 - 15 Days (Normal) | 1 - 3 Days (Tatkaal Track)</strong>
+                </div>
+            </div>
+
+            <a href="https://www.passportindia.gov.in/" target="_blank" class="btn-portal">Register on Passport Seva Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>An Indian Passport is a globally tracked sovereign travel document issued by the Ministry of External Affairs. It certifies the holder's national identity and citizenship status abroad, serving as a legal prerequisite for international border crossings, visa issuance, and consular protection.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>A passport is legally mandatory for any form of foreign travel, overseas employment, or university study abroad. Domestically, it represents one of the highest-tier government credentials, widely recognized for strict residential address verification and identity authentication by financial institutions and security authorities.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Citizenship:</strong> Applicants must be bona fide citizens of India.</li>
+                <li><strong>Age Profiles:</strong> Open to all age groups including infants (minors under 15 are issued 5-year passports, while adults receive standard 10-year validity books).</li>
+                <li><strong>ECR vs Non-ECR Category:</strong> Applicants who have passed matriculation (10th standard) or possess higher educational degrees are eligible for the "Non-ECR" status, exempting them from mandatory emigration checks when traveling for work to specified countries.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what original items you need to carry to your appointment:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Present Address (Choose One)</strong>
+                        <span class="file-spec">Aadhaar Card, Active Bank Passbook with a photograph, Water/Electricity bill, or a Registered Rent Agreement.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Proof of Date of Birth (Choose One)</strong>
+                        <span class="file-spec">Birth Certificate issued by a municipal authority, Matriculation/School Leaving Certificate, PAN Card, or Driving Licence.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Non-ECR Category Proof (Optional)</strong>
+                        <span class="file-spec">Original 10th Standard passing certificate or higher degree qualification sheets to waive emigration check tracking.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> Ministry of External Affairs Portal Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📱</span> <span><strong>Check Aadhaar Alignment:</strong> Ensure that your name spelling and birth date are exactly identical across both your Aadhaar card and your educational records. A mismatch will cause data freezes during the face-to-face review stage.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Form Submission & Payment</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Register on Passport Seva Portal</strong> above and complete the initial account registration. Select your nearest regional passport office boundary.</li>
+                        <li>Log in with your credentials and select <strong>Apply for Fresh Passport/Re-issue of Passport</strong>.</li>
+                        <li>Choose the <strong>Online Application Form</strong> option to type directly into the browser sheet.</li>
+                        <li>Select application parameters: **Fresh Passport**, **Normal Mode** (or Tatkaal), and **36 Pages** booklet choice.</li>
+                        <li>Fill in your demographic data, structural family names, and present residence timeline parameters exactly as printed on your proof papers.</li>
+                        <li>Review the data structure, hit submit, and proceed to the **Pay and Schedule Appointment** panel. Pay the statutory ₹1,500 online fee to open calendar slot picking. Select your preferred Passport Seva Kendra (PSK) venue and secure a booking slot.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Passport Seva Kendra (PSK) Verification Day</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Arrive at your designated PSK venue 15 minutes before your time slot. Carry your printed application slip and all original checklist documents along with self-attested photocopies.</li>
+                        <li><strong>Counter A (Biometrics):</strong> A specialist operator will capture your digital facial profile photo, scan your fingerprints, and verify your online form fields.</li>
+                        <li><strong>Counter B (Verification):</strong> A verification officer inspects your original documents line-by-line to verify alignment with government archives.</li>
+                        <li><strong>Counter C (Granting):</strong> A senior official grants final approval based on the review metrics and sets off the automated police routing workflow. You will receive an exit slip with a file reference token sequence.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Police Verification & Post Delivery</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Within 3-7 days after your PSK session, your local police station tracking engine will assign an officer to verify your residency profile.</li>
+                        <li>The verification officer will contact you to inspect your physical premises or require you to visit the station house carrying your neighborhood proofs and two local witness statements.</li>
+                        <li>Once the police desk submits a "Clear" status log back to the regional portal, the passport booklet goes into centralized high-security printing queues.</li>
+                        <li>The finalized booklet is packaged and dispatched directly to your residential address via India Post Speed Post.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Discrepancies in Birth Records:</strong> Carrying educational mark sheets where the date of birth or name characters vary from your local municipal birth certificate lines.</li>
+                <li><strong>Present Address Tenure Shortfalls:</strong> If you have lived at your current address for less than one continuous year and omit your previous residential data matrix, the security scan engine will flag it for data concealment.</li>
+                <li><strong>Unclear Address Proof Structures:</strong> Submitting non-authorized local private bank passbooks or unofficial unnotarized lease layouts that do not meet regulatory standards.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Did your appointment booking fail or did the portal time out during checkout processing?</strong><br>Do not trigger a fresh payment transaction immediately. Portal policies state that payments can take up to 24-48 hours to reconcile. Go back to your application dashboard page, select the target file block, click **Track Payment Status**, and select the refresh link to restore validation without lose of capital.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: What happens if I miss my scheduled appointment slot at the Passport Seva Kendra?</strong><br>A: A single online payment allows up to **three appointment reschedules** within a 12-month window from the initial transaction date. If you exhaust all three options, the payment expires and you must pay again.</p>
+            <br>
+            <p><strong>Q: Is it mandatory for minors to have their parents' names updated on their own passports?</strong><br>A: Yes. For minor applications, it is highly recommended to carry at least one parent's original passport with matching name entries to fast-track verification loops at Counter B.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="passport-renewal.html" class="chip">Passport Renewal</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Update</a>
+                <a href="voter-registration.html" class="chip">Voter Registration</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Processing metrics, slot availability rules, and verification criteria align with central directives from the Ministry of External Affairs. Final issuance authority is held by the Regional Passport Officer.</p>
+
+    </div>
+
+</body>
+</html>

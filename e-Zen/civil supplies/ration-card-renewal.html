@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ration Card Renewal - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #0b7339;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #14532d;
+        }
+
+        .header-card h1 {
+            color: #14532d;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #14532d;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(20,83,45,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #0b7339;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #14532d;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #14532d;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #14532d;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Civil Supplies</span>
+            <h1>Ration Card Renewal</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Taluk Supply Office (TSO)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Civil Supplies e-Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>Nil (Service charges apply)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>5–10 Days</strong>
+                </div>
+            </div>
+
+            <a href="https://civilsupplieskerala.gov.in/" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This service allows citizens to renew expired, suspended, or long-inactive family Ration Cards. It functions as a complete administrative data-verification filter designed to confirm that the listed household metrics remain eligible to receive public subsidies from the government.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Ration Cards that do not complete mandatory re-verification or remain inactive at biometric e-POS distribution counters for consecutive months are tagged as dormant. Initiating a formal renewal request clears historical backlog blocks, keeps active biometric seeds alive, and re-enables access to monthly statutory commodity items.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Existing Ration Card details</strong>
+                        <span class="file-spec">Full physical booklet copy or existing digital registration number</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Cards (All Members)</strong>
+                        <span class="file-spec">Mandatory matching identification reference for every person on the registry</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Income/Residence Certificate</strong>
+                        <span class="file-spec">Required if evaluating card status eligibility (APL / BPL categories)</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 21 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Civil Supplies Dept. Circular</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Verify E-KYC Status:</strong> Ensure all family members have completed their biometric e-KYC updates at a local retail shop prior to renewal.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Check Mobile Links:</strong> Ensure the Head of Family's (HOF) active mobile number matches the database file to receive processing tokens.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Verification Access</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Log into the main interface portal of the Civil Supplies department.</li>
+                        <li>Input your structural identification parameters and complete secure identity checks via Aadhaar OTP.</li>
+                        <li>Select the specialized administrative tab labeled "Ration Card Renewal / Re-activation".</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Household Audit & Re-verification</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Review the listed member data grid to confirm all details remain accurate.</li>
+                        <li>Update income variables, professional details, or asset parameters if prompt windows appear.</li>
+                        <li>Upload copies of corresponding Identification proofs and current family residential documents.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Administrative Clearance & Access</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The request undergoes review at the local Taluk Supply Office (TSO) to confirm criteria compliance.</li>
+                        <li>Approved adjustments push down automatically to activate linked biometric point-of-sale systems.</li>
+                        <li>Download the renewed electronic E-Ration Card summary panel directly from your citizen portal page.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Incomplete Family e-KYC:</strong> Attempting card renewal when one or more members have missing or unverified biometric seeds.</li>
+                <li><strong>Income Statement Discrepancies:</strong> Declaring financial parameters that conflict with verified income tax registries or state revenue files.</li>
+                <li><strong>Duplicate Entry Red Flags:</strong> Registry records indicating a cardholder has been mistakenly added to another active household card elsewhere.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Card status marked 'Suspended' post-submission?</strong> Suspension flags usually imply a physical inspection is pending. Contact your local area ration inspector to clear your status record.</p>
+            <br>
+            <p><strong>OTP token not arriving on mobile?</strong> If security messages do not land, verify your phone's network registration or update your registered number at an Akshaya Center using biometric authentication first.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: How often do family Ration Cards require regular structural renewals?</strong><br>A: General administrative validation cycles typically run every five years, though specific category checks can be triggered based on department notification schedules.</p>
+            <br>
+            <p><strong>Q: Will my card category downgrade automatically during a renewal cycle?</strong><br>A: Changes only occur if verified income data or asset declarations place your family above the threshold limits for your current card category.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">New Ration Card Application</a>
+                <a href="#" class="chip">Ration Card Correction</a>
+                <a href="#" class="chip">Conversion (APL to BPL)</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> This guide is for informational purposes based on standard Civil Supplies procedures. Always verify portal requirements before final submission.</p>
+
+    </div>
+
+</body>
+</html>

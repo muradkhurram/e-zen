@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Certificate Copy Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches Aadhaar Enrolment Deep Blue */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Navy Blue top border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #1e3a8a;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #1e3a8a;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #1e3a8a;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Navy Blue with Deep Blue hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #1e3a8a;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(30,58,138,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #172c6b;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #1e3a8a;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #1e3a8a;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #2563eb;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #1e3a8a;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Civil Registration Services</span>
+            <h1>Birth Certificate Copy Extraction</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Local Municipal Corporation / Sevana Portal</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>State e-District / Local Government Desk</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹20 to ₹50 statutory government copy fee</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>Instant Download (Digitally Signed) | 3-5 Days (Physical)</strong>
+                </div>
+            </div>
+
+            <a href="https://lsgkerala.gov.in/en/sevana" target="_blank" class="btn-portal">Search Local Government Registry ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>A Birth Certificate Copy extraction is the administrative search and duplication workflow used to pull an official, certified replica of an existing birth entry from the state's Civil Registration System database. Modern extractions provide a digitally signed PDF file embedded with secure verification QR tracking matrices.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Physical certificates can degrade, get misplaced, or be withheld during complex administrative processes. Obtaining an official certified duplicate copy ensures you always have a valid, legally compliant document available for identity verification, higher education registration, passport renewals, or visa compliance audits.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Registered Profiles:</strong> Any individual whose birth event was formally documented by the local registrar and committed to the electronic registry database.</li>
+                <li><strong>Authorized Callers:</strong> The individual themselves (if an adult), parents, legal guardians, or designated next-of-kin holding valid relationship links.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what reference tokens you have prepared for the search algorithm:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Historical Registration Key Parameters</strong>
+                        <span class="file-spec">The specific registration year, exact date of the birth event, child's biological sex, and the name of the local hospital or location.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Parents' Full Profile Names</strong>
+                        <span class="file-spec">The exact spellings of both the mother's and father's names as logged during the initial birth registration phase.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Applicant's ID (For Physical Office Submissions)</strong>
+                        <span class="file-spec">Aadhaar Card or driving licence copy to verify relationship credentials before records release.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #1e3a8a; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #1e3a8a;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #1e3a8a;"><strong>Source:</strong> State IT Mission Civil Portal Desk</span>
+            </div>
+
+            <div style="border-left: 4px solid #1e3a8a; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #1e3a8a; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>🔍</span> <span><strong>Utilize the Broad Search Matrix:</strong> If you do not know your exact historical registration number, modern state portals provide advanced search fields. You can query the database using just the specific birth date, gender, and local hospital name.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Database Search Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click <strong>Search Local Government Registry</strong> above to open the state civil data server.</li>
+                        <li>Select the target geographical region parameters: District, Institution Type (e.g., Municipality), and Local Unit Name.</li>
+                        <li>Input the child's exact birth date and biological sex. Type the parents' names into the search filters. Click **Search Record**.</li>
+                        <li>Locate your unique profile entry from the generated search results table. Verify the registration number and name fields match your records.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Fee Payment & Security Authorization</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click the **Apply for Certificate Copy** link located next to your verified data block.</li>
+                        <li>Enter the applicant's phone number and the purpose of the copy request (e.g., passport authentication).</li>
+                        <li>Proceed to the payment gateway module and complete the statutory fee transaction (typically ₹20-₹50) via UPI or digital banking.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Secure PDF Copy Generation</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Upon payment validation, the system instantly compiles your official certificate file.</li>
+                        <li>Download the high-resolution, certified PDF file to your local device storage.</li>
+                        <li>The document features an official digital signature and structural verification barcode, rendering it legally equivalent to a traditional physical document for all administrative purposes.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Legacy Offline Records Mismatches:</strong> Births registered before 1970–2000 may not be fully digitized yet. Attempting an online query for these legacy records will return an error, requiring a manual search through the physical registry office archives.</li>
+                <li><strong>Incorrect Local Body Selection:</strong> Selecting a town municipality boundary when the hospital venue actually sat across the street within an adjacent rural gram panchayat zone.</li>
+                <li><strong>Name Entry Truncation Issues:</strong> Searching with a child's complete extended name when the initial record was logged blank or listed under an abbreviated variant.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Is your online database query failing to return any matching records for an institutional birth?</strong><br>Do not abandon the search. Spelling variations in parents' names are common in digital entry systems. Try running a broader search query by leaving the name fields entirely blank and entering *only* the exact birth date, gender, and specific hospital ward location. This will display all births at that facility on that day, allowing you to easily locate your correct entry.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Does a digitally downloaded birth certificate copy require a physical signature or office stamp to be legally valid?</strong><br>A: No. Under the Information Technology Act, 2000, digitally signed documents embedded with verification QR codes are fully legally binding and valid across all central and state government agencies without physical office stamps.</p>
+            <br>
+            <p><strong>Q: How can I obtain a copy if my birth record resides entirely in an un-digitized legacy logbook?</strong><br>A: You must physically visit the local governance center where the birth was originally registered. Fill out a manual search form, provide the historical dates, pay the offline archival lookup fee, and the staff will generate a fresh certified duplicate paper copy from the logbooks.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="birth-registration.html" class="chip">New Birth Registration</a>
+                <a href="aadhaar-update.html" class="chip">Aadhaar Child Update</a>
+                <a href="passport-application.html" class="chip">Passport Application</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Database indexing pipelines and search system functions are managed by state civil registration teams. Final record availability and certified delivery timelines are subject to local body infrastructure constraints.</p>
+
+    </div>
+
+</body>
+</html>

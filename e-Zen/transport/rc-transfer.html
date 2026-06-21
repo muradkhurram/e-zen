@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle RC Transfer Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION - Matches e-Zen Deep Blue Core */
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD - Transport Teal Top Border */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #0d9488;
+        }
+
+        /* Category Badge */
+        .category-badge {
+            color: #0d9488;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #0d9488;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        /* PORTAL BUTTON - Transport Teal with Deep Teal hover */
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #0d9488;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,148,136,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #115e59;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #0d9488;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #0d9488;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #0f766e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #0d9488;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()"">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Transport Services</span>
+            <h1>Vehicle RC Transfer (Ownership Transfer)</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Regional Transport Office (RTO)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Vahan Parivahan System Dashboard</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹300 to ₹500 varies by vehicle class (+ lump-sum tax if applicable)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>15 to 30 Working Days</strong>
+                </div>
+            </div>
+
+            <a href="https://vahan.parivahan.gov.in/vahanservice/" target="_blank" class="btn-portal">Open Vahan Parivahan Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>Vehicle Registration Certificate (RC) Transfer is the legal process used to shift the official ownership titles of a motor vehicle from a seller to a buyer. Regulated strictly under Section 50 of the Motor Vehicles Act, this action updates the centralized database register to map all asset liabilities to the fresh owner profile.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Failing to execute an official ownership transfer leaves the original seller completely liable for future traffic infractions, road tax arrears, or criminal acts involving the vehicle. For the buyer, an un-transferred RC nullifies auto insurance policy validities and restricts future resale actions or hypothecation changes.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Timing Windows:</strong> Transfers must be initiated within 14 days of a local intra-district transaction, or within 45 days if the vehicle has been brought across state lines.</li>
+                <li><strong>Clearance State:</strong> The vehicle asset must possess active financial clearance, valid pollution validation parameters (PUCC), and functional comprehensive insurance cover.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what physical materials you have collected:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 29 & Form 30</strong>
+                        <span class="file-spec">The mandatory statutory application models. Form 29 acknowledges the notice of transfer; Form 30 handles the formal application. Must be signed by both parties.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Original Physical Registration Certificate (RC)</strong>
+                        <span class="file-spec">The active physical smart card or paper registry document of the vehicle asset.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Active Insurance & Pollution Control Certification (PUCC)</strong>
+                        <span class="file-spec">Scans demonstrating unexpired insurance coverage and a valid emissions testing sheet.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Buyer Identification Data & Address Proofs</strong>
+                        <span class="file-spec">Clean copies of the buyer's Aadhaar Card, PAN Card, or local address tokens.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 28 No Objection Certificate (NOC) (If Transferring RTO Zones)</strong>
+                        <span class="file-spec">Mandatory only if moving the vehicle profile outside the jurisdiction of the original issuing RTO.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d9488; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #0f766e;"><strong>Last Verified:</strong> June 2026</span>
+                <span style="color: #0f766e;"><strong>Source:</strong> Parivahan Vahan Core Guidelines</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d9488; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0f766e; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span>📋</span> <span><strong>Settle All Outstanding Challans First:</strong> The Vahan database engine will completely halt an ownership transfer pipeline if any unpaid speed violations or enforcement fines remain active against the vehicle's registration number.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Online Registration Entry</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click **Open Vahan Parivahan Portal** above, input your vehicle registration number, and select **Transfer of Ownership**.</li>
+                        <li>Enter the final 5 digits of your vehicle's physical chassis number string to unlock verification access.</li>
+                        <li>Input the buyer's permanent information tracking profile: Aadhaar, mobile number, and target regional location metrics.</li>
+                        <li>Select the specific transaction fields for **Transfer of Ownership** and complete the online data forms.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Fee Verification Settlement</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Proceed to the online checkout panel layout and settle the statutory transfer processing fees.</li>
+                        <li>Download and print the auto-filled **Form 29** and **Form 30** templates generated by the web system.</li>
+                        <li>Collect physical signatures from both the seller and the buyer on these printed physical document layouts.</li>
+                        <li>Upload the signed form layout sets back to the portal along with clear scans of the active insurance, PUCC, and buyer address sheets.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: RTO Inspection & Final Dispatch</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Depending on state rules, either complete the fully contactless Aadhaar verification track or book a physical appointment window.</li>
+                        <li>For physical tracks, present the vehicle asset along with the signed physical document folders at the local RTO window.</li>
+                        <li>The motor vehicle inspector verifies the vehicle's physical chassis stamp matches the ledger files.</li>
+                        <li>Once cleared, the system processes a new registration certificate smart card and dispatches it via secure mail to the buyer's home address.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Unresolved Bank Hypothecation Holds:</strong> Attempting to transfer an asset that remains linked to an active loan. The system will reject filings unless an official Form 35 loan closure certificate is uploaded.</li>
+                <li><strong>Chassis Impression Mismatches:</strong> Providing paperwork where the manual pencil tracing of the chassis plate doesn't match database specifications.</li>
+                <li><strong>Expired Insurance Coverage:</strong> Trying to complete verification while the insurance policy timeline is within less than 7 days of expiration.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Are you trying to transfer a vehicle that was originally registered in another RTO zone, and the system is demanding an NOC?</strong><br>Do not cancel your application. You must first log in to the Vahan system and choose **Application for No Objection Certificate (Form 28)**. Pay the nominal fee layout, input your new target location RTO boundaries, and submit. Once the digital NOC clearance drops into the centralized database files, restart your transfer application. The system will allow you to bypass the jurisdictional block immediately.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Is it possible to transfer vehicle ownership if the original seller has passed away?</strong><br>A: Yes. The legal heir must apply within 30 days of the demise, using Form 31. They must provide a valid death certificate, a legal relationship certificate, and an affidavit signed by all other heirs waving their rights to the asset.</p>
+            <br>
+            <p><strong>Q: Can I retain my premium or VIP registration number plate when selling my car?</strong><br>A: Yes. Most state transport divisions offer a specialized "Number Retention" mechanism. This must be filed and paid for at the local RTO counter *before* initiating the main ownership transfer pipeline.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="vehicle-rc-address-change.html" class="chip">RC Address Change</a>
+                <a href="dl-address-change.html" class="chip">DL Address Change</a>
+                <a href="vehicle-rc-duplicate.html" class="chip">Duplicate RC Desk</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Ownership transfer parameters, state tax metrics, and physical submission rules vary based on regional RTO codes. Final title clearances are managed by your local Licensing Authority desk.</p>
+
+    </div>
+
+</body>
+</html>

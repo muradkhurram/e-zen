@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karunya Health & KASP Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12 rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Health & Medical Protection</span>
+            <h1>Karunya Health & KASP Desk</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Implementing Agency</span>
+                    <strong>State Health Agency (SHA), Kerala</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Core Framework</span>
+                    <strong>Karunya Arogya Suraksha Padhathi (KASP) / KBF</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Assistance Ceiling</span>
+                    <strong>Up to ₹5 Lakhs per family annually (Cashless Basis)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Operational Model</span>
+                    <strong>Direct State Trust Assurance Model</strong>
+                </div>
+            </div>
+
+            <a href="https://sha.kerala.gov.in/" target="_blank" class="btn-portal">Open State Health Agency Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Karunya Health framework runs via the centralized <strong>Karunya Arogya Suraksha Padhathi (KASP)</strong> alongside the integrated <strong>Karunya Benevolent Fund (KBF)</strong>. It provides extensive cashless, paperless medical care and hospitalization benefits covering critical, secondary, and tertiary clinical alignments across registered government and private empanelled hospitals.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility Parameters</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;">The applicant family must be a valid resident of Kerala.</li>
+                <li style="margin-bottom: 8px;">Direct onboarding covers all families listed within the Socio-Economic Caste Census (SECC) data or possessing active BPL ration indices.</li>
+                <li style="margin-bottom: 8px;"><strong>Income Threshold Extension (KBF):</strong> Families falling outside standard BPL rows but retaining verified annual revenue indices under <strong>₹3 Lakhs</strong> qualify for serious acute ailments (Cancer, Kidney failure, Heart conditions).</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Verification Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap markers to monitor verification paperwork requirements at the hospital desk:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Ration Card Copy (Priority/Non-Priority)</strong>
+                        <span class="file-spec">Primary link document used by the hospital kiosk to confirm profile lines.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card Core Identifiers</strong>
+                        <span class="file-spec">Biometric and structural identification verification source for patient registry records.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Revenue-Issued Income Certificate</strong>
+                        <span class="file-spec">Required specifically to activate KBF critical tier limits if the family holds APL cards.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Clinical Diagnostic Logs & Treatment Plan</strong>
+                        <span class="file-spec">Authorized medical hospital notes certifying the explicitly mapped procedure package.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Procurement & Cashless Process Flow</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Registry:</strong> Verified Direct Workflow 2026</span>
+                <span style="color: #5b21b6;"><strong>Pre-Existing Status:</strong> Fully covered from Day 1</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Empanelled Hospital Desk Contact</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Present the patient’s Ration Card and Aadhaar at the dedicated **KASP/Karunya Counter** inside any empanelled network healthcare facility.</li>
+                        <li>The resident Arogyamitra run an electronic query against the database using your unique identifier.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Pre-Authorization & Matching</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The hospital billing desk maps the clinical requirements onto one of the 1,573+ authorized treatment package slots.</li>
+                        <li>An automatic electronic pre-authorization token request routes straight to the State Health Agency dashboard to lock up the funds.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Cashless Treatment & Discharge</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Treatment proceeds entirely free of upfront cash demands. The allocation encompasses procedural costs, drugs, diagnostic tests, and up to 15 days of post-discharge monitoring.</li>
+                        <li>The hospital claims processing desk reconciles the finalized treatment notes directly with the SHA electronic ledger portal.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Institutional Issues & Rejections</h2>
+            <ul class="alert-list">
+                <li><strong>Non-Empanelled Treatment Attempts:</strong> Seeking elective treatment in private institutions that have not entered direct service level agreements with the SHA platform.</li>
+                <li><strong>Mismatched Family Ledger Data:</strong> Patient names completely missing from the electronic ration card or national health databases, causing token creation rejections.</li>
+                <li><strong>Package Exhaustion Limits:</strong> Bypassing standard base allowance parameters without initiating emergency buffer enhancement steps through medical committee pathways.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Platforms</h2>
+            <div class="chip-group">
+                <a href="disability-pension.html" class="chip">Disability Support Desk</a>
+                <a href="differently-abled-assistance.html" class="chip">Differently-Abled Aids</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Institutional network alignments and direct treatment package configurations depend on evolving state budgetary health directives. Final authorizations track back to the active State Health Agency desk.</p>
+
+    </div>
+
+</body>
+</html>

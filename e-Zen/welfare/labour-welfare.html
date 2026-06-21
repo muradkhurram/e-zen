@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labour Welfare Board Benefits Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        nav{
+            background: #172c6b;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #6d28d9;
+        }
+
+        .category-badge {
+            color: #6d28d9;
+            font-size: 13px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .header-card h1 {
+            color: #6d28d9;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fdfcff;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 14px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #6d28d9;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(109,40,217,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #5b21b6;
+        }
+
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #6d28d9;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #6d28d9;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #5b21b6;
+            font-weight: bold;
+        }
+
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #6d28d9;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+            font-size: 15px;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to e-Zen Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span class="category-badge">Unorganized Sector Protections</span>
+            <h1>Labour Welfare Board Benefits</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Registry Integration</span>
+                    <strong>e-Shram Portal / State Labour Welfare Boards</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Target Workers</span>
+                    <strong>Construction, Headload, Gig-workers, Casual Labourers</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Key Allocations</span>
+                    <strong>Maternity Grants, Educational Stipends, Funeral Assistance</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Filing Cost</span>
+                    <strong>₹0 (Free Constitutional Rights Guarantee System)</strong>
+                </div>
+            </div>
+
+            <a href="https://eshram.gov.in/" target="_blank" class="btn-portal">Open National e-Shram Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>The Labour Welfare Benefits module serves as a primary social protection network for non-elite, unorganized sector workers (such as construction operators, daily casual labourers, and headload handlers). Registration hooks directly into your state’s Labor Welfare Board or the centralized <strong>e-Shram registry</strong>, granting formal access to essential lifestyle allowances, safety equipment components, and family health stipends.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Core Benefits Provided</h2>
+            <ul style="padding-left: 20px;">
+                <li style="margin-bottom: 8px;"><strong>Maternity & Marriage Benefits:</strong> Financial cash grants allocated to registered women workers or toward the marriage layout expenses of a worker's dependent children.</li>
+                <li style="margin-bottom: 8px;"><strong>Educational Scholarships:</strong> Tiered annual cash stipends provided to the children of registered laborers to ensure continuity in secondary and technical professional colleges.</li>
+                <li style="margin-bottom: 8px;"><strong>Chronic Illness & Funeral Support:</strong> Medical reimbursement models for high-intensity treatments alongside instant cash disbursals for immediate family funeral costs.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Verification Folder (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap targets to confirm specific paperwork configuration arrangements:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>e-Shram Card / Board Registration Passbook</strong>
+                        <span class="file-spec">Must display a valid 12-digit Universal Account Number (UAN) string confirming active registration.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>90-Day Employment Certification Slip</strong>
+                        <span class="file-spec">Signed declaration from a registered contractor, trade union executive, or labor officer verifying at least 90 days of active work in the past year.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Profile & Bank Passbook Leaf Copy</strong>
+                        <span class="file-spec">Core mapping identifiers required to process electronic Direct Benefit Transfer routing without errors.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Dependent Relationship Proof (If Claiming Education/Marriage Grants)</strong>
+                        <span class="file-spec">Legitimate School Transfer Certificate, Ration Card link rows, or Birth Certificates.</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Filing & Claims Pipeline</h2>
+            
+            <div style="background: #f5f3ff; border: 1px dashed #6d28d9; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #5b21b6;"><strong>System Status:</strong> 2026 Core Registration Module</span>
+                <span style="color: #5b21b6;"><strong>Mandatory Term:</strong> Annual membership renewal preserves active status</span>
+            </div>
+
+            <details>
+                <summary>Phase 1: Verification of UAN Status</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Access your state's online Labour Welfare Board portal or log into the central e-Shram terminal listed above.</li>
+                        <li>Verify your profile parameters and confirm your annual subscription fees are fully settled to keep the account active.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Specific Benefit Application</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Select **Apply for Board Welfare Scheme** and choose the explicit option required (e.g., Education Allowance or Maternity Grant).</li>
+                        <li>Upload clean scans of your 90-day work certificate alongside the targeted beneficiary proof files (such as child’s marksheets or bills).</li>
+                        <li>Submit your file layout to secure a digital reference tracking receipt.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 3: Labour Officer Audit & Clearance</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>The District Assistant Labour Officer reviews files and runs a background query against unorganized sector employment ledgers.</li>
+                        <li>Upon institutional approval, the financial grant drops directly via the DBT clearinghouse into your registered bank account.</li>
+                    </ol>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Lapsed Annual Renewals:</strong> Allowing your Labor Board registration membership to pass past its due date renders all welfare claims inactive.</li>
+                <li><strong>Invalid 90-Day Employment Certificates:</strong> Submitting work history sheets that lack valid contractor license numbers or official trade union stamps.</li>
+                <li><strong>Dual Benefit Overlaps:</strong> Attempting to claim educational or medical payouts for a child while already drawing an identical grant from an institutional scholarship source.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Platforms</h2>
+            <div class="chip-group">
+                <a href="fishermen-welfare.html" class="chip">Fishermen Welfare Desk</a>
+                <a href="unemployment-assistance.html" class="chip">Unemployment Registry</a>
+                <a href="ration-card.html" class="chip">Ration Card Operations</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> Financial award amounts, scholarship caps, and processing limits reflect individual state welfare legislation changes. Final adjustments are handled by your local district labor officer desk.</p>
+
+    </div>
+
+</body>
+</html>

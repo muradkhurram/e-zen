@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving Licence Guide - e-Zen</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            line-height:1.6;
+            color:#333;
+            background-color: #f4f6f8;
+            padding-bottom: 40px;
+        }
+
+        /* TOP NAVIGATION */
+        nav{
+            background: #92400e;
+            padding: 15px 5%;
+            display: flex;
+            align-items: center;
+        }
+
+        nav a{
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        /* CONTAINER */
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* HEADER CARD */
+        .header-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            border-top: 5px solid #b45309;
+        }
+
+        .header-card h1 {
+            color: #b45309;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+            background: #fcfdfc;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e8f5e9;
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .meta-item strong {
+            font-size: 15px;
+            color: #111;
+        }
+
+        .btn-portal {
+            display: block;
+            text-align: center;
+            background: #b45309;
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(13,143,71,0.2);
+            transition: background 0.2s;
+        }
+
+        .btn-portal:hover {
+            background: #92400e;
+        }
+
+        /* SECTION CARDS */
+        .section-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            margin-bottom: 20px;
+        }
+
+        .section-card h2 {
+            color: #b45309;
+            font-size: 18px;
+            margin-bottom: 12px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 5px;
+        }
+
+        .section-card p, .section-card li {
+            font-size: 15px;
+            color: #4a5568;
+        }
+
+        /* CHECKLIST */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checklist input[type="checkbox"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: #b45309;
+            cursor: pointer;
+        }
+
+        .file-spec {
+            display: block;
+            font-size: 12px;
+            color: #e53e3e;
+            font-weight: bold;
+        }
+
+        /* ACCORDION (STEPS) */
+        details {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            color: #1e293b;
+            cursor: pointer;
+            outline: none;
+            background: #edf2f7;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::after {
+            content: "➔";
+            transition: transform 0.2s;
+            color: #b45309;
+        }
+
+        details[open] summary::after {
+            transform: rotate(90deg);
+        }
+
+        .step-content {
+            padding: 15px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .step-content ol {
+            padding-left: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+        }
+
+        /* ALERT CARD FOR REJECTIONS */
+        .alert-card {
+            background: #fff5f5;
+            border-left: 4px solid #f56565;
+        }
+
+        .alert-card h2 {
+            color: #c53030;
+        }
+
+        .alert-list {
+            padding-left: 20px;
+        }
+
+        .alert-list li {
+            margin-bottom: 10px;
+            color: #9b2c2c;
+        }
+
+        /* CHIPS FOR RELATED SERVICES */
+        .chip-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 10px;
+        }
+
+        .chip {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 8px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .chip:hover {
+            background: #cbd5e1;
+        }
+
+        .disclaimer {
+            font-size: 12px;
+            color: #718096;
+            text-align: center;
+            margin-top: 30px;
+            line-height: 1.4;
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="javascript:history.back()">← Back to Guide</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-card">
+            <span>Transport Services</span>
+            <h1>Learner's & Driving Licence</h1>
+            
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Issuing Authority</span>
+                    <strong>Motor Vehicles Dept. (Kerala)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Official Portal</span>
+                    <strong>Sarathi Parivahan</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Prescribed Fee</span>
+                    <strong>₹240 (Learner's) | ₹800+ (Driving)</strong>
+                </div>
+                <div class="meta-item">
+                    <span>Processing Time</span>
+                    <strong>Instant (LL Test) | 7-14 Days (DL card)</strong>
+                </div>
+            </div>
+
+            <a href="https://sarathi.parivahan.gov.in/sarathiservice/stateSelection.do" target="_blank" class="btn-portal">Go to Official Portal ↗</a>
+        </div>
+
+        <div class="section-card">
+            <h2>What is this?</h2>
+            <p>This is the official framework that permits a citizen to legally operate a motor vehicle on public roads. It has two phases: first, a temporary <strong>Learner's Licence (LL)</strong> valid for 6 months, followed by a practical driving test to secure the permanent <strong>Driving Licence (DL)</strong>.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Why is it needed?</h2>
+            <p>Mandatory under the Motor Vehicles Act for driving any vehicle (Two-wheeler, Car, Commercial). It serves as a globally recognized valid identity and age proof across India.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Eligibility</h2>
+            <ul style="padding-left: 20px;">
+                <li><strong>Age 16 or above:</strong> For gearless motorcycles up to 50cc (requires parental consent).</li>
+                <li><strong>Age 18 or above:</strong> For light motor vehicles (Cars/Bikes with gear).</li>
+                <li><strong>Age 20 or above:</strong> For Commercial / Transport vehicles.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Required Documents (Checklist)</h2>
+            <p style="margin-bottom: 15px; font-size: 13px; color: #718096;">💡 Tap the boxes to track what you have gathered:</p>
+            <ul class="checklist">
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Aadhaar Card</strong>
+                        <span class="file-spec">Used for fast OTP verification</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Address Proof</strong>
+                        <span class="file-spec">Ration Card / Voter ID / Passport (if different from Aadhaar)</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Age Proof</strong>
+                        <span class="file-spec">SSLC Book / Birth Certificate / Passport</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Form 1A Medical Certificate</strong>
+                        <span class="file-spec">Mandatory if age is over 40 years or applying for Commercial DL. Must be signed by a Govt doctor.</span>
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox">
+                    <div>
+                        <strong>Passport Size Photo & Signature Scan</strong>
+                        <span class="file-spec">JPEG format, files must be under 20KB each</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>Step-by-Step Procedure</h2>
+            
+            <div style="background: #f0fdf4; border: 1px dashed #0d8f47; padding: 10px 15px; border-radius: 6px; margin-bottom: 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; font-size: 13px;">
+                <span style="color: #166534;"><strong>Last Verified:</strong> 12 June 2026</span>
+                <span style="color: #166534;"><strong>Source:</strong> Kerala MVD Circular No. XXXX</span>
+            </div>
+
+            <div style="border-left: 4px solid #0d8f47; background: #f9fbf9; padding: 15px; border-radius: 6px; margin-bottom: 25px;">
+                <strong style="color: #0d8f47; display: block; margin-bottom: 10px; font-size: 16px;">Before You Begin</strong>
+                <ul style="list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Keep Aadhaar-linked mobile active:</strong> Required for live identity verification via OTP.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Keep scanned documents ready:</strong> Have files cropped under required digital size ceilings.</span>
+                    </li>
+                    <li style="margin-bottom: 10px; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Ensure stable internet connectivity:</strong> Avoid transaction timeouts during payment steps.</span>
+                    </li>
+                    <li style="margin-bottom: 0; display: flex; gap: 10px; font-size: 14px; color: #4a5568;">
+                        <span></span> <span><strong>Read all instructions fully:</strong> double-check data accuracy before hitting final pay.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <details>
+                <summary>Phase 1: Getting a Learner's Licence (LL)</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Click the <strong>Go to Official Portal</strong> button above and select <strong>Kerala</strong> from the state list.</li>
+                        <li>Click on <strong>Apply for Learner Licence</strong>.</li>
+                        <li>Select "Apply using Aadhaar Authentication" (Highly recommended; no need to visit RTO physically for document verification).</li>
+                        <li>Enter your Aadhaar number, verify the OTP sent to your registered mobile number, and your details will populate automatically.</li>
+                        <li>Select your vehicle class (e.g., MCWG for motorcycle with gear, LMV for motor car).</li>
+                        <li>Upload your photo, signature, and medical certificate (if applicable).</li>
+                        <li>Pay the fee online via UPI, Netbanking, or Debit card.</li>
+                        <li>Watch the mandatory Road Safety Video tutorial on the website.</li>
+                        <li>Take the online LL computer test from home. Answer 12 out of 20 questions correctly to pass and download your LL instantly.</li>
+                    </ol>
+                </div>
+            </details>
+
+            <details>
+                <summary>Phase 2: Getting the Permanent Licence (DL)</summary>
+                <div class="step-content">
+                    <ol>
+                        <li>Note: You can apply for a permanent DL only <strong>after 30 days</strong> and <strong>within 6 months</strong> from your LL issuance date.</li>
+                        <li>Open the Sarathi Portal and select <strong>Apply for Driving Licence</strong>.</li>
+                        <li>Enter your Learner's Licence Number and Date of Birth.</li>
+                        <li>Select the specific vehicle classes you want to take the test for.</li>
+                        <li>Pay the DL application and test fee online.</li>
+                        <li>Use the **Slot Booking** module on the screen to choose your nearest RTO test ground, along with your preferred date and time block.</li>
+                        <li>Print out your Application Form, Fee Receipt, and Slot Booking Confirmation slip.</li>
+                        <li>Arrive at the RTO test ground on the scheduled date with your vehicle and your accompanying licensed driver. Pass the ground test ('H' test for cars, track for bikes) and the road test.</li>
+                    </ol>
+
+                    <div style="margin-top: 20px; background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 8px; padding: 15px;">
+                        <strong style="color: #1e293b; display: block; margin-bottom: 10px; font-size: 15px;">What to Carry on Test Day</strong>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;"> Learner's Licence printout</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;"> Printout of Application form & Fee receipt</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;"> Original documents (Aadhaar, Age proof, SSLC) for physical spot-verification</li>
+                            <li style="margin-bottom: 8px; font-size: 14px; color: #4a5568; display: flex; gap: 8px;"> Valid vehicle documents (RC Book, Insurance, Pollution Certificate)</li>
+                            <li style="margin-bottom: 0; font-size: 14px; color: #4a5568; display: flex; gap: 8px;"> An accompanying driver holding a valid permanent Driving Licence</li>
+                        </ul>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div class="section-card alert-card">
+            <h2>⚠️ Common Rejection Reasons</h2>
+            <ul class="alert-list">
+                <li><strong>Mismatched Data:</strong> If the spelling of your name or date of birth differs even slightly between your SSLC book and Aadhaar card, the application will be flagged and rejected by the RTO inspector.</li>
+                <li><strong>Invalid Medical Certificate:</strong> Uploading a Form 1A without the official registration seal or clear signature of the authorized Government Medical Officer.</li>
+                <li><strong>Blurry Uploads:</strong> Uploading blurry, illegible images of documents or signatures to save file space. If the inspector cannot read it, they will reject it.</li>
+                <li><strong>Expired LL:</strong> Trying to book a permanent DL slot after the 6-month validity of your Learner's Licence has expired. You will have to apply and pay for an LL all over again.</li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2>🔧 Troubleshooting</h2>
+            <p><strong>Money deducted but receipt not generated?</strong><br>Do not pay twice. Log out, wait 30 to 45 minutes, log back in, go to "Application Status", enter your details, and click "Verify Payment Status" to fetch the official transaction manually.</p>
+            <br>
+            <p><strong>Failed the LL computer test?</strong><br>Don't panic. You can pay a re-test fee of ₹60 online after 24 hours and take the exam again right from home.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>FAQ</h2>
+            <p><strong>Q: Can I take the driving test using an automatic car?</strong><br>A: Yes, but your licence will explicitly come with a restriction code limiting you to automatic vehicles only.</p>
+            <br>
+            <p><strong>Q: How will I receive the physical license card?</strong><br>A: Once approved by the RTO after passing your driving test, the smart card will be dispatched via Speed Post directly to your Aadhaar address.</p>
+        </div>
+
+        <div class="section-card">
+            <h2>Related Services</h2>
+            <div class="chip-group">
+                <a href="#" class="chip">International Driving Permit (IDP)</a>
+                <a href="#" class="chip">Change of Address in DL</a>
+                <a href="#" class="chip">Renewal of Driving Licence</a>
+            </div>
+        </div>
+
+        <p class="disclaimer"><strong>Disclaimer:</strong> All fee values, document criteria, and routing rules listed are based on the latest Motor Vehicle Department instructions. Government regulations may change at any time via official gazette notifications. Users are requested to verify parameters during final portal submission.</p>
+
+    </div>
+
+</body>
+</html>
